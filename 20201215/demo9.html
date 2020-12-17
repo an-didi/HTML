@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>伪类选择器：结构相关，难点重点</title>
+    <style>
+      /* 1. 匹配任意位置的元素：nth-of-type(an+b) */
+      /* an+b: an起始点；b偏移量；n（0，1，2......） */
+      /* 匹配单个的li:此时的a为0，b是要匹配到的位置  */
+      /* ul li:nth-of-type(3) {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 选择多个元素: 此时a不为0，按照所选择的规则适当的改变a的值 */
+      /* 例子：选中从第三个开始的所有 */
+      /* ul li:nth-of-type(n + 3) {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 如果想只选中前两个的，除了用添加class属性以外还可以用nth-of-type(an+b),此时的a为-1，所选取的内容为偏移量之前的所有内容 */
+      /* 例子：只选中前两个 */
+      /* ul li:nth-of-type(-n + 2) {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 2.反向获取任意元素的位置：nth-last-of-type(an+b),
+        当一列元素特别多无法知道具体数值，但是想定位到尾部元素的时候用这个方法，
+        原理和nth-of-type(an+b)相同，不过是要反过来理解。 */
+      /* ul li:nth-last-of-type(1) {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 选择所有索引为偶数的子元素 也可以用关键字：even*/
+      /* ul li:nth-of-type(2n) {
+        background-color: lightgoldenrodyellow;
+      } */
+      /*  选择所有索引为奇数的子元素 ， 也可以用关键字：odd*/
+      /* ul li:nth-of-type(2n + 1) {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 3. 选择第一个子元素：first-of-type */
+      /* ul li:first-of-type {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 4. 选择最后一个元素：last-of-type */
+      /* ul li:last-of-type {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 匹配父元素中唯一子元素，only-of-type */
+      ul li:only-of-type {
+        background-color: rgb(183, 221, 247);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+      <li>item5</li>
+      <li>item6</li>
+      <li>item7</li>
+      <li>item8</li>
+      <li>item9</li>
+      <li>item10</li>
+    </ul>
+    <ul>
+      <li>这是唯一的</li>
+    </ul>
+  </body>
+</html>

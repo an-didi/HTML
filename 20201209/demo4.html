@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表单控件的form属性</title>
+    <link rel="stylesheet" href="style/form1.css" />
+  </head>
+  <body>
+    <h3 class="title">用户注册</h3>
+    <form action="check.php" method="GET" id="register"></form>
+    <!-- 使用form属性，将控件与它所属的表单进行关联/绑定 -->
+    <div class="box">
+      <label for="username">账号:</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="不能为空"
+        required
+      />
+      <label for="email">邮箱:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="admin@email.com"
+        required
+      />
+      <label for="psd">密码:</label>
+      <input
+        type="password"
+        name="password"
+        id="psd"
+        placeholder="不少于6位"
+        required
+      />
+      <button>提交</button>
+    </div>
+    <!-- 尽管form属性可以实现将控件写到任何地方,仍然能够获取到值，但不要这样做
+    第一影响布局，第二代码混乱
+    但是，用在js中， 获取数据将会变得非常的方便 -->
+  </body>
+</html>

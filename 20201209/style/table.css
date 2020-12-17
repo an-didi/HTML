@@ -1,0 +1,70 @@
+/* 商品信息表 */
+.product {
+  border-collapse: collapse;
+  width: 30em;
+  margin: auto;
+  text-align: center;
+}
+.product caption {
+  font-size: 1.2rem;
+  margin-bottom: 0.5em;
+}
+.product thead tr,
+.product tr:hover {
+  background-color: lightcyan;
+  cursor: pointer;
+}
+.product td,
+.product th {
+  border: 1px solid #000;
+  padding: 5px;
+}
+.page {
+  text-align: center;
+}
+.page a {
+  text-decoration: none;
+  color: #666;
+  padding: 2px 5px;
+  border: 1px solid rgba(133, 26, 26, 0.233);
+}
+.page a.active,
+.page a:hover {
+  background-color: lightcyan;
+}
+
+/* 课程表：行与列的合并 */
+.life {
+  border-collapse: collapse;
+  width: 40em;
+  text-align: center;
+  margin: auto;
+}
+
+.life caption {
+  font-size: 1.2rem;
+  margin: 1em;
+}
+
+.life thead {
+  background-color: lightcyan;
+}
+
+.life th,
+.life td {
+  border: 1px solid;
+  padding: 0.5em;
+}
+
+.life .rest {
+  background-color: #efefef;
+}
+
+.life td[rowspan="4"],
+.life td[rowspan="3"] {
+  background-color: rgb(186, 245, 213);
+}
+.life td[colspan="2"],
+.life td[colspan="5"] {
+  background-color: rgba(48, 133, 136, 0.356);
+}

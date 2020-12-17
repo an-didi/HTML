@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内联框架标签&lt;iframe&gt;的工作原理</title>
+    <link rel="stylesheet" href="style/iframe.css" />
+    <style>
+      div {
+        display: grid;
+      }
+      iframe {
+        width: 30em;
+        height: 20em;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="../20201209/img/table.png" target="life-table"
+        >某人的生活作息表</a
+      >
+      <iframe srcdoc="作息表" name="life-table"></iframe>
+    </div>
+    <div>
+      <a href="../20201209/img/nav.png" target="nav">导航</a>
+      <iframe srcdoc="导航" name="nav"></iframe>
+    </div>
+  </body>
+</html>

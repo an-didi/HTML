@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>层叠与优先级</title>
+    <style>
+      h1 {
+        color: green;
+      }
+      .title {
+        color: rgb(216, 156, 44);
+      }
+      #class {
+        color: rgb(118, 107, 209);
+      }
+      [name="h1"] {
+        color: rgb(194, 88, 167);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 id="class" class="title" name="h1">这个用来测试css选择器的优先级</h1>
+      <h2 id="class" class="title" name="h2">这个用来测试css选择器的优先级</h2>
+    </header>
+  </body>
+</html>
