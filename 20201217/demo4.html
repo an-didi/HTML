@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em实现响应式布局</title>
+    <style>
+      /* 设置根元素字号 */
+      html {
+        font-size: 1.25em;
+        /* 后面可以直接使用rem引用1.25*16=20px来定义字号 */
+      }
+      .box {
+        font-size: 0.8rem;
+        /* 此时如果当前元素.box中的其他属性,如果用到em就是0.8rem(16px) */
+        background-color: rgb(238, 207, 212);
+        padding: 1em;
+        border-radius: 0.5em;
+        /* 边框一定不要使用rem/em,一定要用像素px */
+        border: 1px solid rgb(65, 63, 63);
+        margin: 1em;
+      }
+      /* ------------------------------------ */
+      /* 字号设置强烈推荐使用rem */
+      .box h2 {
+        font-size: 1rem;
+        margin: 1em 0;
+      }
+      /* ------------------------------------------- */
+      .box p {
+        font-size: 0.75rem;
+        /* 段落缩进 2个字符 */
+        text-indent: 2em;
+        line-height: 2;
+      }
+      /* 当屏幕大小>=800px时, 字号放大到18px */
+      @media screen and (min-width: 800px) {
+        html {
+          font-size: 1.5em;
+        }
+        .box {
+          background-color: lightgreen;
+        }
+      }
+      /* 当屏幕大小>=1000px时, 字号放大到21px */
+      @media screen and (min-width: 1000px) {
+        html {
+          font-size: 1.75em;
+        }
+        .box {
+          background-color: lightskyblue;
+        }
+      }
+      /* 当屏幕大小>=1200px时, 字号放大到24px */
+      @media screen and (min-width: 1200px) {
+        html {
+          font-size: 2em;
+        }
+        .box {
+          background-color: lightcoral;
+        }
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="style/demo4.css" /> -->
+  </head>
+  <body>
+    <div class="box">
+      <h2>怪谈之说</h2>
+      <div class="content">
+        <p>
+          就网络上流行的那些彩虹屁夸人语录里，让我打从心底认可和喜爱的一句是，“人间水蜜桃”。几乎凝练了本人对美丽女孩的全部幻想。青春期看《樱桃之远》，里面说，樱桃，光是这两个字念出来，就有幸福的感觉。人间水蜜桃同理——一种芬芳迫不及待地溢出来，又猝不及防地离你而去。
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

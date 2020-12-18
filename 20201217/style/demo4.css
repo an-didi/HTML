@@ -1,0 +1,39 @@
+html {
+  font-size: 1.25em;
+}
+.box {
+  font-size: 0.8rem;
+  background-color: rgb(238, 207, 212);
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 1px solid rgb(65, 63, 63);
+  margin: 0.2em;
+}
+.content {
+  font-size: 0.75em;
+}
+/* 当屏幕大小>=800时 */
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 1.5em;
+  }
+  .box {
+    background-color: lightgreen;
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 1.75em;
+  }
+  .box {
+    background-color: lightskyblue;
+  }
+}
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 2em;
+  }
+  .box {
+    background-color: lightcoral;
+  }
+}

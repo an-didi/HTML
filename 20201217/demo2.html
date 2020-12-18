@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em制作一组响应式的按钮组件</title>
+    <style>
+      /* 基本样式 */
+      .btn {
+        background-color: #1eafff;
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+      }
+      .btn:hover {
+        /* 透明度 */
+        opacity: 0.8;
+        /* 将鼠标设置为手型 */
+        cursor: pointer;
+        /* 设置阴影，外发光效果 */
+        box-shadow: 0 0 3px #888;
+        /* 增加延时效果 */
+        transition: 0.3s;
+      }
+      /* 如果想设置三个不同大小的按钮,只需要为这三个按钮指定不同的自豪就可以了 */
+      .small {
+        font-size: 0.5em;
+      }
+      .normal {
+        font-size: 1em;
+      }
+      .large {
+        font-size: 1.25em;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn small">button</button>
+    <button class="btn normal">button</button>
+    <button class="btn large">button</button>
+  </body>
+</html>
