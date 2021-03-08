@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css基础语法之css规则的三种导入方式</title>
+    <!-- 1、内部样式(通过style标签引入) -->
+    <style>
+      /* 通过style标签引入的css规则，仅适用于当前页面 */
+      h1 {
+        /* 声明：属性和值构成 */
+        color: lightblue;
+        border: 1px solid;
+      }
+      /* h1: 选择器
+      {...}: 声明块，由一个或者多个分号隔开的样式声明构成
+      h1 + {...}: 选择器 + 声明块 = 规则 */
+    </style>
+  </head>
+  <body>
+    <h1>这是一个测试标题</h1>
+  </body>
+</html>

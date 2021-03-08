@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>容器的最小高度和最大高度</title>
+    <style>
+      body > * {
+        margin: 1em;
+      }
+      body div {
+        border: 1px solid #000;
+        /* 默认高度由内容撑开 */
+        height: auto;
+      }
+      body div:nth-of-type(2) {
+        min-height: 5em;
+        /* 只限制最小高度,未限制最大高度
+        当内容超过最小高度时会自动伸展
+        内容不足时,使用最小高度,保证页面不塌掉 */
+      }
+      body div:nth-of-type(3) {
+        max-height: 5em;
+        background-color: skyblue;
+        /* 设置了最大高度,超过高度的内容就溢出了 */
+        /* 此时可以添加滚动条 */
+        overflow: auto;
+      }
+      /* 与它类似的还有个最大宽度和最小宽度 */
+    </style>
+  </head>
+  <body>
+    <div>这是一段测试字号的文字</div>
+    <div>
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+    </div>
+    <div>
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+      这是一段测试字号的文字<br />
+    </div>
+  </body>
+</html>

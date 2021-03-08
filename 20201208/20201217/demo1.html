@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em原理和应用</title>
+    <style>
+      /* 1.什么是em？  */
+      /* h2{
+        font-size: 1.5em;
+
+      } */
+      /* 1.5em是用户代理（浏览器）为标签h2设置的默认字号 */
+
+      /* em：浏览器文本的默认字号的相对关键字，通常1em=16px */
+
+      /* --------------------------------------------------------- */
+
+      /* 2. em的用处 */
+      /* 2.1 设置响应式的文本字号 */
+
+      /* font-size属性是允许被继承的 */
+      /* 当前h2的字号继承自它的祖先元素（body，html） */
+      /* 此时想改变h2的字号，不必去直接修改h2的字号属性，可以直接修改它的祖先元素中的字号属性，这样它就直接继承 */
+      html {
+        font-size: 1.25em;
+      }
+      /* 2.2 设置盒模型的属性的响应式 */
+      .box {
+        /* 此时的em继承自html，这时的1em=1.25 * 16=20px */
+        font-size: 1em;
+        /* width=10 * 20px= 200px */
+        width: 10em;
+        /* height=8 * 20px=160px */
+        height: 8em;
+        background-color: lightblue;
+      }
+      /* 因为盒子的大小使用了em，所以只需要设置盒子的font-size属性就可以动态设置盒子的大小 */
+      .box {
+        font-size: 0.5em;
+      }
+      .box {
+        font-size: 2em;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="style/demo1.css" /> -->
+  </head>
+  <body>
+    <div class="box">
+      <!-- <h2>怪谈之说</h2>
+      <p class="content">
+        就网络上流行的那些彩虹屁夸人语录里，让我打从心底认可和喜爱的一句是，“人间水蜜桃”。几乎凝练了本人对美丽女孩的全部幻想。青春期看《樱桃之远》，里面说，樱桃，光是这两个字念出来，就有幸福的感觉。人间水蜜桃同理——一种芬芳迫不及待地溢出来，又猝不及防地离你而去。
+      </p> -->
+    </div>
+  </body>
+</html>

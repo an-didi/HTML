@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css原生变量/自定义属性</title>
+    <style>
+      /* 在css中设置变量，使用'--'来定义一个变量名，具体格式为：--name:value;（value可以是多个值） */
+      body {
+        --color: #f00;
+        --active-color: green;
+        --a-border: 1px solid;
+
+        /* css预处理器，用js来编译css代码，less，sass */
+      }
+      a {
+        /* 用var函数引用这个变量 */
+        color: var(--color);
+      }
+      a:hover {
+        color: var(--active-color);
+        border: var(--a-border);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="">学习网站</a>
+  </body>
+</html>

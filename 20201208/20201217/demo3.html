@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em定义字号</title>
+    <style>
+      html {
+        font-size: 1.25em;
+        /* 当前font-size属性出现在了html中 */
+        /* html叫做根元素,一个页面中它是唯一的且是最大的包含块 */
+        /* 所以在html中定义的em可以看作是一个常量 */
+        /* html所有后代元素,如果想引用html中的字号,就不能使用em,此时我们用新的关键字rem来引用根元素的字号大小 */
+      }
+      h2 {
+        /* 此时1.5rem = 1.5 * 20px = 30px */
+        font-size: 1.5em;
+      }
+      h2 span {
+        /* 此时1rem=1 * 20px=20px */
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- em:动态性和继承性,但是也有缺点 -->
+    <!-- 引出rem:一个固定的em值 -->
+    <!-- <h2>怪谈</h2> -->
+    <h2>怪谈<span>之都市怪谈</span></h2>
+  </body>
+</html>

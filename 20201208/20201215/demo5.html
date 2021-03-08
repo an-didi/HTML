@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css样式表的模块化</title>
+    <style>
+      /* 导入公共页眉 */
+      @import url(style/header.css);
+      /* 导入公共页脚 */
+      @import url(style/footer.css);
+      main {
+        min-height: 500px;
+        background-color: rgb(76, 177, 207);
+        text-align: center;
+      }
+      /* 对于一个网页来说，许多页面的页眉和页脚是相同的，可以考虑将他们的样式剥离出来，实现模块化编程 */
+    </style>
+  </head>
+  <body>
+    <header>页眉</header>
+    <main>主体</main>
+    <footer>页脚</footer>
+  </body>
+</html>

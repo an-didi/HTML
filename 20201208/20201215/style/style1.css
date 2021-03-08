@@ -1,0 +1,13 @@
+/* 导入公共页眉 */
+@import url(header.css);
+/* 导入公共页脚 */
+@import url(footer.css);
+main {
+  min-height: 500px;
+  background-color: rgb(76, 177, 207);
+  text-align: center;
+}
+
+/* css的模块化：
+1. 将公共样式部分进行分离，并创建一些独立的样式表来保存它
+2. 使用@import url()指令将这些独立的公共样式表引入到指定的css文档或标签中 */

@@ -1,0 +1,57 @@
+/*导航菜单*/
+.menu {
+  display: flex;
+  background-color: #333;
+}
+.menu li {
+  list-style: none;
+  padding: 0.5em 1em;
+}
+.menu li:last-of-type {
+  margin-left: auto;
+  margin-right: 2em;
+}
+.menu li a {
+  color: #eee;
+  font-size: 14px;
+  text-decoration: none;
+}
+.menu li:hover {
+  background-color: coral;
+}
+
+/* 屏幕宽度小于500px时只保留登录按钮 */
+@media screen and (max-width: 500px) {
+  .menu li:not(:last-of-type) {
+    display: none;
+  }
+}
+
+/* 图文列表 */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 10em);
+  gap: 1em;
+}
+
+.list li {
+  list-style: none;
+  border: 1px solid #ccc;
+  text-align: center;
+  height: 8em;
+  display: grid;
+}
+.list li:over {
+  box-shadow: 0 0 5px #aaa;
+  cursor: pointer;
+}
+
+.list img {
+  width: 100%;
+}
+
+.list a {
+  color: #666;
+  font-size: 12px;
+  text-decoration: none;
+}

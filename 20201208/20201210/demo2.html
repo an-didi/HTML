@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iframe写一个网站后台</title>
+    <link rel="stylesheet" href="style/iframe.css" />
+  </head>
+  <body>
+    <header>基于&lt;iframe&gt;和&lt;a&gt;标签模拟实现一个迷你后台</header>
+    <div class="aside">
+      <a href="https://www.bilibili.com/" target="content">哔哩哔哩</a>
+      <a href="https://map.baidu.com/" target="content">百度地图</a>
+      <a href="http://www.youdao.com/" target="content">有道词典</a>
+      <a href="https://weibo.com/" target="content">微博</a>
+      <a href="http://pic.netbian.com/" target="content">彼岸图网</a>
+    </div>
+    <div class="main">
+      <iframe srcdoc="请点击左侧按钮" name="content"></iframe>
+    </div>
+  </body>
+</html>

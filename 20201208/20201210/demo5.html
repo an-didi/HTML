@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>层叠与优先级</title>
+    <style>
+      /* css层叠样式表 */
+      /* 1、标签选择器 */
+      h1 {
+        color: green;
+      }
+      /* 2、属性选择器 */
+      /* "*"表示所有元素/属性 */
+
+      /* h1 [class="title"] {
+        color: rgb(82, 197, 197);
+      }
+      h1 [id="page-title"] {
+        color: red;
+      } */
+      /* id:浏览器并不会检查它的唯一性，由程序员自己控制 */
+      /* 3、类选择器 */
+      .title {
+        color: rgb(124, 124, 214);
+      }
+      /* 4、id选择器 */
+      #page-title:first-of-type {
+        color: rgb(118, 107, 209);
+      }
+      /* 选择器优先级：id > 类 > 标签 */
+      [name="h2"] {
+        color: rgb(194, 88, 167);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 id="page-title" class="title" name="h1">
+        这个用来测试css选择器的优先级 1
+      </h1>
+      <h2 id="page-title" class="title" name="h2">
+        这个用来测试css选择器的优先级 2
+      </h2>
+    </header>
+  </body>
+</html>

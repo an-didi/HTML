@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表单</title>
+    <link rel="stylesheet" href="style/form.css" />
+  </head>
+  <body>
+    <!-- 1：单行文本框 -->
+    <h3 class="title">用户注册</h3>
+    <form
+      action=""
+      method="POST"
+      class="register"
+      enctype="multipart/form-data"
+    >
+      <!-- action: 处理表单的程序 -->
+      <!-- method: 表单提交类型 -->
+      <!-- 默认为GET: 数据直接放在url地址中 -->
+      <!-- POST: 表单的数据在请求体中 -->
+      <label for="username">账号:</label>
+      <!-- type: 控件类型 -->
+      <!-- name: 数据的变量名 -->
+      <!-- value: 数据的内容 -->
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value=""
+        placeholder="username"
+        required
+      />
+      <!-- type="text"通用文本框 -->
+      <!-- type="email"邮箱型文本框 -->
+      <label for="email">邮箱:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value=""
+        placeholder="admin@email.com"
+        required
+      />
+      <!-- type="password"密码型文本框 -->
+      <label for="psd">密码:</label>
+      <input
+        type="password"
+        id="psd"
+        name="password"
+        value=""
+        placeholder="不少于6位"
+        required
+      />
+      <!-- 2. 单选按钮与复选框 -->
+      <!-- 单选框 -->
+      <!-- 将单选框的默认选定值的id给标题的label的for属性 -->
+      <label for="secret">性别:</label>
+      <div>
+        <!-- 一组单选按钮必须共用同一个名称name属性值，否则无法实现值的唯一性 -->
+        <input type="radio" name="gender" value="male" id="male" /><label
+          for="male"
+          >男</label
+        >
+        <input type="radio" name="gender" value="female" id="female" /><label
+          for="female"
+          >女</label
+        >
+        <input
+          type="radio"
+          name="gender"
+          value="secret"
+          id="secret"
+          checked
+        /><label for="secret">秘密</label>
+      </div>
+
+      <!-- 复选框 -->
+      <!-- 复选框的name属性值应该写成数组的格式名称（name="name[]"），这样才能确保服务器接收到一组值 -->
+      <label for="#">兴趣:</label>
+      <div>
+        <!-- 修改默认项用checked属性 -->
+        <input type="checkbox" name="hobby[]" value="game" id="game" /><label
+          for="game"
+          >游戏</label
+        >
+        <input
+          type="checkbox"
+          name="hobby[]"
+          value="program"
+          id="program"
+        /><label for="program">编程</label>
+        <input type="checkbox" name="hobby[]" value="music" id="music" /><label
+          for="music"
+          >音乐</label
+        >
+        <input
+          type="checkbox"
+          name="hobby[]"
+          value="exercise"
+          id="eercise"
+        /><label for="exercise">运动</label>
+      </div>
+
+      <!-- 3. 下拉列表/下拉框 -->
+
+      <label for="edu">学历:</label>
+      <select name="edu" id="edu">
+        <!-- 修改默认项用selected属性 -->
+        <option value="1">初中</option>
+        <option value="2">高中</option>
+        <option value="3">本科</option>
+        <option value="4">研究生</option>
+        <!-- label属性的优先级大与option内部的文本 -->
+        <option value="5" label="老司机">自学成才</option>
+      </select>
+
+      <!-- 4. 文件域与隐藏域 -->
+      <!-- 上传文件注意两点：
+      1、请求类型必须是：POST
+      2、编码类型必须去掉默认编码形式，将表单数据编码设置为 -->
+
+      <label for="user-pic">头像:</label>
+      <!-- 隐藏域，在前端看不到，他的值供后端处理时用 -->
+      <input type="hidden" name="MAX_FILE_SIZE" value="80000" />
+      <input type="file" name="user_pic" id="user-pic" />
+      <div class="user-pic" style="grid-column: span 2"></div>
+
+      <label for="user-resume">简历:</label>
+      <!-- 隐藏域，在前端看不到，他的值供后端处理时用 -->
+      <input type="hidden" name="MAX_FILE_SIZE" value="80000" />
+      <input type="file" name="user_resume" id="user-resume" />
+      <div class="user-resume" style="grid-column: span 2"></div>
+
+      <!-- 5.文本域（多行文本框） -->
+
+      <label for="comment">备注:</label>
+      <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+
+      <!-- 提交按钮 -->
+      <button>提交</button>
+    </form>
+  </body>
+</html>
+<script src="style/js.js"></script>

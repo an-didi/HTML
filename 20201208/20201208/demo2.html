@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>链接与锚点</title>
+  </head>
+  <body style="display: grid">
+    <!-- 链接标签  a标签是互联网的灵魂实现了全球资源的共享 -->
+    <!-- _blank:在新窗口打开。
+    _self:在当前页面打开。
+    _parent:在父窗口打开。
+    _top:在当前窗体打开链接，并替换当前的整个窗体。 -->
+    <a href="https://www.php.cn/" target="_self">php中文网</a>
+    <a href="https://www.php.cn/" target="_blank">php中文网</a>
+    <!-- iframe标签，嵌入画中画页面 -->
+    <a href="https://www.baidu.com/" target="baidu">小度</a>
+    <iframe
+      srcdoc="<em>点击上面的“小度”</em>"
+      name="baidu"
+      frameborder="0"
+      width="400"
+      height="400"
+    ></iframe>
+    <!-- 使用锚点实现当前页面任意位置跳转 -->
+    <a href="#footer">跳转到底部</a>
+    <!-- 创建锚点 -->
+    <!-- div：通用的容器标签，内部可以放任何类型元素 -->
+    <!-- http://127.0.0.1:5500/demo2.html#footer -->
+    <!-- 锚点实现单页面路由 -->
+    <div id="footer" style="margin-top: 1000px">这是底部</div>
+    <a href="#">回到顶部</a>
+  </body>
+</html>

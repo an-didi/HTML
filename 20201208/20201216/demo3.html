@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选择器的优先级提权方式</title>
+    <style>
+      /* 1.声明顺序对优先级的影响(在后面有一个相同的声明，根据源码的顺序，后面有效) */
+      /* p {
+        color: skyblue;
+      }
+      p {
+        color: violet;
+      } */
+      /* 2. 选择器类型对优先级的影响  */
+      /* .p {
+        color: skyblue;
+      }
+      p {
+        color: violet;
+      } */
+      /* 实际工作中，应该用一系列的选择器组合灵活的设置优先级 */
+
+      /* ----------------------------------------- */
+
+      /* [1,0,0] */
+      #p {
+        color: pink;
+      }
+      /* [0,2,0] */
+      .p.pp {
+        color: brown;
+      }
+      /* [0,1,3] */
+      html body p.p {
+        color: lightcoral;
+      }
+      /* [0,1,2] */
+      body p.p {
+        color: orange;
+      }
+      /* [0,1,1] */
+      p .p {
+        color: lightskyblue;
+      }
+      /* [0,1,0] */
+      .p {
+        color: green;
+      }
+      /* [0,0,3] */
+      /* 也可以用:root表示html，不过:root是一个伪类，这样的操作会使权重直接进位。 */
+      html body p {
+        color: red;
+      }
+      /* [0,0,2] */
+      body p {
+        color: skyblue;
+      }
+      /* [0,0,1] */
+      p {
+        color: violet;
+      }
+      /* 规则设置：[0, 0, 0] ==> [id, calss, tag] */
+      /* 同级权重可以相加，但是永远不能进位，也就是说无限个tag相加也不能往class进一位 */
+      /* 表示示例：
+      p[0,0,1]
+      body p[0, 0, 2]
+      所以body p 的权重比p的权重高 */
+      /* 提权的应用场景：在不修改原始的样式表的情况下，可以用自己的样式去更新以前的样式表 */
+    </style>
+  </head>
+  <body>
+    <p class="p pp" id="p">测试小段落</p>
+  </body>
+</html>

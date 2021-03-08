@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选择器的优先级：权重比较</title>
+    <style>
+      /* 1.当选择器相同时，与书写顺序有关，后面样式覆盖前面样式 */
+      h1 {
+        color: lightblue;
+      }
+
+      /* -------------------------- */
+      /* 2.当选择器类型不同时，与优先级相关，级别高的覆盖级别低的 */
+      .h1 {
+        color: lightgreen;
+      }
+      h1 {
+        color: red;
+      }
+      /* h1无效果，说明class比tag的优先级高 */
+      /* 如果仍想要提高优先级，此时我们应该用id */
+      #id {
+        color: violet;
+      }
+      /* 结论：优先级为：id > calss > tag  */
+    </style>
+  </head>
+  <body>
+    <h1 class="h1" id="id">这是一个测试标题</h1>
+  </body>
+</html>

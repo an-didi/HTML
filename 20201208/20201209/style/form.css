@@ -1,0 +1,37 @@
+/* 表单标题 */
+.title {
+  text-align: center;
+}
+.register {
+  width: 20em;
+  margin: auto;
+  padding: 1em;
+  border: 1px solid;
+  display: grid;
+  grid-template-columns: 3em 1fr;
+  gap: 1em;
+}
+
+/* 按钮 */
+.register > button {
+  grid-column: span 2;
+  height: 2em;
+}
+.register ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+.register textarea {
+  /* 禁止缩放本域 */
+  resize: none;
+  position: relative;
+}
+
+.register .tips {
+  position: absolute;
+  top: 220;
+  right: 150px;
+  font-size: 0.8rem;
+  color: #aaa;
+}

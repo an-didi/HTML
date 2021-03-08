@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>伪类选择器：状态匹配</title>
+    <style>
+      /* 链接有四种状态：顺序是固定的 */
+      /* 1. 默认状态：link */
+      a:link {
+        color: violet;
+        text-decoration: none;
+      }
+      /* 2. 已经访问过状态:visited */
+      a:visited {
+        color: lightblue;
+      }
+      /* 3. 悬停状态：hover */
+      a:hover {
+        color: orange;
+        /* 添加下划线 */
+        text-decoration: underline;
+      }
+      /* 4. 点击(激活)状态：active */
+      a:active {
+        color: red;
+      }
+      /* ----------------------------------------- */
+      /* form p:first-of-type input {
+        background-color: lightblue;
+      } */
+      input:read-only {
+        background-color: orange;
+      }
+      input:required {
+        background-color: lightblue;
+      }
+      input:disabled {
+        background-color: lightgreen;
+      }
+      input:focus {
+        background-color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1.链接 -->
+    <a href="https://www.php.cn/index.php">php中文网</a>
+
+    <!-- 2. 表单 -->
+    <form action="" method="">
+      <p>
+        <!-- readonly只读属性 -->
+        <label for="username">用户名:</label
+        ><input
+          type="text"
+          name="username"
+          id="username"
+          value="admin"
+          placeholder="username"
+          readonly
+        />
+      </p>
+      <p>
+        <!-- required不能为空 -->
+        <label for="email">邮箱:</label
+        ><input
+          type="email"
+          name="email"
+          id="email"
+          value=""
+          placeholder="admin@email.com"
+          required
+        />
+      </p>
+      <p>
+        <!-- disabled禁用此选项 -->
+        <label for="psd">密码:</label
+        ><input
+          type="password"
+          name="password"
+          id="psd"
+          value="123456"
+          placeholder="不少于6位"
+          disabled
+        />
+      </p>
+      <p><button>提交</button></p>
+    </form>
+  </body>
+</html>

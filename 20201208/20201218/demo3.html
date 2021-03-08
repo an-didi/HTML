@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-N">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>margin对盒子位置的影响</title>
+    <style>
+      :root {
+        font-size: 10px;
+      }
+      .box {
+        width: 20em;
+        height: 15em;
+        background-color: skyblue;
+        border: 1px solid;
+        padding: 1em;
+        box-sizing: border-box;
+      }
+      /* margin对水平排列的元素位置的影响 */
+      /* 水平方向margin是累加的，垂直方向margin是折叠的，取较大一方的值 */
+      /* 浮动 */
+      /* .box {
+        float: left;
+      } */
+      .box:first-of-type {
+        margin: 2em;
+      }
+      /* margin只会对页面的元素位置或多个元素的排列产生影响，对盒子大小没有影响 */
+
+      .box:first-of-type + * {
+        margin: 3em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box"></div>
+  </body>
+</html>

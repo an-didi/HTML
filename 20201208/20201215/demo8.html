@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选择器：2. 上下文选择器</title>
+    <style>
+      /* html是一个结构化的文档，每一个元素在文档中都有确切的位置 */
+      /* 所以根据元素的上下文环境是完全可以做到的 */
+      /* 1. 后代选择器：所有层级 */
+      /* ul li {
+        background-color: lightgoldenrodyellow;
+      } */
+      /* 2. 子元素选择器：仅父子层级 */
+      /* body > ul > li > ul > li {
+        background-color: teal;
+      } */
+      /* 3.同级相邻选择器：仅选中与之相邻的第一个兄弟元素 */
+      /* .a + li {
+        background-color: lightgreen;
+      } */
+      /* 4. 同级之后的所有选择器：选中与之相邻的后面的所有选择器 */
+      .a ~ li {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li class="a">itme1</li>
+      <li>itme2</li>
+      <li>itme3</li>
+      <li>itme4</li>
+      <li>
+        itme5
+        <ul>
+          <li>item1</li>
+          <li>itme2</li>
+        </ul>
+      </li>
+      <li>itme6</li>
+      <li>itme7</li>
+      <li>itme8</li>
+    </ul>
+    <ul>
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+      <li>item5</li>
+      <li>item6</li>
+    </ul>
+  </body>
+</html>
+<!-- 上下文选择器：
+1. 空格： 所有层级；
+2. >： 父子级；
+3. +： 相邻的一个兄弟；
+4. ~： 相邻的所有兄弟。 -->

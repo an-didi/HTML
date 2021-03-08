@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>属性简写</title>
+    <style>
+      /* 字体属性 */
+      h1.title {
+        /* 字体名称 */
+        font-family: sans-serif;
+        /* 字体大小 */
+        font-size: 24px;
+        /* 字体样式 */
+        /* italic斜体 */
+        font-style: italic;
+        /* 字体粗细 */
+        font-weight: border;
+        /* 属性简写 */
+        /* font: sans-serif italic 24px border; */
+      }
+      h1 {
+        /* 属性简写：先是字体样式，再是字体粗细，接下来是字体大小，最后是字体名称 */
+        font: italic border 24px sans-serif;
+      }
+      /* -------------------------------------------------------- */
+      /* 设置背景图片 */
+      body {
+        background-image: url(img/1.jpg);
+        /* 显示图片不重复 */
+        background-repeat: no-repeat;
+        /* 背景图片大小 */
+        background-size: cover;
+        /* 背景图片位置 */
+        /* background-position: 0 0;等同于下边的top和left设置 */
+        top: 0ch;
+        left: 0ch;
+        /* -moz-background-size: 100% 100%; */
+        width: 100vmin;
+        /* height: 100vmin; */
+        /* 属性缩写 */
+        /* background: url(img/1.jpg) no-repeat cover; */
+      }
+      body {
+        /* 属性缩写 */
+        background: url(img/1.jpg) no-repeat auto;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      /* body {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        min-width: 1000px;
+        z-index: -10;
+        zoom: 1;
+        background-color: #fff;
+        background-size: cover;
+        -webkit-background-background-size: cover;
+        -o-background-size: cover;
+        background-position: center 0;
+      } */
+      /* -------------------------------------- */
+      /* 字体图标引用 */
+      /* .iconfont.icon-weibiaoti-4 {
+        color: skyblue;
+        font-size: 3em;
+        box-shadow: 5px 5px 5px #555;
+      } */
+    </style>
+    <link rel="stylesheet" href="iconfont/iconfont.css" />
+  </head>
+  <body>
+    <!-- <h1 class="title">这是一个大标题</h1> -->
+    <span class="iconfont icon-weibiaoti-4"></span>
+  </body>
+</html>

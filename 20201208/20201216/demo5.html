@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>盒模型的缩写</title>
+    <style>
+      /* 先定义一个盒子的样式 */
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: lightblue;
+        box-sizing: border-box;
+      }
+      .box {
+        /* 边框 */
+        /* 每个边框可以设置三个属性：宽度、颜色、样式 */
+        /* 宽度 */
+        border-top-width: 3px;
+        /* 颜色 */
+        border-top-color: red;
+        /* 样式(solid 实线； dashed 虚线) */
+        border-top-style: solid;
+        /* 简写 */
+        border-top: 3px red solid;
+
+        /* border-top上边框；border-right右边框；border-bottom下边框；border-left左边框 */
+      }
+      .box {
+        /* 简写 */
+        /* border-top: 3px red solid; */
+        border: 3px #111 solid;
+      }
+      .box {
+        /* 内边距 */
+        /* padding：顺时针方向，上右下左 */
+        padding: 5px 10px 15px 20px;
+        /* 页面中看不到是因为padding是透明的，且背景色会自动延伸扩展到padding，
+          将背景色裁切到内容区就可以看到padding */
+        /* 背景色裁切 */
+        background-clip: content-box;
+        /* 三值语法：上下不相等，左右相等(排在第二个的是左右) */
+        padding: 10px 15px 20px;
+        /* 二值语法：上下相等，左右相等 */
+        padding: 10px 20px;
+        /* 单值语法：四个方向都相等 */
+        padding: 10px;
+      }
+      .box {
+        /* 外边距 */
+        /* 和padding的值语法一样样的 */
+        margin: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>

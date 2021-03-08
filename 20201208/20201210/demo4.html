@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css语法和基本术语</title>
+    <!-- 如果你的css样式仅用来控制当前页面元素，就用style标签写到当前页面中 -->
+    <style>
+      /* css术语：规则、选择器、声明块、属性和值 */
+      /* 选择器：h1  */
+      /* 声明块：由一对“{...}”包住的内容、 */
+      /* 规则：选择器+声明块 */
+      /* 属性和值：写在声明块中的名值队对 */
+      header h1 {
+        /* 声明块中的每一个名值对，叫一个样式声明 */
+        /* 字体的前景色 */
+        color: green;
+        /* 字体的粗细 */
+        /* font-weight: normal; */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 id="page-title" class="title">这个用来测试css选择器的优先级 1</h1>
+    </header>
+    <h1 id="page" class="page" style="color: red">
+      这个用来测试css选择器的优先级 2
+    </h1>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>影响盒子大小的因素</title>
+    <style>
+      :root {
+        font-size: 10px;
+      }
+      .box {
+        background-color: skyblue;
+        border: 1px solid #333;
+        /* 宽 */
+        width: 20em;
+        /* 高 */
+        height: 15em;
+        /* 给盒子添加padding和border */
+        padding: 1em;
+        /* 将背景色限制到内容区，让padding显现出来 */
+        background-clip: content-box;
+      }
+      /* 盒子尺寸的计算方式：width/height + padding*2 + border*2 */
+      /* 宽度width:200 + 10*2 + 1*2 = 222px */
+      /* 高度height: 150 + 10*2 + 1*2 = 172px */
+      /* 使盒子的大小不受width/height之外的属性影响（padding和border）的方法
+      1. 减去后来加上去的padding和border的值：width:calc(20em-22px);height:calc(15em-22px); */
+      .box {
+        /* width: calc(20em - 22px);
+        height: calc(15em - 22px); */
+        /* content-box：w3c标准盒子，宽和高不含padding和border
+        border-box：ie盒子，宽和高包含padding和border */
+        box-sizing: border-box;
+      }
+      /* 2. 使用box-sizing属性控制盒子大小 */
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>

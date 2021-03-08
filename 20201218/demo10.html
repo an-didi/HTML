@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水平且垂直的解决方案</title>
+    <style>
+      .box {
+        border: 1px solid #111;
+        width: 15em;
+        height: 15em;
+        box-sizing: border-box;
+      }
+      /* 1.行内元素的水平且垂直 */
+      /* 通过设置text-align和line-height属性实现 */
+      /* .box {
+        text-align: center;
+        line-height: 15em;
+      } */
+      /* ------------------------------ */
+      /* 2.padding实现水平和垂直居中 */
+      /* 用padding撑开实现水平和垂直居中时,不能设置盒子的宽和高,
+         可以设置成自适应auto */
+      /* .box {
+        width: auto;
+        height: auto;
+        padding: 5em;
+      } */
+      /* .box {
+        padding: 5em;
+      } */
+      .box > div {
+        background-color: skyblue;
+        width: 5em;
+        height: 5em;
+      }
+      /* ---------------------------------------- */
+      /* 3.margin实现绝对定位,实现居中 */
+      .box {
+        /* 容器定位,转为定位元素 */
+        position: relative;
+      }
+      .box div {
+        /* 进行绝对定位(对块元素定位) */
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <!-- <a href="">链接</a> -->
+      <div></div>
+    </div>
+  </body>
+</html>

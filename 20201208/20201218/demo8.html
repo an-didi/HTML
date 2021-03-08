@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>垂直居中问题:行内元素</title>
+    <style>
+      .box {
+        width: 15em;
+        height: 15em;
+        border: 1px solid #111;
+      }
+      /* 行内元素不能设置自己的宽高,只能设置容器的宽高 */
+      .box {
+        /* 设置盒子的line-height属性和盒子的高度一样,就可以实现居中 */
+        /* line-height属性的值必须和height的值一样 */
+        line-height: 15em;
+      }
+      /* 行内块元素属于块元素范畴,line-height属性不起作用 */
+      .box img {
+        line-height: 15em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <a href="">链接</a>
+      <!-- <img src="img/1.png" width="150px" alt="" /> -->
+      <!-- <div></div> -->
+    </div>
+  </body>
+</html>

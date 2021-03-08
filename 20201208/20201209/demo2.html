@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表格</title>
+    <link rel="stylesheet" href="style/table.css" />
+  </head>
+  <body>
+    <!-- 表格也是用一组标签描述的：table，thead，tbody，tr，td/th -->
+    <table class="product">
+      <!-- 表格标题 -->
+      <caption>
+        商品信息表
+      </caption>
+      <!-- 表头 -->
+      <thead>
+        <!-- 每添加一组表格数据，必须先添加一行 -->
+        <tr>
+          <th>ID</th>
+          <th>品名</th>
+          <th>单价</th>
+          <th>单位</th>
+          <th>数量</th>
+          <th>金额</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>a1</td>
+          <td>手机</td>
+          <td>250</td>
+          <td>部</td>
+          <td>1</td>
+          <td>250</td>
+        </tr>
+        <tr>
+          <td>a2</td>
+          <td>手表</td>
+          <td>100</td>
+          <td>部</td>
+          <td>2</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td>a3</td>
+          <td>房子</td>
+          <td>55222222</td>
+          <td>套</td>
+          <td>1</td>
+          <td>55222222</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="page">
+      <a href="">首页</a>
+      <a href="">...</a>
+      <a href="">5</a>
+      <a href="">6</a>
+      <a href="">7</a>
+      <a href="">8</a>
+      <a href="">...</a>
+      <a href="">尾页</a>
+    </p>
+    <hr />
+    <table class="life">
+      <caption>
+        某人的生活作息表
+      </caption>
+      <thead>
+        <tr>
+          <th colspan="2"></th>
+          <!-- <th></th> -->
+          <th>星期一</th>
+          <th>星期二</th>
+          <th>星期三</th>
+          <th>星期四</th>
+          <th>星期五</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4">上午</td>
+          <td>6:30</td>
+          <td>起床洗漱</td>
+          <td>起床洗漱</td>
+          <td>起床洗漱</td>
+          <td>起床洗漱</td>
+          <td>起床洗漱</td>
+        </tr>
+        <tr>
+          <!-- <td>上午</td> -->
+          <td>7:30</td>
+          <td>学习</td>
+          <td>学习</td>
+          <td>学习</td>
+          <td>学习</td>
+          <td>学习</td>
+        </tr>
+        <tr>
+          <!-- <td>上午</td> -->
+          <td>9:30</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+        </tr>
+        <tr>
+          <!-- <td>上午</td> -->
+          <td>12:30</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+        </tr>
+        <tr>
+          <td class="rest" colspan="7">中午休息</td>
+        </tr>
+        <tr>
+          <td rowspan="3">下午</td>
+          <td>14:30</td>
+          <td>练习</td>
+          <td>练习</td>
+          <td>练习</td>
+          <td>练习</td>
+          <td>练习</td>
+        </tr>
+        <tr>
+          <!-- <td>下午</td> -->
+          <td>16:30</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+          <td>休息30分钟</td>
+        </tr>
+        <tr>
+          <!-- <td>下午</td> -->
+          <td>18:30</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+          <td>吃饭</td>
+        </tr>
+        <tr>
+          <td colspan="2">晚上19:30</td>
+          <td colspan="5">上课</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

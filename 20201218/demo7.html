@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水平居中问题</title>
+    <style>
+      /* 1.行内元素或行内块元素水平居中 */
+      .box {
+        width: 15em;
+        height: 15em;
+        border: 1px solid #111;
+      }
+      /* 行内元素和行内块元素水平居中,设置盒子的text-align属性 */
+      .box {
+        text-align: center;
+      }
+
+      /* 2.块元素的水平居中 */
+      .box > div {
+        width: 5em;
+        height: 5em;
+        background-color: skyblue;
+      }
+      /* 使用margin实现块元素的水平居中,挤压式居中 */
+      .box > div {
+        /* margin-right: auto;
+        margin-left: auto; */
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <!-- <a href="">链接</a> -->
+      <!-- <img src="img/1.png" width="150px" alt="" /> -->
+      <div></div>
+    </div>
+  </body>
+</html>
