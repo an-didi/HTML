@@ -1,0 +1,56 @@
+/* 定位属性：position */
+/* 定位类型：静态定位static；相对定位：relative；绝对定位：absolute；固定定位：fixed */
+/* 1. 静态定位：文档流定位；默认定位，元素的显示位置与它源码的位置一致 */
+/* 2. 相对定位：相对于该元素在文档流中的原始位置进行定位（偏移） */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.box {
+  width: 20em;
+  height: 15em;
+  border: 1px solid #000;
+  margin: 1em auto;
+}
+.box h2 {
+  background-color: lightcyan;
+  text-align: center;
+  border: 1px solid;
+  /* 透明度 */
+  /* opacity: 0.8; */
+
+  /* 相对定位 */
+  /* position: relative; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 如果被定位的元素紧贴父级的四个边沿，则会充满整个 “定位空间” */
+  width: 10em;
+  height: 2em;
+  margin: auto;
+}
+
+/* 3.绝对定位相对于它的祖先中离它最近的 “定位元素” 的位置发生偏移 */
+/* 如果祖先元素中不存在定位元素，那它就参考根元素（html）进行定位 */
+/* 定位元素：只要这个元素中有position: relative;或者position:absolute;就称为定位元素 */
+/* 而且只有定位元素才有资格充当绝对定位元素的定位祖先元素（定位参考元素） */
+
+/* 将h2改为绝对定位 */
+
+.box h2 {
+  /* 绝对定位元素会脱离文档流 */
+  position: absolute;
+}
+.box {
+  /* 将box转为定位元素，它内部的元素相对于它进行绝对定位 */
+  position: relative;
+}
+/* 4. 固定定位：它是绝对定位的一个特例，它始终相对于html定位 */
+/* 使用固定定位使h2不动 */
+.box h2 {
+  position: fixed;
+}
+
+/* 固定定位应用场景：在线客服，广告位 */

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>固定定位实现模态框</title>
+    <link rel="stylesheet" href="style/demo6.css" />
+  </head>
+  <body>
+    <!-- 页眉 -->
+    <header>
+      <h2>我的博客</h2>
+      <button>登录</button>
+    </header>
+    <!-- 模态框 -->
+    <div class="modal">
+      <!-- 蒙板：用来盖住后面的内容，使它半透明 -->
+      <div class="modal-coverback"></div>
+      <!-- 主体 -->
+      <div class="modal-body">
+        <button class="close">关闭</button>
+        <form action="" method="POST">
+          <table>
+            <caption>
+              用户登录
+            </caption>
+            <tr>
+              <td><label for="username">用户名:</label></td>
+              <td>
+                <input type="text" name="username" id="username" required />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="psd">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label></td>
+              <td><input type="password" name="psd" id="psd" required /></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td><button>登录</button></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="js/demo6.js"></script>
+</html>

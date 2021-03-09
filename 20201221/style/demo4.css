@@ -1,0 +1,70 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  padding: 1em;
+  border: 1px solid #000;
+  background-color: lightcyan;
+}
+/* 浮动的初心是为了解决图片与文本并排显示的问题 */
+.box img {
+  width: 15em;
+  border-radius: 0.5em;
+  /* 图片向左浮动,后面的文本围绕着它水平排列*/
+  float: left;
+  margin-right: 1em;
+}
+.box .desc a {
+  width: 10em;
+  height: 2em;
+  text-decoration: none;
+  background-color: lightsalmon;
+  color: #fff;
+  float: left;
+}
+/* 1. 添加附加元素，通过添加附加元素来消除浮动元素（不建议使用） */
+/* 附加元素 */
+.clear {
+  clear: both;
+}
+
+/* 2. 通过添加伪元素来消除浮动元素使用“:after” */
+/* 伪元素 */
+/* 使这个区域变成以一个块级元素 */
+/* .box:after {
+  content: "";
+
+  display: block;
+  clear: both;
+} */
+
+/* 我们希望左右两边是完全独立的元素，右边的元素不受左边浮动元素的影响 */
+
+/* 使用overflow:hidden;来解决这个问题 */
+.box .desc {
+  overflow: hidden;
+}
+
+/* 使用overflow:hidden;将父元素转为BFC容器，使它的布局不受到内部浮动元素的影响 */
+
+.box {
+  overflow: hidden;
+}
+
+/* 能不能使用overflow:hidden;解决父元素的高度塌陷问题 */
+
+/* 总结：
+  1. 浮动只限于水平方向
+  2. 浮动元素脱离了文档流，后面的元素会上移填充它原来的空间
+  3. 浮动不会影响它前边的元素，只会影响它后边的元素的排列
+  4. 任何元素（包括行内元素）浮动后，都具备了块级元素的特征 */
+
+/* 父级元素计算高度的时候，它会忽略内部的浮动元素（浮动元素的父级高度塌陷） */
+
+/* 浮动的本质是为了解决图文并排显示的问题
+浮动要解决的两个问题：
+1. 浮动元素的高度对于它的包含块不可见
+2. 浮动元素可以使用BFC容器使它不影响到后边元素的布局 */

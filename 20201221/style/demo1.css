@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  /* padding: 1em; */
+  border: 1px solid #000;
+  background-color: lightcyan;
+}
+/* 浮动的初心是为了解决图片与文本并排显示的问题 */
+.box img {
+  width: 15em;
+  border-radius: 0.5em;
+  /* 图片向左浮动,后面的文本围绕着它水平排列*/
+  float: left;
+  margin-right: 1em;
+}
+.box .desc a {
+  width: 10em;
+  height: 2em;
+  text-decoration: none;
+  background-color: lightsalmon;
+  color: #fff;
+  float: left;
+}
+.child {
+  width: 5em;
+  height: 5em;
+  background-color: lightgreen;
+  float: left;
+}
+/* 总结：
+1. 浮动只限于水平方向
+2. 浮动元素脱离了文档流，后面的元素会上移填充它原来的空间
+3. 浮动不会影响它前边的元素，只会影响它后边的元素的排列
+4. 任何元素（包括行内元素）浮动后，都具备了块级元素的特征 */
+
+/* 父级元素计算高度的时候，它会忽略内部的浮动元素（浮动元素的父级高度塌陷） */
