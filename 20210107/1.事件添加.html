@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件添加</title>
+  </head>
+  <body>
+    <!-- 1. 添加到元素的事件属性上去 -->
+    <button onclick="console.log(this.innerHTML)">button1</button>
+    <!-- 2. 通过js脚本添加到事件属性上 -->
+    <button>button2</button>
+    <button>button3</button>
+    <button>点击</button>
+    <script>
+      const btn2 = document.querySelector("body button:nth-of-type(2)");
+      // 添加事件
+      btn2.onclick = function () {
+        console.log(this.innerHTML);
+        // this.style.color = "red";
+      };
+      // 通过onclick不能重复定义同一个事件，后边的事件会将前边的时间覆盖掉
+      //   btn2.onclick = function () {
+      //     this.style.color = "skyblue";
+      //   };
+      // 移除事件
+      //   btn2.onclick = null;
+
+      // 3. 通过事件监听器来添加事件
+      //   addEventListener(事件类型，事件回调方法，触发阶段（1.捕获，2.冒泡）)
+      const btn3 = document.querySelector("body button:nth-of-type(3)");
+      btn3.addEventListener("click", function () {
+        console.log(this.innerHTML, "第一次");
+        this.style.color = "red";
+      });
+      // 通过事件监听器可以重复的去定义同一个事件，但是，相同的属性会被最近一次的覆盖掉
+      btn3.addEventListener("click", function () {
+        console.log(this.innerHTML, "第二次");
+        this.style.color = "blue";
+      });
+      // 3.1 移除事件，通过回调添加的事件是无法移除的
+      // 独立的事件方法函数
+      const handle = () => console.log(btn3.innerHTML, "第三次");
+      btn3.addEventListener("click", handle);
+      // 进行移除事件操作
+      btn3.removeEventListener("click", handle);
+      // 可以看到的是，并没有将第二次的移除掉
+      //   btn3.removeEventListener("click", function () {
+      //     console.log(this.innerHTML, "第二次");
+      //     this.style.color = "blue";
+      //   });
+
+      // 3.2 事件派发
+      const btn4 = document.querySelector("body button:nth-of-type(4)");
+      // 创建一个自定义事件
+      const ev = new Event("click");
+      let i = 1;
+      btn4.addEventListener("click", function () {
+        console.log(`点击了${i}次`);
+        i++;
+      });
+      // 进行事件派发，让它自动执行
+      //   btn4.dispatchEvent(ev);
+      // 使用间歇式定时器来自动执行
+      // 每隔一秒执行一次
+      //   setInterval("btn4.dispatchEvent(ev)", 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>构造函数和原型</title>
+  </head>
+  <body>
+    <script>
+      // 任何一个函数都有一个原型属性：prototype
+      // prototype属性对于普通函数没用，主要是构造函数有意义
+
+      // 构造函数是对象工厂，是用来创建对象的
+      // 对象也叫“实例”，实例：实际案例
+      // js中没有类的概念，它是基于原型的，所以简单的将构造函数当成“类”
+      // 构造函数必须使用关键字 “new” 来调用，普通函数不用
+      // new 的过程就是类的实例化过程，就是创建一个对象的过程
+      // 创建对象的过程，就叫做“类的实例化”
+
+      function User(name, age) {
+        // 1. 创建一个新对象，用this来表示(伪代码，系统自动执行)
+        // const this = new User;
+        // 2.初始化对象，给对象添加一些自定义属性，用来和其他实例进行区分
+        this.name = name;
+        this.age = age;
+        // 3. 返回这个对象
+        // return this;
+        this.look = function () {
+          return "这是" + this.name;
+        };
+      }
+      const user = new User("小花", 18);
+      console.log(user.look());
+      console.log(user);
+      console.dir(User);
+      // 直接添加到函数原型中，以后其他进行new操作的函数也能访问到
+      user.__proto__.gender = "女";
+      console.log(user);
+      console.log("-----------------------");
+      const famale = new User("小红", 12);
+      console.log(famale);
+      console.log(famale.gender);
+      // 这个相当于写进python类中的__init__初始化方法一样
+      console.dir(User);
+      // 对象中的原型属性__proto__ === prototype(构造函数中的原型)
+      // 实例的原型永远指向它的构造函数的原型，实例的原型从构造函数的原型中继承成员（属性/方法）
+      console.log(user.__proto__ === User.prototype);
+
+      // 需要被所以实例共享的成员，应该被写到构造函数的原型上
+
+      User.prototype.find = "people";
+      console.log(user.find);
+      // 实例或者构造函数中直接有的属性，会直接覆盖掉原型中的属性
+      famale.gender = "男";
+      console.log(famale.gender, user.gender, User.prototype.gender);
+      // 当前实例上的同名属性在原型链上更加靠近用户，会把共享的成员覆盖掉，构造函数中的也不例外
+
+      // 属性通常是不应该共享的，它是区分不同对象实例的标志，共享的应该是方法
+      User.prototype.show = function () {
+        return { name: this.name, age: this.age, gender: this.gender };
+      };
+      console.log(User.prototype.show());
+      console.log(user.show());
+    </script>
+  </body>
+</html>

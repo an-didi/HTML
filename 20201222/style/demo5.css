@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* 转换为flex弹性布局元素 */
+  display: flex;
+  padding: 1em;
+  height: 15em;
+  border: 1px solid #000;
+  margin: 1em;
+}
+
+.container > .item {
+  /* height: 2em; */
+  width: 5em;
+  background-color: lightcyan;
+  border: 1px solid #000;
+}
+
+/* 设置项目在单行容器上的对齐前提：主轴上存在剩余空间 */
+
+/* 空间分配的两种方案
+1. 将所有的项目视为一个整体，在项目组的两边进行分配 */
+.container {
+  flex-flow: row nowrap;
+  /* 左对齐 */
+  justify-content: flex-start;
+  /* 右对齐 */
+  justify-content: flex-end;
+  /* 居中对齐 */
+  justify-content: center;
+}
+
+/* 2. 将项目视为一个个独立的个体，在项目之间进行分配 */
+
+/* .container { */
+/* 两端对齐,剩余空间在除了起始项目和终结项目的其他项目两端平均分布 */
+/* justify-content: space-between; */
+/* 分散对齐，剩余空间在每个项目的左右两端平均分布 */
+/* justify-content: space-around; */
+/* 平均对齐，剩余空间在每个项目之间平均分布 */
+/* justify-content: space-evenly; */
+/* } */
+
+/* ----------------------------------------------- */
+/* 交叉轴上的对齐方案 */
+.container {
+  flex-flow: row wrap;
+  /* 默认是拉伸的 */
+  align-items: stretch;
+  /* 顶对齐 */
+  align-items: flex-start;
+  /* 底对齐 */
+  align-items: flex-end;
+  /* 居中对齐 */
+  align-items: center;
+}

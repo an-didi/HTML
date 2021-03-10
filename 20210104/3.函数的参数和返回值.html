@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数的参数和返回值</title>
+  </head>
+  <body>
+    <script>
+      // 必选参数
+      let sum = function (a, b) {
+        return a + b;
+      };
+      console.log(sum(1, 2));
+      console.log("--------------------------");
+      //   默认参数设置
+      sum = function (a, b = 2) {
+        return a + b;
+      };
+      console.log(sum(1));
+      console.log("---------------------");
+      //   当参数变得很多的时候
+      sum = function (a, b, c, d) {
+        return a + b + c + d;
+      };
+      console.log(sum(1, 2, 3, 4));
+      //   当函数的参数变得多的时候，我们通过...归并参数，来简化函数的参数声明
+      sum = function (...arr) {
+        // return a + b + c + d;
+        // arr是一个数组类型的数据
+        console.log(arr);
+        // 参数求和
+        return arr.reduce(function (p, c) {
+          return p + c;
+        });
+      };
+      console.log(sum(1, 2, 3, 4));
+      console.log("---------------------------");
+      //   通过...扩展参数,简化函数的调用参数
+      let arr = [1, 2, 3, 4];
+      console.log(sum(...arr));
+      //   可以看到的是,数组直接被转换成了单个元素传参
+
+      //   函数中的自定义属性arguments,它是将函数传递的参数变成了一个对象进行处理
+      sum = function (...arr) {
+        // 带有迭代器的类数组
+        // 类数组:类似数组其实是对象
+        // 属性为从零递增的正整数,且有length属性
+        console.log(arguments);
+        // 参数求和
+        return arr.reduce(function (p, c) {
+          return p + c;
+        });
+      };
+      console.log(sum(1, 2, 3, 4));
+
+      console.log("-------------------------");
+
+      // 函数都是单值返回,如果想返回多个值,可以将结果封装到数组或者对象中
+      //   返回值是数组的
+      let Arr = function () {
+        return [1, 2, 3, 4];
+      };
+      console.log(Arr());
+
+      console.table("-------------------");
+
+      //   返回值是对象的
+      Arr = function () {
+        return {
+          name: "mimi",
+          age: 18,
+          gender: "男",
+        };
+      };
+      console.table(Arr());
+    </script>
+  </body>
+</html>

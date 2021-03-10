@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery中的ajax操作</title>
+    <style>
+      body {
+        display: grid;
+        gap: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="get">1. $.get():请求数据</button>
+    <button class="post">2. $.post():请求数据</button>
+    <button class="jsonp">3. $.ajax():JSONP:跨域请求数据</button>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // 1.$.get(url请求地址,qs查询参数,callback回调函数)请求
+      $(".get").click(function (ev) {
+        $.get("users.php", { id: 2 }, function (data) {
+          // console.log(data);
+          // console.log(ev.target);
+          $(ev.target).after("<div></div>").next().html(data);
+        });
+      });
+      // 2.$.post(url请求地址,qs查询参数,callback回调函数)请求
+      // $(".post").click(function (ev) {
+      //   $.post("users.php", { id: 3 }, function (data) {
+      //     // console.log(data);
+      //     // console.log(ev.target);
+      //     $(ev.target).after("<div></div>").next().html(data);
+      //   });
+      // });
+
+      // 3. $.ajax()实现跨域
+      // $.get()和$.post()都是$.ajax()的快捷操作
+      // 使用$.ajax()同样可以实现post和get请求
+      $(".post").click(function (ev) {
+        $.ajax({
+          type: "post",
+          url: "users.php",
+          data: { id: 1 },
+          dataType: "html",
+          success: function (data) {
+            $(ev.target).after("<div></div>").next().html(data);
+          },
+        });
+      });
+
+      $(".jsonp").click(function (ev) {
+        $.ajax({
+          type: "get",
+          url: "http://world.io/text.php?id=2&jsonp=?",
+          dataType: "jsonp",
+          // 告诉跨域访问的服务器，前端需要返回的函数名
+          jsonpCallback: "show",
+          // success: function show(data) {
+          //   console.log(data);
+          //   $(".jsonp")
+          //     .after("<div></div>")
+          //     .next()
+          //     .html(`${data.name}${data.email}`);
+          // },
+        });
+      });
+
+      function show(data) {
+        console.log(data);
+        $(".jsonp")
+          .after("<div></div>")
+          .next()
+          .html(`${data.name}:(${data.email})`);
+      }
+
+      // axios('http://...............')
+    </script>
+  </body>
+</html>

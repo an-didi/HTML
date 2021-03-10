@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>常用表单事件</title>
+    <style>
+      #login {
+        width: 20em;
+        border: 1px solid #888;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        padding: 1em 2em;
+        margin: 2em auto;
+        background: linear-gradient(to right, lightcyan, #fff);
+        display: grid;
+        grid-template-columns: 3em 1fr;
+        gap: 1em 0;
+      }
+
+      #login .title {
+        grid-area: auto / span 2;
+        place-self: center;
+      }
+      #login button {
+        grid-area: auto / 2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 在form中form.id === form.name -->
+    <!-- 推荐使用id，方便css添加样式 -->
+    <form action="" method="POST" id="login">
+      <label class="title">用户登录</label>
+      <label for="email">邮箱:</label>
+      <input type="email" name="email" placeholder="admin@email.com" />
+      <label for="password">密码:</label>
+      <input type="password" name="password" placeholder="不少于六位" />
+      <button name="submit">登录</button>
+      <span id="test"></span>
+    </form>
+    <script>
+      // 获取表单
+      //1. 索引获取
+      //   const login = document.forms[0];
+      // 2. id名获取
+      //   const login = document.forms["login"];
+      // 3.当成数组看待
+      //   const login = document.forms.item(0);
+      // const login = document.forms.item('login');
+      const login = document.forms.namedItem("login");
+      //   console.log(login);
+      // 4. 使用最常用的方法
+      //   const login = document.querySelector("#login");
+
+      // submit()提交事件
+      //   login.onsubmit = () => {
+      //     alert("submit...");
+      //   };
+      // 如果是自定义表单的提交行为，应该禁用掉默认的提交
+      // 禁止的方法
+      // 1. 使用事件的禁止方法,直接会禁止掉事件
+      // 2. 直接在form表单的事件属性上返回一个false，自定义的事件不影响（onsubmit="return false"）
+      //   login.onsubmit = (ev) => ev.preventDefault();
+      login.onclick = (ev) => ev.stopPropagation();
+      login.submit.onclick = (ev) => {
+        // 在botton元素中禁止掉默认提交然后进行自定义
+        // 禁用默认行为
+        ev.preventDefault();
+        // 阻止事件冒泡
+        // ev.stopPropagation();
+        // 引用自定义函数，判断非空，isEmpty()
+        // 闭包引用表单,不推荐使用
+        // isEmpty(login);
+        // 表单中的每一个子元素都有一个form属性，form属性指向它所属的表单
+        // 通过事件绑定者的form属性来获取form表单
+        isEmpty(ev.currentTarget.form);
+      };
+
+      // 当禁用了当前的默认事件触发之后，上层元素中如果也添加了触发事件
+      // 此时，当前点击事件触发时，同样会触发上层元素的事件
+      // 这是由于事件冒泡行为导致的
+      // 可以禁止事件的冒泡行为，来阻止这样的事情发生
+
+      // body元素
+      document.body.addEventListener("click", (ev) =>
+        console.log(ev.currentTarget)
+      );
+
+      // 与表单相关的几个事件
+      // focus: 获取焦点事件
+      // blur: 失去焦点事件
+      // input: 只要值发生变化时连续触发,不等失去焦点
+      // change: 值发生了改变且失去焦了点时触发,<input><select><textarea>
+      // select: 选中文本时触发,<input><textarea>
+      // invalid: 提交时表单元素值不满足验证条件时触发
+      // reset: 将表单值全部重置到默认值(并非清空)
+      // submit: 提交表单时触发,注意触发对象是<form>,提交的是表单不是按钮
+      // keydown: 按下键盘时
+      // keyup:松开键盘时
+      // keypress: 按过了键盘时, 按下有值键时(除Ctrl/Alt/Shift/Meta),先触发keydown
+      // 按下一直不放手的触发顺序: keydown,keypress,重复这二个事件,直到keyup
+      // load,error: 在后面xhr时细说
+
+      // 非空验证
+      function isEmpty(form) {
+        // console.log(form.email);
+        // console.log(form.password);
+
+        // 非空验证
+        if (form.email.value.length === 0) {
+          alert("邮箱不能为空");
+          // 将焦点定位到邮箱的输入框里
+          form.email.focus();
+          return false;
+        } else if (form.password.value.length === 0) {
+          alert("密码不能为空");
+          // 将焦点定位到邮箱的输入框里
+          form.password.focus();
+          return false;
+        } else {
+          alert("验证通过");
+        }
+      }
+    </script>
+  </body>
+</html>

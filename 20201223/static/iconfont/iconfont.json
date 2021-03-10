@@ -1,0 +1,100 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "991195",
+      "name": "vip",
+      "font_class": "tx",
+      "unicode": "e785",
+      "unicode_decimal": 59269
+    },
+    {
+      "icon_id": "1176933",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e704",
+      "unicode_decimal": 59140
+    },
+    {
+      "icon_id": "1268730",
+      "name": "人民币",
+      "font_class": "renminbi1688",
+      "unicode": "e6cb",
+      "unicode_decimal": 59083
+    },
+    {
+      "icon_id": "5831393",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "8019600",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "8193958",
+      "name": "京东扫码支付",
+      "font_class": "jingdongsaomazhifu",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "9287422",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "11125624",
+      "name": "分类",
+      "font_class": "2",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "12025963",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e7a7",
+      "unicode_decimal": 59303
+    },
+    {
+      "icon_id": "13625256",
+      "name": "京东",
+      "font_class": "jingdong",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "14225366",
+      "name": "客户",
+      "font_class": "lujingbeifen2",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "17660004",
+      "name": "京东",
+      "font_class": "jingdong1",
+      "unicode": "e792",
+      "unicode_decimal": 59282
+    },
+    {
+      "icon_id": "18166714",
+      "name": "支付,京东",
+      "font_class": "pay-jingdong",
+      "unicode": "e8dd",
+      "unicode_decimal": 59613
+    }
+  ]
+}

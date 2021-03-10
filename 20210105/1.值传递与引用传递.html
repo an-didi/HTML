@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>值传递与引用传递</title>
+  </head>
+  <body>
+    <script>
+      // 1.赋值
+      // 1.1 值传递：原始类型：string，number，bool
+      //   仅传递值的本身，相当于是一个深拷贝，拷贝之后，这个值和原来的变量就没有关系了
+      //   let a = 1;
+      //   let b = a;
+      //   console.log("a = %d  b = %d", a, b);
+      //   a = 2;
+      //   console.log("a = %d  b = %d", a, b);
+      //   1.2 引用传递：引用类型：数组，对象
+      //   引用传递,传递的是内存中值所在的地址，修改传递前的值，传递后的值也会变
+
+      //   let arr = [1, 2, 3];
+      //   console.log(arr);
+      //   let arr1 = arr;
+      //   arr[0] = 8;
+      //   console.log(arr1);
+
+      //   2.传参
+      // 传参时，不论什么类型都是“值传递”
+
+      //   原始类型
+      const f = (x) => (x = 10);
+      let m = 5;
+      console.log("m = %d", m);
+      f(m);
+      //   入参：调用时，函数传入的参数
+      // 函数中对参数的更新，并不会影响到入参
+      console.log("m = %d ", m);
+
+      //   引用类型
+      const f1 = (x) => (x[0] = 8);
+      let arr = [1, 2, 3];
+      f1(arr);
+      console.log(arr);
+      // 可以看到的是，此时的arr[0]已经被改变了
+      // 但是有意思的是，此时还是“值传递”
+      // 对于引用类型参数的更新，只有全新的赋值才算是更新，只修改某一属性是不算更新的
+      // 例如：赋值一个全新的对象，f1 = x => x = [];
+      const f2 = (x) => (x = []);
+      f2(arr);
+      console.log(arr);
+      // 可以看到的是，全局更新时，数组arr的值并没有发生变化
+      //   函数中对于引用类型参数的更新并没有影响到入参，所以说，传参都是“值传递”
+
+      // 深拷贝：值传递；浅拷贝：引用传递；
+    </script>
+  </body>
+</html>

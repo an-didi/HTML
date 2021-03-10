@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .message {
+        position: fixed;
+        top: 3em;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .message h2 {
+        display: block;
+        text-align: center;
+        margin: 1em;
+        font-weight: lighter;
+        color: #666;
+      }
+
+      .message textarea {
+        padding: 10px;
+      }
+
+      #list > div {
+        display: grid;
+        grid-template-columns: 1fr 4em;
+        place-items: space-around;
+        margin: 1rem;
+      }
+      #list button {
+        place-self: start;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message">
+      <h2>留言板</h2>
+      <textarea name="" id="" cols="50" rows="10"></textarea>
+      <ol id="list"></ol>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // 获取元素
+      const msg = $("textarea");
+      const lists = $("#list");
+
+      // 创建事件，当内容输入文本框时，将其打印到下边
+      msg.keydown((ev) => {
+        // 键盘事件中的key属性，表示按下的键名
+        // console.log(ev.key);
+        if (ev.key === "Enter") {
+          // 非空判断
+          //   console.log(ev.currentTarget.value);
+          if (ev.currentTarget.value.length === 0) {
+            alert("内容为空");
+            msg.focus();
+          } else {
+            // 将留言内容添加到列表中
+            // 创建留言
+            let olStr = `<div><li>${ev.currentTarget.value}</li><button onclick="del(this)">删除留言</button></div>`;
+            // 应该将最新的信息放在第一条
+            lists.append(olStr);
+            // 按下回车后，清空留言板
+            ev.currentTarget.value = null;
+          }
+        }
+      });
+
+      // 删除留言
+      function del(ele) {
+        // DOM接口的outerHTML属性获取描述元素（包括其后代）的序列化HTML片段。它也可以设置为用从给定字符串解析的节点替换元素。
+        // 返回时，内容包含描述元素及其后代的序列化HTML片段。
+        return confirm("是否删除?") ? (ele.parentNode.outerHTML = null) : false;
+      }
+    </script>
+  </body>
+</html>

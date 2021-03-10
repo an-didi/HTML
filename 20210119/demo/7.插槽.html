@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>插槽：组件内容分发</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 组件中的内容是拿不到的，不过可以通过插槽来获取 -->
+      <new-comp>
+        php中文网
+        <p>php中文网</p>
+      </new-comp>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        components: {
+          newComp: {
+            // 插槽就是一个标签<slot></slot>,如果组件中没有内容，可以设置默认内容
+            // <slot>哈哈哈</slot>
+            template: `<div>
+                <h2>Hello  <slot>哈哈哈</slot> </h2>
+                </div>`,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

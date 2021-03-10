@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getter/setter方法4</title>
+    <style>
+      #login {
+        width: 20rem;
+        border: 1px solid #888;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        padding: 1em 2em;
+        margin: 2em auto;
+        background: linear-gradient(to right, lightcyan, #fff);
+        display: grid;
+        grid-template-columns: 4em 1fr;
+        gap: 1em 0;
+        box-shadow: 0 0 3px #888;
+      }
+
+      #login .title {
+        grid-area: auto / span 2;
+        place-self: center;
+      }
+      #login button {
+        grid-area: auto / 2;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="handle.php" method="POST" id="login">
+      <label class="title">用户<em style="color: red">登录</em></label>
+      <label for="email">邮箱:</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="admin@email.com"
+        value="00000"
+      />
+      <label for="password">密码:</label>
+      <input type="password" id="password" placeholder="不少于六位" />
+      <label for="confirm">记住我:</label>
+      <div>
+        <input type="radio" name="save" id="confirm" value="1" checked /><label
+          for="confirm"
+          >保存</label
+        >
+        <input type="radio" name="save" id="cancel" value="0" /><label
+          for="cancel"
+          >不保存</label
+        >
+      </div>
+      <button name="submit">登录</button>
+    </form>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // html():innerHTML
+      // text():innerText / TextContent
+
+      // 原生
+      console.log(document.querySelector(".title").textContent);
+      console.log(document.querySelector(".title").innerHTML);
+
+      // jQuery
+      // text()只获取纯文本
+      console.log($(".title").text());
+      // html()获取标签加文本
+      console.log($(".title").html());
+
+      //   let str = $('.title').html();
+    </script>
+  </body>
+</html>

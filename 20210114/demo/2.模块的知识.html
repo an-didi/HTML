@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模块的知识</title>
+  </head>
+  <body>
+    <script>
+      // 什么是模块
+      // 1. 模块就是一个js代码块
+      // 2. 封装成模块的js文件,内部成员对外不见,除非导出来
+      // 3. 模块解决了js的模块化开发与代码封装问题
+
+      //   模块解决了什么问题
+      // 1. 可维护性: 每个模块是独立的,各写各个互不影响,出错直接定位责任人
+      // 2. 可复用性: 只需要一条 import 指令就可以导入
+      // 3. 避免污染全局空间: 模块处在自己的命名空间内
+
+      //   模块是一个js文件,显然不能像之前一样,将js代码写到html中
+      // 模块要写到一个独立 的js 文件中,并使用一些特别的语法和关键字
+    </script>
+
+    <!-- 古老版本的js模块导入方式 -->
+    <!-- <script src="module1.js"></script> -->
+
+    <!-- 导入一个外部模块到当前脚本中使用 -->
+    <!-- 导入模块时，必须让type类型为module -->
+    <script type="module">
+      // 导入语句，import
+      // 前面的./不能省略
+      import { userName, hello, User } from "./module1.js";
+      console.log(userName);
+      console.log(hello(userName));
+      let user = new User("小兰", "18");
+      console.log(user.show());
+
+      // 禁止重复声明模块成员
+      //   let userName;
+      // 模块成员在当前脚本中，是常量存在,也不允许更新
+      //   userName = '小兰';
+    </script>
+  </body>
+</html>

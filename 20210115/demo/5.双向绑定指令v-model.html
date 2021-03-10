@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-model指令</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 页面中的数据 -->
+      <!-- 响应式：当前页面中的数据始终跟着模型数据的变化而变化 -->
+      <p>模型中的数据：{{site}}</p>
+      <!-- 单向绑定：页面中数据随模型数据变化，而模型数据不随着页面数据的变化而变化 -->
+      <!-- <p>单向绑定：{{site}}</p> -->
+      <!-- 双向绑定：页面和模型数据会随着任一方数据的变动而变化 -->
+      <p>
+        双向绑定：<input
+          type="text"
+          :value="site"
+          @input="site=$event.target.value"
+        />
+      </p>
+      <!-- 因为这种双向绑定比较常用，所以vue提供了一个语法糖 -->
+      <!-- v-model='site' ===> @input='site=$event.target.value' -->
+      <p>双向绑定：<input type="text" v-model="site" /></p>
+      <!-- 懒加载事件修饰符lazy，防止页面刷新频繁 -->
+      <p>双向绑定：<input type="text" v-model.lazy="site" /></p>
+      <p>双向绑定：<input type="text" v-model.number="num" /></p>
+      <p>{{num}} {{typeof num}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        el: ".app",
+        data: {
+          // 模型中的数据
+          site: "php中文网",
+          num: 0,
+        },
+      });
+      // vm.site = "php.cn";
+    </script>
+  </body>
+</html>

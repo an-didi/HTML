@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件间的双向传参</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 模拟v-model的实现过程 -->
+    <div id="demo">
+      <input type="text" :value="value" @input="value = $event.target.value" />
+      <p>{{value}}</p>
+    </div>
+    <script>
+      new Vue({
+        el: "#demo",
+        data() {
+          return {
+            value: 123,
+          };
+        },
+      });
+    </script>
+    <hr />
+    <div id="app">
+      <p>父组件：{{price}} 元</p>
+      <p>
+        子组件：<my-input :my-price="price" @input-value="handle"></my-input> 元
+      </p>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data() {
+          return {
+            price: 20,
+          };
+        },
+        // 局部组件
+        components: {
+          myInput: {
+            props: ["myPrice"],
+            // template: `<input type="text" :value="myPrice" @input="$emit('input-value',$event.target.value)" />`,
+            template: `<input type="text" :value="myPrice" @input="foo" />`,
+            methods: {
+              foo(ev) {
+                this.$emit("input-value", ev.target.value);
+              },
+            },
+          },
+        },
+
+        methods: {
+          handle(value) {
+            console.log(value);
+            this.price = value;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

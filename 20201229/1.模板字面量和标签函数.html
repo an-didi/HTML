@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模板字面量(模板字符串)/标签函数</title>
+  </head>
+  <body>
+    <script>
+      // 模板字面量也叫模板字符串
+      //   字符串可以使用单引号包含，也可以使用双引号包含
+
+      let str = "strings";
+      //   以下两种定界符的包含都是可以定义的，不会报错
+      str = "strings('animals')";
+      str = 'strings("animals")';
+      //   还有一种万能的，直接使用反引号 ' ` ' ,用反引号作为定界符，它里边可以包含单引号也可以包含双引号
+      str = `strings('animals')`;
+      str = `strings("animals")`;
+      console.log(str);
+      //   模板字面量可以理解为字符串的Plus+,它完全可以代替字符串的声明，并且还可以在内部直接解析变量
+      //   模板字面量是使用反引号进行声明创建的
+      //   案例：传统方法去拼接一个字符串
+      let nums = 2;
+      let price = 500;
+      let all =
+        "商品数量：" +
+        nums +
+        "，单价：" +
+        price +
+        " 元，总计：" +
+        nums * price +
+        "元";
+      console.log(all);
+
+      // 使用模板字面量，并使用插值语法进行简化
+
+      nums = 5;
+      price = 6;
+
+      all = `商品数量:${nums}单价:${price}总计:${nums * price} 元`;
+
+      //   可以看到的是模板字面量中有两类值
+      // 1. 原样显示的字符串字面量
+      // 2. 表达式，放到插值中，${express}
+      console.log(all);
+
+      //   2. 标签函数，它的参数是一个模板字面量
+      // 我们试着用标签函数来处理一下上面的字符串拼接
+      function show(strings, var1, var2, var3) {
+        // 我们来显示这些参数的值
+        console.log(strings);
+        console.log(var1, var2, var3);
+        let res = `<ul>商品信息:<li>${strings[0]}${var1}</li>
+          <li>${strings[1]} ${var2}</li>
+          <li>${strings[2]} ${var3}</li></ul>`;
+        console.log(res);
+        return res;
+      }
+      // 现在我们来试着使用show()标签函数来调用一下
+
+      const ul = show`商品数量:${nums}单价:${price}总计:${nums * price} 元`;
+      document.body.innerHTML = ul;
+    </script>
+  </body>
+</html>

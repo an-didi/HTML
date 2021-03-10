@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模块中的别名导入</title>
+  </head>
+  <body>
+    <script type="module">
+      // import语句不允许写在后边
+      // import { userName, hello } from "./module2.js";
+      // 如果模块中定义了别名，再导入的时候就只能使用别名导入
+      //   import { userName, echo } from "./module2.js";
+      //   import { name, echo } from "./module2.js";
+      //   console.log(name);
+      //   let userName;
+
+      // 别名导入
+      import { name as firstName, echo } from "./module2.js";
+      // 别名的导入导出是为了不与当前作用域的变量重名
+    </script>
+  </body>
+</html>

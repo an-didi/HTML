@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>流程控制:分支</title>
+  </head>
+  <body>
+    <script>
+      // 单分支
+      // 只有一个 if else;的语句
+      let grade = 80;
+      if (grade >= 60) {
+        console.log("及格了");
+      }
+      grade = 50;
+      //   双分支
+      if (grade >= 60) {
+        console.log("及格了");
+      } else {
+        console.log("补考吧");
+      }
+      //   多分支
+      // 可以使用if else if else; 也可以使用which语句
+      grade = 120;
+      // 判断成绩是否是一个有效的分数
+      if (grade >= 0 && grade <= 100) {
+        if (grade >= 60 && grade < 80) {
+          console.log("及格");
+        } else if (grade >= 80 && grade <= 100) {
+          console.log("优秀");
+        } else {
+          console.log("不及格");
+        }
+      } else {
+        console.log("成绩无效");
+      }
+
+      // switch 简化多分支语句
+      grade = 50;
+      switch (true) {
+        case grade >= 60 && grade < 80:
+          console.log("及格");
+          break;
+        case grade >= 80 && grade <= 100:
+          console.log("优秀");
+          break;
+        default:
+          console.log("不及格");
+          break;
+      }
+
+      // 不过switch通常不做区间判断，而是用于单值判断
+
+      let response = "success";
+      // 对于单值字符串需要将格式统一化，例如将字符串全部转为大写或者小写
+      // response.toLowerCase()将字符串全转为小写
+      // response.toUpperCase()将字符串全部转为大写
+      switch (response) {
+        case "fail":
+          console.log("请求失败");
+          break;
+        case "success":
+          console.log("请求成功");
+          break;
+        case "error":
+          console.log("参数错误");
+          break;
+        default:
+          console.log("未知错误");
+          break;
+      }
+
+      // 使用三元运算简化双分支
+      grade = 50;
+      if (grade >= 60) {
+        console.log("及格了");
+      } else {
+        console.log("补考吧");
+      }
+      // 使用三元运算简化
+      let three = grade >= 60 ? "及格了" : "补考吧";
+      console.log(three);
+    </script>
+  </body>
+</html>

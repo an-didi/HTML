@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em实现响应式布局(放大按钮改变字体大小)</title>
+    <style>
+      /* 设置根元素字号 */
+      html {
+        font-size: 1.25em;
+        /* 后面可以直接使用rem引用1.25*16=20px来定义字号 */
+      }
+      .box {
+        font-size: 0.8rem;
+        /* 此时如果当前元素.box中的其他属性,如果用到em就是0.8rem(16px) */
+        background-color: rgb(238, 207, 212);
+        padding: 1em;
+        border-radius: 0.5em;
+        /* 边框一定不要使用rem/em,一定要用像素px */
+        border: 1px solid rgb(65, 63, 63);
+        margin: 1em;
+      }
+      /* ------------------------------------ */
+      /* 字号设置强烈推荐使用rem */
+      .box h2 {
+        font-size: 1em;
+        margin: 1em 0;
+      }
+      /* ------------------------------------------- */
+      .box p {
+        font-size: 0.75em;
+        /* 段落缩进 2个字符 */
+        text-indent: 2em;
+        line-height: 2;
+      }
+      /* 当屏幕大小>=800px时, 字号放大到18px */
+      @media screen and (min-width: 800px) {
+        html {
+          font-size: 1.5em;
+        }
+        .box {
+          background-color: lightgreen;
+        }
+      }
+      /* 当屏幕大小>=1000px时, 字号放大到21px */
+      @media screen and (min-width: 1000px) {
+        html {
+          font-size: 1.75em;
+        }
+        .box {
+          background-color: lightskyblue;
+        }
+      }
+      /* 当屏幕大小>=1200px时, 字号放大到24px */
+      @media screen and (min-width: 1200px) {
+        html {
+          font-size: 2em;
+        }
+        .box {
+          background-color: lightcoral;
+        }
+      }
+      /* 修改字体大小，和button事件响应相连 */
+      .box.large {
+        font-size: 1.5em;
+      }
+
+      button {
+        font-size: 0.7em;
+        background-color: skyblue;
+        color: #fffaff;
+        outline: none;
+        border: none;
+        border-radius: 0.3em;
+      }
+      button:hover {
+        box-shadow: 0 0 2px #888;
+        opacity: 0.8;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="style/demo4.css" /> -->
+  </head>
+  <body>
+    <button>放大</button>
+    <div class="box">
+      <h2>怪谈之说</h2>
+      <div class="content">
+        <p>
+          就网络上流行的那些彩虹屁夸人语录里，让我打从心底认可和喜爱的一句是，“人间水蜜桃”。几乎凝练了本人对美丽女孩的全部幻想。青春期看《樱桃之远》，里面说，樱桃，光是这两个字念出来，就有幸福的感觉。人间水蜜桃同理——一种芬芳迫不及待地溢出来，又猝不及防地离你而去。
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.querySelector("button").addEventListener("click", (ev) => {
+    const box = document.querySelector(".box");
+    box.classList.toggle("large");
+    if (box.classList.contains("large")) ev.target.innerHTML = "缩小";
+    else ev.target.innerHTML = "放大";
+  });
+</script>
+<!-- 在此处用js创建了一个事件对象，用来实现点击放大按钮来实现对字体的放大，不过要想这样实现的话
+需要注意的是，观察段落中的字号设置用的是rem还是em，如果是rem就得设置html中的font-size属性，
+如果是em，就只需要设置当前元素中的font-size属性，或者是父级元素的font-size属性。 -->

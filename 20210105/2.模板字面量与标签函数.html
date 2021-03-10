@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模板字面量与标签函数</title>
+  </head>
+  <body>
+    <script>
+      // 1.模板字面量:将表达式嵌入到字符串，和python中的格式化字符串函数format()比较像
+      // 使用反引号 '``'来声明模板字面量
+      // 比如说：
+      let a = "Hello";
+      let b = "World!";
+      // 字符串的拼接
+      let c = a + " " + b;
+      console.log(c);
+      // 使用反引号进行拼接
+      c = `${a} ${b}`;
+      console.log(c);
+      //   模板字面量的组成
+      // 1. 字符串字面量：“+， =”
+      // 2. 变量或者表达式: a,b,(a+b);
+      // 模板字面量创建多行字符串可以保留格式
+      let menu = ["首页", "视频", "文章"];
+      let htmlStr = `<ul>
+        <li><a href="">${menu[0]}</a></li>
+        <li><a href="">${menu[1]}</a></li>
+        <li><a href="">${menu[2]}</a></li>
+        </ul>`;
+      console.log(htmlStr);
+      document.body.insertAdjacentHTML("beforeEnd", htmlStr);
+
+      // 2.标签函数:自定义模板字面量的行为
+      let hello = (name) => alert(name);
+      //   hello("Hello World!");
+      //   hello`Hello World!`;
+      //   使用自定义函数处理模板字面量,它的参数约定
+      // 1. 第一个参数: 模板字面量中的字符串字面量组成的数组
+      // 2. 从第二个参数开始,将模板字面量中的变量依次传入
+
+      // 使用...rest归并参数方法.
+      let sum = (strs, ...arr) => {
+        console.log(strs);
+        console.log(arr);
+      };
+      sum([" + ", " = ", ""], a, b);
+      //   可以看到的是,使用模板字面量,它输出的是两个数组的格式,数据按照模板字面量的组成排列
+      sum`${a} + ${b} =`;
+    </script>
+  </body>
+</html>

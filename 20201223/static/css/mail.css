@@ -1,0 +1,34 @@
+.main .zp {
+  display: flex;
+  background-color: white;
+  position: absolute;
+  top: 29rem;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  margin: 1rem;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.main .zp img {
+  height: 6rem;
+  width: 6rem;
+}
+
+.main .zp li {
+  display: flex;
+  flex: 1 1 25%;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+}
+
+.main .zip li a {
+  color: #000;
+}
+.main .zp li:nth-of-type(2) a:first-of-type,
+.main .zp li:nth-of-type(3) a:first-of-type {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #000;
+}

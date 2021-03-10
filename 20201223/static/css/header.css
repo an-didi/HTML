@@ -1,0 +1,59 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+.header a:first-of-type .menu {
+  font-size: 2.5rem;
+  flex: 1;
+  color: white;
+  /* 设置文本居中 */
+  text-align: center;
+}
+/* 搜索框 */
+.header .search {
+  flex: 6;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 3rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.header .search .logo {
+  color: #e43130;
+  flex: 0 1 4rem;
+  /* margin-left: 1rem; */
+  /* justify-content: flex-end; */
+  /* 水平垂直居中 */
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1.5rem;
+}
+
+/* 放大镜 */
+
+.header .search .zoom {
+  font-size: 1.5rem;
+  color: #ccc;
+  flex: 0 1 4rem;
+  border-left: 1px solid;
+  text-align: center;
+  line-height: 2rem;
+}
+
+/* 搜索框 */
+.header .search .words {
+  font-size: 1.5rem;
+  flex: auto;
+  outline: none;
+  border: none;
+  color: #aaa;
+}
+.header .login {
+  font-family: Helvetica;
+  font-size: 1.5rem;
+  flex: 1;
+  color: white;
+  text-align: center;
+}

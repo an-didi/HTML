@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>仿php中文网主页</title>
+    <!-- 初始化 -->
+    <link rel="stylesheet" href="css/demo8/reset.css" />
+    <!-- 模态框 -->
+    <link rel="stylesheet" href="css/demo8/modal.css" />
+    <!-- 文字图标 -->
+    <link rel="stylesheet" href="iconfont/iconfont.css" />
+    <!-- 页眉 -->
+    <link rel="stylesheet" href="css/demo8/header.css" />
+    <!-- 菜单区 -->
+    <link rel="stylesheet" href="css/demo8/menu.css" />
+    <!-- 推荐课程 -->
+    <link rel="stylesheet" href="css/demo8/course.css" />
+    <!-- 页脚 -->
+    <link rel="stylesheet" href="css/demo8/footer.css" />
+  </head>
+  <body>
+    <!-- 页眉 -->
+    <header>
+      <div>
+        <a href=""><img src="img/header/log.png" alt="php中文网" /></a>
+      </div>
+      <div class="nav-top">
+        <a href="">首页</a>
+        <a href="">视频教程</a>
+        <a href="">入门教程</a>
+        <a href="">社区问答</a>
+        <a href="">技术文章</a>
+        <a href="">资源下载</a>
+        <a href="">编程词典</a>
+        <a href="">工具下载</a>
+        <a href="">PHP培训</a>
+      </div>
+      <button class="button">登录</button>
+    </header>
+    <!-- 模态框 -->
+    <div class="modal">
+      <!-- 蒙板：用来盖住后面的内容，使它半透明 -->
+      <div class="modal-coverback"></div>
+      <!-- 主体 -->
+      <div class="modal-body">
+        <button class="close">关闭</button>
+        <form action="" method="POST">
+          <table>
+            <caption>
+              用户登录
+            </caption>
+            <tr>
+              <td><label for="username">用户名:</label></td>
+              <td>
+                <input type="text" name="username" id="username" required />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="psd">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label></td>
+              <td><input type="password" name="psd" id="psd" required /></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td><button>登录</button></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <!-- 菜单区 -->
+
+    <div class="menu">
+      <div class="menu-left">
+        <div>
+          <a href="">php开发</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+        <div>
+          <a href="">前端开发</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+        <div>
+          <a href="">服务端开发</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+        <div>
+          <a href="">移动开发</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+        <div>
+          <a href="">数据库</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+        <div>
+          <a href="">服务器运维&下载</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+        <div>
+          <a href="">在线工具箱</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+        <div>
+          <a href="">常用类库</a>
+          <a href=""><div class="iconfont icon-jiantou"></div></a>
+        </div>
+      </div>
+      <div class="menu-top">
+        <ul>
+          <li><a href="">PHP头条</a></li>
+          <li><a href="">独孤九贱</a></li>
+          <li><a href="">学习路线</a></li>
+          <li><a href="">在线工具</a></li>
+          <li><a href="">趣味课堂</a></li>
+          <li><a href="">社区问答</a></li>
+          <li><a href="">课程直播</a></li>
+          <li><input type="text" placeholder="输入关键字" /></li>
+        </ul>
+      </div>
+      <div>
+        <a href=""><img src="img/menu/1.jpg" alt="" /></a>
+      </div>
+      <div class="menu-bottom">
+        <ul>
+          <li>
+            <a href=""><img src="img/menu/2.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href=""><img src="img/menu/3.png" alt="" /></a>
+          </li>
+          <li>
+            <a href=""><img src="img/menu/4.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href=""><img src="img/menu/5.jpg" alt="" /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 过渡区 -->
+
+    <div class="transit">
+      <a href=""><img src="img/menu/6.jpg" alt="" /></a>
+    </div>
+
+    <!-- 新闻区 -->
+
+    <!-- 推荐课程 -->
+    <div class="course">
+      <h3><span>&lt;/&gt;</span>php入门精品课程<span>&lt;/&gt;</span></h3>
+      <ul>
+        <li>
+          <a href=""><img src="img/course/1.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/2.png" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/3.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/4.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/5.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/6.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/7.jpeg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/8.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/9.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/10.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/11.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/12.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/13.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="img/course/14.jpg" alt="" /></a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 页脚 -->
+
+    <footer>
+      <div class="main">
+        <div class="main-left">
+          <ul class="main-lefttop">
+            <li><a href="">网站首页</a></li>
+            <li><a href="">PHP视频</a></li>
+            <li><a href="">PHP实战</a></li>
+            <li><a href="">PHP代码</a></li>
+            <li><a href="">PHP手册</a></li>
+            <li><a href="">词条</a></li>
+            <li><a href="">手记</a></li>
+            <li><a href="">编程词典</a></li>
+            <li><a href="">php培训</a></li>
+          </ul>
+          <p>php中文网：公益在线php培训，帮助PHP学习者快速成长！</p>
+
+          <p>
+            Copyright 2014-2020 https://www.php.cn/ All Rights Reserved |
+            苏州跃动光标网络科技有限公司 | 苏ICP备2020058653号-1
+            <a href=""><img src="img/footer/3.gif" alt="" /></a>
+            <span>
+              <a href="">关于我们</a>
+              <a href="">免责声明</a>
+              <a href="">赞助与捐赠</a>
+              <a href="">广告合作</a>
+            </span>
+          </p>
+        </div>
+        <div class="main-right">
+          <img src="img/footer/1.jpg" alt="" />
+          &nbsp;&nbsp;
+          <img src="img/footer/2.jpg" alt="" />
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="js/modal.js"></script>
+</html>

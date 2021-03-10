@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* 转换为flex弹性布局元素 */
+  display: flex;
+  padding: 1em;
+  height: 15em;
+  border: 1px solid #000;
+  margin: 1em;
+}
+.container > .item {
+  /* height: 2em; */
+  width: 5em;
+  background-color: lightcyan;
+  border: 1px solid #000;
+  font-size: 3em;
+}
+/* 显示顺序:默认按照源码的书写书顺序排列 */
+/* 默认序号越小越靠前,越大越靠后 */
+/* 支持负值 */
+.container > .item:first-of-type {
+  background-color: yellow;
+  order: 1;
+}
+.container > .item:nth-of-type(2) {
+  background-color: lightgreen;
+  order: 2;
+}
+.container > .item:nth-of-type(3) {
+  background-color: lightcyan;
+  order: 3;
+}
+.container > .item:last-of-type {
+  background-color: #ccc;
+  order: 0;
+}
+
+/* 项目常用属性:
+
+1. flex: 设置某个项目的伸缩与宽度
+2. align-self: 某个项目的对齐方式
+3. order: 设置某个项目在主轴上的排列顺序 */

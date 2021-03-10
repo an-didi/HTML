@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>变量和常量</title>
+  </head>
+  <body>
+    <script>
+      //   传统方式
+      // 奇葩事情:传统JS没有常量,且变量可以重复声明
+      // 1. 变量
+      // 声明 ： 使用let声明一个变量，接下来的代码中不能再使用let对这个变量重复声明
+      //   但是这个变量在接下来的使用过程中，值可以重新更新
+      let name;
+      //   let是禁止重复声明的
+      //默认值：undefind
+      console.log(name);
+      // 初始化， 第一次赋值
+      name = "an";
+      console.log(name);
+      //   更新：第二次之后的赋值
+      name = "li";
+      console.log(name);
+
+      //   2. 常量：特殊的变量（只可以读取），常量声明后既不能删除，也不能更新，也不能二次声明
+      // 所以常量进行声明的话，必须进行初始化,而变量是可以将声明和初始化分开完成的
+
+      const age = 18;
+
+      // const age = 20;
+
+      //   常量，变量，函数名... 都叫js标识符
+      // 1. 只能是有字母，数字，下划线，$，且第一个不能是数字
+      // 2.标识符是严格区分大小写的
+      // 3. 命名规范
+      // 3.1 蛇形，下划线式命名
+      // 例如： let user_name = 'an';
+      // 3.2 驼峰式
+      // 第二个单词起，每个单词首字母大写
+      // 例如：let userName = 'an';
+      // 3.3 大驼峰式，帕斯卡
+      // 每个单词的首字母都大写
+      // 例如：let UserName = 'an';
+      // 3.4 匈牙利式命名
+      // 命名规则是将命名对象的类型写在名称的前边
+      // 例如：let oBody = document.body;o就是body的类型
+
+      // 实际工作中，首选const常量，其次才考虑let
+    </script>
+  </body>
+</html>

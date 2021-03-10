@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>重要术语</title>
+  </head>
+  <body>
+    <ul id="list">
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+      <li>item5</li>
+    </ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      //   function People(name, age) {
+      //     this.name = name;
+      //     this.age = age;
+      //     // 构造方法
+      //     this.get = function () {
+      //       return this.name + ":" + this.age;
+      //     };
+      //   }
+
+      //   // 原型方法
+      //   People.prototype.hello = function (name) {
+      //     return "Hello" + name;
+      //   };
+
+      //   // 静态方法
+      //   People.look = function () {
+      //     return "static function";
+      //   };
+
+      //   const people = new People("小花", 18);
+      //   console.log(people.get());
+      //   console.log(people.hello("小红"));
+      //   console.log(People.look());
+
+      // 页面中只要经过$()包装，一定返回的是jquery对象
+      //   console.log($("*") instanceof jQuery);
+      // 只有jQuery对象才能调用定义在jQuery上的方法
+      // 静态方法直接使用jQuery调用
+
+      // jQuery获取到li的键值对
+      $.each($("li"), (key, value) => console.log(key, value.textContent));
+      // 原生js获取到li的键值对
+      document
+        .querySelectorAll("li")
+        .forEach((value, key) => console.log(key, value.textContent));
+    </script>
+  </body>
+</html>

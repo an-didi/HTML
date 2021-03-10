@@ -1,0 +1,47 @@
+.course {
+  width: 120rem;
+  height: 64.6rem;
+  padding: 1.5rem 0;
+  margin: 3rem auto;
+  background-color: white;
+  display: grid;
+  grid-template-rows: 5rem 1fr;
+
+  border-radius: 0.5rem;
+}
+
+.course h3 {
+  width: 120rem;
+  font-size: 2rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.course h3 span {
+  color: skyblue;
+}
+
+.course img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+.course ul {
+  padding: 1.5rem;
+  width: 120rem;
+  height: calc(64.4rem - 7rem);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.course ul li:first-of-type {
+  grid-area: span 2;
+}
+
+.course ul li:hover {
+  opacity: 0.8;
+  transition: 0.5s;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>留言板</title>
+    <style>
+      #list > div {
+        display: grid;
+        grid-template-columns: 1fr 10rem;
+        place-items: space-around;
+        margin: 1rem;
+      }
+      #list button {
+        place-self: start;
+      }
+    </style>
+  </head>
+  <body>
+    <label>留言板:&nbsp;&nbsp;<input type="text" name="messageBoard" /></label>
+    <ol id="list"></ol>
+    <!-- <li class="li">
+      <span>text</span>
+      <a href="">a标签</a>
+    </li> -->
+    <script>
+      // 获取元素
+      const msg = document.querySelector("input");
+      const lists = document.querySelector("#list");
+
+      // 创建事件，当内容输入文本框时，将其打印到下边
+      msg.onkeydown = (ev) => {
+        // 键盘事件中的key属性，表示按下的键名
+        // console.log(ev.key);
+        if (ev.key === "Enter") {
+          // 非空判断
+          if (ev.currentTarget.value.length === 0) {
+            alert("内容为空");
+            msg.focus();
+          } else {
+            // 将留言内容添加到列表中
+            // 创建留言
+            let olStr = `<div><li>${ev.currentTarget.value}</li><button onclick="del(this)">删除</button></div>`;
+            // 应该将最新的信息放在第一条
+            lists.insertAdjacentHTML("afterBegin", olStr);
+            // 按下回车后，清空留言板
+            ev.currentTarget.value = null;
+          }
+        }
+      };
+
+      // const btn = document.querySelector("button", (ev) => ev.preventDefault());
+      // const list = document.querySelector("#list");
+      // list.addEventListener("click", (ev) => {
+      //   ev.currentTarget.removeChild(ev.target);
+      // });
+
+      // 此处的删除留言操作是不完善的，它删除之后无法再进行留言，并且是所有的语句同时删除
+      // 回头尝试修改html文档结构，进行优化操作
+      // 删除留言
+      function del(ele) {
+        // DOM接口的outerHTML属性获取描述元素（包括其后代）的序列化HTML片段。它也可以设置为用从给定字符串解析的节点替换元素。
+        // 返回时，内容包含描述元素及其后代的序列化HTML片段。
+        return confirm("是否删除?") ? (ele.parentNode.outerHTML = null) : false;
+      }
+      // innerHTML，innerText，outerHTML，outText区别
+      // 假如说有一个html文档结构是这样的<li><span></span><a href=""></a></li>
+      // const li = document.querySelector(".li");
+      // console.log(
+      //   li.innerHTML,
+      //   "\n",
+      //   li.innerText,
+      //   "\n",
+      //   li.outerHTML,
+      //   "\n",
+      //   li.outerText
+      // );
+    </script>
+  </body>
+</html>

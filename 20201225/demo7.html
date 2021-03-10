@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid实现媒体查询:美女相册</title>
+    <style>
+      /* 样式重置 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      a {
+        text-decoration: none;
+        color: #555;
+      }
+
+      body {
+        background-color: lightseagreen;
+        background-color: violet;
+      }
+
+      h1 {
+        color: white;
+        text-align: center;
+        font-weight: normal;
+        text-shadow: 2px 2px 2px #444;
+        margin-top: 1em;
+      }
+
+      .container {
+        min-width: 100vw;
+        min-height: 100vh;
+        padding: 3em;
+
+        display: grid;
+        /* 自动填充,可以实现媒体查询的效果 */
+        /* auto-fit根据行列的宽高来自行设定一行的具体个数 */
+        grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+        /* 这里设置70%而不是1fr的原因是:1fr所产生的视觉效果并不好 */
+        grid-template-rows: repeat(auto-fit, minmax(13em, 70%));
+
+        /* 垂直紧贴起始线(顶部), 水平则平均对齐 */
+        place-content: start space-evenly;
+        gap: 1.5em;
+      }
+
+      .container img {
+        width: 100%;
+      }
+
+      .container > .item {
+        background-color: #eee;
+        padding: 1em;
+        border-radius: 0.5em;
+        display: grid;
+        place-items: center;
+      }
+
+      .container > .item:hover {
+        background-color: pink;
+        cursor: pointer;
+        transition: 1s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>前女友相册</h1>
+    <div class="container">
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友1</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友2</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友3</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友4</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友5</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友6</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友7</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友8</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友9</a>
+      </div>
+
+      <div class="item">
+        <a href=""><img src="img/girl/girl.jpg" alt="" /></a>
+        <a href="">前女友10</a>
+      </div>
+    </div>
+  </body>
+</html>

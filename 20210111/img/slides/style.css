@@ -1,0 +1,81 @@
+/* 初始化 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+/* 轮播图的容器 */
+.container {
+  width: 62.5em;
+  height: 22em;
+  margin: 1em auto;
+  /* 转为定位元素/定位父级 */
+  position: relative;
+}
+/* 图片组 */
+.container > .imgs img {
+  width: 100%;
+  height: 100%;
+
+  /* 默认全部隐藏 */
+  display: none;
+
+  /* 将所有的图片进行绝对定位，确保每一次只看到一张,所有图片共享这个容器 */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* 设置默认显示的图片(第一张) */
+.container > .imgs img.active {
+  display: block;
+}
+
+/* 按钮组(独立按钮) */
+.container > .btns {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 水平居中 */
+  text-align: center;
+}
+.container > .btns a {
+  /* 转成行内块元素: 即能水平排列,双支持宽度设置 */
+  display: inline-block;
+  padding: 0.5em;
+  margin: 0 0.2em;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.container > .btns a.active {
+  background-color: #888;
+}
+/* 翻页按钮 */
+.container .skip a {
+  position: absolute;
+  width: 2.5rem;
+  height: 5rem;
+  line-height: 5rem;
+  text-align: center;
+  opacity: 0.3;
+  top: 9rem;
+  font-weight: lighter;
+
+  font-size: 2rem;
+  background-color: #ccc;
+}
+.container .skip .prev {
+  left: 0;
+}
+.container .skip .next {
+  right: 0;
+}
+.container .skip *:hover {
+  opacity: 0.6;
+  color: #666;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>基于锚点的哈希路由模式</title>
+  </head>
+  <body>
+    <nav>
+      <!-- 此时的#list1，#list2就是锚点 -->
+      <a href="#/list1">娱乐新闻</a>
+      <a href="#/list2">体育新闻</a>
+    </nav>
+
+    <!-- 该区域专用于显示路由的内容 -->
+    <div class="route-view"></div>
+
+    <script>
+      // 获取路由内容显示区元素
+      const routeView = document.querySelector(".route-view");
+
+      // 锚点使用 location.hash
+      // window.location: 描述的是当前url信息
+      //   console.log(location.hash);
+      // hashchange事件：url中的锚点变化时会自动触发这个事件
+
+      window.addEventListener("hashchange", show);
+
+      // load事件：要等js执行完成和图片加载完成才能触发
+      //   window.addEventListener("load", show);
+
+      // DOMContentLoaded事件: 只要dom树创建完成就会触发
+      window.addEventListener("DOMContentLoaded", show);
+
+      let list1 = `
+                    <ul>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    </ul>`;
+
+      let list2 = `<ul>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    </ul>`;
+
+      function show() {
+        console.log(location.hash);
+        switch (location.hash) {
+          case "#/list1":
+            routeView.innerHTML = list1;
+            break;
+          case "#/list2":
+            routeView.innerHTML = list2;
+            break;
+          default:
+            routeView.innerHTML = list1;
+        }
+      }
+    </script>
+    <!-- <ul id="list1">
+      <li>
+        <a href="">北京文化或受郑爽波及 员工称郑爽想卖衣服给粉丝被张恒制止</a>
+      </li>
+      <li><a href="">热点-《上阳赋》为穿帮镜头道歉：现场花絮 已替换素材</a></li>
+      <li>
+        <a href=""
+          >杨丽萍聚会时期跳舞，却遭网友们怒批，网友：饭桌也能当舞台？</a
+        >
+      </li>
+    </ul>
+    <ul id="list2" style="transform: translate(0, 50em)">
+      <li><a href="">NBA-库里26+11勇士胜马刺 三巨头96分篮网负骑士</a></li>
+      <li><a href="">中超16强动态：冬训陆续开启 多队完成中性化更名</a></li>
+      <li><a href="">卡帅大概率继续执教 正协调蒋光太航班广州塔归期成迷</a></li>
+    </ul> -->
+
+    <!-- 添加一个回到顶部的链接 -->
+    <!-- <a href="#" style="position: absolute; right: 1em; bottom: -10em"
+      >回到顶部</a
+    > -->
+  </body>
+</html>

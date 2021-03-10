@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用写好的栅格布局写一个简单的页面主体</title>
+    <link rel="stylesheet" href="css/grid.css" />
+    <style>
+      .row:nth-of-type(2) {
+        min-height: 80vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 页眉 -->
+      <div class="row">
+        <div class="item col-12 header">页眉</div>
+      </div>
+      <!-- 主体 -->
+      <div class="row">
+        <div class="item col-2 left">左边栏</div>
+        <div class="item col-8 main">内容</div>
+        <div class="item col-2 right">右边栏</div>
+      </div>
+      <!-- 页脚 -->
+      <div class="row">
+        <div class="item col-12 footer">页脚</div>
+      </div>
+    </div>
+  </body>
+</html>

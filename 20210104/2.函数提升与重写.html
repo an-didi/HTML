@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数提升与重写</title>
+  </head>
+  <body>
+    <script>
+      console.log(getName("an"));
+      // 声明一个函数
+      function getName(name) {
+        return "Welcome to" + name;
+      }
+
+      // js中的函数调用可以写在函数声明之前
+      //   这就是函数声明提前，也叫做函数提升，声明会自动地提升到顶部
+
+      //   但是变量是不可以的
+      //   console.log(a);
+      //   let a = 100;
+      // 这样写是会直接报错的
+
+      //   函数还可以被重写，原函数可以被后来的函数重写覆盖掉
+      function getName(name) {
+        return "欢迎 " + name;
+      }
+
+      //   js函数中存在的两种问题
+      // 1. 函数声明提升
+      // 2.函数可以被重写
+
+      // 解决1.函数声明提升问题
+      // 我们知道一个变量是不可以在它被声明之前引用的，所以，我们可以使用匿名函数的方式去让它不在被提升
+      //   匿名函数/函数表达式
+      // 例如：
+
+      //   console.log(myName("an"));
+
+      //   let myName = function (name) {
+      //     return "My name is " + name;
+      //   };
+      //   console.log(myName("an"));
+
+      //   解决2. 函数重写问题
+      // 常量是不能够被重新定义的，所以，我们可以将函数当成一个值赋给一个常量
+      const myName = function (name) {
+        return "My name is " + name;
+      };
+
+      // myName = function (name) {
+      //   return "My name is " + name;
+      // };
+      console.log(myName("an"));
+    </script>
+  </body>
+</html>

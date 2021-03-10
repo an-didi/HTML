@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>导入默认模块的成员</title>
+  </head>
+  <body>
+    <script type="module">
+      //   默认模块的接收
+      // 导入默认成员与普通模块的最大区别在于没有大括号
+      //   import userName from "./module3.js";
+      //   console.log(userName);
+      // 接收既有默认成员，又有非默认成员
+      import hello, { userName, gender } from "./module3.js";
+      console.log(userName);
+      console.log(gender);
+      console.log(hello(userName));
+    </script>
+  </body>
+</html>

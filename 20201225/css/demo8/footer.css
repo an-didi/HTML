@@ -1,0 +1,74 @@
+footer {
+  height: 17.4rem;
+  background-color: #333;
+  padding-top: 2rem;
+}
+
+footer .main {
+  width: 120rem;
+  height: 15.4rem;
+  margin: 1rem auto;
+  padding: 1.5rem 0;
+  display: grid;
+  grid-template-columns: 90rem 30rem;
+}
+
+.main .main-left {
+  height: 12.4rem;
+  display: grid;
+  grid-template-rows: 2.8rem 4.1rem 5.5rem;
+}
+
+.main .main-left .main-lefttop {
+  width: 47.3rem;
+  height: 2.8rem;
+  display: grid;
+  grid-template-columns: repeat(5, 5.9rem) 3.4rem 3.4rem 5.9rem 5.4rem;
+  place-items: center end;
+}
+
+.main .main-left .main-lefttop li a {
+  color: #c3c3c3;
+  font-size: 1.3rem;
+}
+
+.main .main-left .main-lefttop li a:hover {
+  color: #f3f3f3;
+}
+
+.main .main-left p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.main .main-left p:first-of-type {
+  padding-top: 2rem;
+  /* place-content: end start; */
+}
+
+.main .main-left p:last-of-type {
+  display: grid;
+  padding-top: 2rem;
+  grid-template-columns: 1fr 1.5rem 25rem;
+  place-content: start;
+}
+
+.main .main-left p:last-of-type img {
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+
+.main .main-left p:last-of-type span {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: start end;
+  margin-right: 1rem;
+}
+
+.main .main-left p:last-of-type span a {
+  color: #666;
+}
+.main .main-right img {
+  width: 100px;
+  height: 100px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>局部组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <child-hello></child-hello>
+    </div>
+
+    <!-- <template id="hello">
+      <p>Hello {{site}}</p>
+    </template> -->
+    <script>
+      const childHello = {
+        template: `<p>Hello {{site}}</p>`,
+        data() {
+          return {
+            site: "php中文网",
+          };
+        },
+      };
+      const vm = new Vue({
+        // el: ".app",
+
+        data() {
+          return {};
+        },
+        // 局部组件是属于Vue实例的，使用components声明
+
+        // components: {
+        // hello: {
+        // template: `<p>Hello {{site}}</p>`,
+
+        // 使用id选择器绑定
+        // template: "#hello",
+
+        // 使用html字符串
+        // template: hello,
+        // data() {
+        //   return {
+        //     site: "php中文网",
+        //   };
+        // },
+        // },
+        // },
+        components: { childHello },
+      }).$mount(".app");
+    </script>
+  </body>
+</html>

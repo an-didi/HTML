@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>条件渲染：v-if,v-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <h2 style="display: none">hello world</h2> -->
+
+      <!-- 单分支结构 -->
+      <p v-if="flag">{{msg}}</p>
+      <button
+        v-text="tips = flag ? '隐藏' : '显示'"
+        @click="flag = !flag"
+      ></button>
+
+      <hr />
+
+      <!-- 多分支结构：v-else-if -->
+      <label for="num"
+        >积分：<input type="number" v-model="point" style="width: 5em" id="num"
+      /></label>
+      <p v-if="point >= 0 && point < 1200" v-text="grade[0]"></p>
+      <p v-else-if="point >= 1200 && point < 1400" v-text="grade[1]"></p>
+      <p v-else-if="point >= 1400 && point < 1600" v-text="grade[2]"></p>
+      <p v-else-if="point >= 1600 && point < 1800" v-text="grade[3]"></p>
+      <p v-else-if="point >= 1800 && point < 2000" v-text="grade[4]"></p>
+      <p v-else-if="point >= 2000 && point < 2200" v-text="grade[5]"></p>
+      <p v-else-if="point >= 2200 && point < 2400" v-text="grade[6]"></p>
+      <p v-else v-text="grade[7]"></p>
+
+
+      <!-- v-show操作 -->
+      <p v-show="status">提前祝大家新年快乐！</p>
+      <!-- v-show操作的用处：可以定时的显示一些准备好的东西，比起v-if来说，v-show是本来
+            就存在的dom元素，页面不会进行多次的渲染刷新 -->
+    </div>
+    <script>
+      // v-if:决定元素是否添加到页面上
+      // v-show:元素是否显示出来(元素已经在dom结构中了)
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {
+            msg: "当flag为true的时候我会显示出来",
+            flag: true,
+            tips: "隐藏",
+            point: 1000,
+            grade: [
+              "青铜",
+              "白银",
+              "黄金",
+              "铂金",
+              "钻石",
+              "星耀",
+              "王者",
+              "荣耀王者",
+            ],
+            status: false,
+          };
+        },
+      });
+      vm.$data.status = true;
+    </script>
+  </body>
+</html>

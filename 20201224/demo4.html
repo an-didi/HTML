@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设置网格单元尺寸的常用函数:repeat(),minmax()</title>
+    <style>
+      .main {
+        display: grid;
+        border: 1px solid #000;
+        padding: 0.5em;
+        /* grid-template-columns: 10em 10em 10em; */
+
+        /* 1. repeat()函数 */
+        /* repeat(3, 10em)等价于grid-template-columns: 10em 10em 10em; */
+        grid-template-columns: repeat(3, 10em);
+
+        /* repeat()函数的第二个参数可以是多个值 */
+
+        grid-template-columns: repeat(2, 2fr 1fr);
+
+        /* repeat()函数的意义就相当于是第一个参数乘以第二个参数的个数就是它所设置的 “列数” 或者 “行数”
+        而第二个参数所提供的就是 “列宽” 或者 “行高” 的具体参数；
+        也可以将第二个参数看成一个整体，第一个参数是第二个参数的系数，也就是第二个参数重复的次数，
+        而第二个参数，就是设置 “行” 或者 “列” 的变化。 */
+
+        /* repeat()函数既可以单独使用，也可以混合使用 */
+
+        /* 例如： 下边显示的就是一个一行六列，列宽比例分别为 1：2：1：2：2：1的网格布局*/
+
+        grid-template-columns: repeat(2, 1fr 2fr) 2fr 1fr;
+
+        /* 2. minmax()函数 */
+
+        /* 想要设置某一行高或者某一列宽的值为一个区间的时候可以使用minmax()函数 */
+
+        /* 例如：想要设置一个2行3列中间一列的宽度最小值是20em，最大值是左右两列宽度的2倍, 左右两列宽度相同*/
+
+        grid-template-columns: 1fr minmax(20em, 2fr) 1fr;
+
+        grid-template-rows: 3em 3em;
+        gap: 0.5em;
+      }
+      .main .item {
+        background-color: aliceblue;
+        border: 1px solid #000;
+        padding: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <span class="item">item1</span>
+      <span class="item">item2</span>
+      <span class="item">item3</span>
+      <span class="item">item4</span>
+      <span class="item">item5</span>
+      <span class="item">item6</span>
+    </div>
+  </body>
+</html>

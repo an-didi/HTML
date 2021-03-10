@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>项目在网格容器中的对齐方式</title>
+    <style>
+      /* place-content属性控制项目在网格容器中的对齐方式,在容器中使用 */
+      /* place-content: 垂直方向   水平方向; */
+      .main {
+        height: 25rem;
+        border: 1px solid #000;
+        padding: 0.5rem;
+        display: grid;
+        /* 只有所有项目在容器中存在剩余空间时,对齐才有必要且有意义 */
+        grid-template-columns: repeat(3, 5rem);
+        grid-template-rows: repeat(3, 3rem);
+        /* 设置隐式轨道的行高 */
+        grid-auto-rows: 5rem;
+        gap: 0.5rem;
+        /* place-content: start start;默认值 */
+        /* 设置仅水平居中,垂直向上 */
+        /* 1. 将所有项目看成一个整体在容器中对对齐 */
+        place-content: start center;
+        /* 设置垂直水平居中 */
+        place-content: center;
+
+        /* 2. 将容器内项目看成一个个个体在容器中的对齐方式 */
+        /* 两端对齐 */
+        place-content: space-between;
+        /* 分散对齐 */
+        place-content: space-around;
+        /* 平均对齐 */
+        place-content: space-evenly;
+      }
+
+      .main > .item {
+        padding: 0.5rem;
+        background-color: lightcyan;
+        border: 1px solid #000;
+      }
+
+      /* 设置容器中的 "所有项目"在容器中的对齐方式 */
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="item">item1</div>
+      <div class="item">item2</div>
+      <div class="item">item3</div>
+      <div class="item">item4</div>
+      <div class="item">item5</div>
+      <div class="item">item6</div>
+      <div class="item">item7</div>
+      <div class="item">item8</div>
+      <div class="item">item9</div>
+    </div>
+  </body>
+</html>

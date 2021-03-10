@@ -1,0 +1,46 @@
+/* 初始化 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header,
+footer {
+  height: 3em;
+  background-color: lightgreen;
+}
+
+.body {
+  /* 定位元素 */
+  position: relative;
+  min-height: 30em;
+  margin: 0.5em 0;
+}
+
+.body aside {
+  background-color: skyblue;
+  width: 15em;
+  /* 继承父级元素高度 */
+  min-height: inherit;
+}
+/* 左中右全部进行绝对定位 */
+.body aside:first-of-type {
+  position: absolute;
+  /* top:0;和left:0;是默认值，可以不写 */
+  /* top: 0;
+  left: 0; */
+}
+.body aside:last-of-type {
+  position: absolute;
+  /* top: 0; */
+  right: 0;
+}
+.body main {
+  min-height: inherit;
+  background-color: lightcyan;
+  position: absolute;
+  top: 0;
+  left: 15.5em;
+  right: 15.5em;
+}

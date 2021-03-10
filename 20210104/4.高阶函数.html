@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高阶函数</title>
+  </head>
+  <body>
+    <script>
+      // 高阶函数:使用函数作为参数或将函数作为返回值的函数
+
+      // 1.回调函数
+      document.addEventListener("click", function () {
+        alert("Hello world!");
+      });
+      //   2. 偏函数,将函数中的必须参数先固定下来,其他参数交给子函数去处理
+      let sum = function (a, b) {
+        return function (c, d) {
+          return a + b + c + d;
+        };
+      };
+      //   函数闭包完成偏函数,这就有点像是定义了一个含有参数的类,里边写了一个含有参数的方法
+      // 你想要使用这个方法,你就必须先给这个类传参,然后调用这个函数的时候也得传参
+      let li = sum(1, 2);
+      console.log(li(3, 4));
+      console.log("--------------------------");
+
+      //  3. 柯里化
+      //   每个函数只传递一个参数,最后一个函数对于参数进行处理
+      sum = function (a) {
+        return function (b) {
+          return function (c) {
+            return function (d) {
+              return a + b + c + d;
+            };
+          };
+        };
+      };
+      let ke = sum(1)(2)(3)(4);
+      console.log(ke);
+      //   4.纯函数:完全独立于调用上下文,返回值只受到参数影响
+      // 例如:
+      function getDate() {
+        return Date.now();
+      }
+      console.log(getDate());
+      //   上边这个函数就不是一个纯函数
+
+      // 纯函数示例
+      function add(a, b) {
+        return a + b;
+      }
+      console.log(add(1, 2));
+    </script>
+  </body>
+</html>

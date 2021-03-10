@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>解构赋值</title>
+  </head>
+  <body>
+    <!-- 基本语法,数据类型,对象,类,数组与字符串操作,Ajax/API/Fetch/axios  -->
+    <script>
+      // 任何类型都可以解构,但是工作中基本上只会用到对象和数组
+      // 1. 对象解构
+      //   现在我们先声明一个对象
+      const user = {
+        name: "zhuzhuxia",
+        age: 18,
+      };
+      //   我想声明一个变量,它的值是来自上面的对象
+
+      // 我们可以直接使用对象引用
+      // let name = user.name;
+      //   let age = user.age;
+
+      //   我们还可以使用对象解构来对它进行赋值
+
+      // 解构时要求等号两边类型一致,而且两边的变量名也要相等
+      ({ name, age } = { name: "zhuzhuxia", age: 18 });
+      console.log(name, age);
+      //   当两边的数量不匹配时,等号左边支持自定义值
+      ({ name = "an", age, gender = "男" } = { name: "zhuzhuxia", age: 20 });
+      console.log(name, age, gender);
+      //   可以给左边声明的变量进行取别名操作
+      //   比如说,想要对 "my name"这种类型的变量进行解构,直接引用是不可以的
+      //   要给它起别名之后才可以使用
+      ({ "my name": name, age } = { "my name": "zhuzhuxia", age: 18 });
+      console.log(name, age);
+
+      //   当你知道一个对象的名字想要对它的某些你知道的属性进行解构时
+
+      ({ name, age } = user);
+      console.log(name, age);
+      //   这样是完全可行的
+
+      //  2. 数组解构
+
+      // 定义一个数组
+
+      const colors = ["red", "green", "blue"];
+      //   进行数组的解构,将左边看成是模板
+      //   它的解构和对象差不多,不过因为数组中只有值没有属性名,所以左边的模板名称可以任你取
+      //   你可以同时解构好些个数据项,也可以只解构一个,但左右两边的类型必须一致
+      let [color1, color2, color3] = colors;
+
+      console.log(color1, color2, color3);
+      //   示例
+      const arr = [1, [2, 3], 4];
+      [arr1, arr2, arr3, arr4] = arr;
+      console.log(arr1, arr2, arr3, arr4);
+      //   这样解构是不正确的,因为左右两边的类型不一致,所以arr数组的第二项不正确
+      //   正确的解法
+      [arr1, [arr2, arr3], arr4] = arr;
+      console.log(arr1, arr2, arr3, arr4);
+      //   这样就可以得到arr数组中的所有数据了
+
+      //   数组的解构同样支持默认值的设置
+    </script>
+  </body>
+</html>

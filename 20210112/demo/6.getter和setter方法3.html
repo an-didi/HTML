@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getter/setter方法3</title>
+    <style>
+      #login {
+        width: 20rem;
+        border: 1px solid #888;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        padding: 1em 2em;
+        margin: 2em auto;
+        background: linear-gradient(to right, lightcyan, #fff);
+        display: grid;
+        grid-template-columns: 4em 1fr;
+        gap: 1em 0;
+        box-shadow: 0 0 3px #888;
+      }
+
+      #login .title {
+        grid-area: auto / span 2;
+        place-self: center;
+      }
+      #login button {
+        grid-area: auto / 2;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="handle.php" method="POST" id="login">
+      <label class="title">用户登录</label>
+      <label for="email">邮箱:</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="admin@email.com"
+        value="00000"
+      />
+      <label for="password">密码:</label>
+      <input type="password" id="password" placeholder="不少于六位" />
+      <label for="confirm">记住我:</label>
+      <div>
+        <input type="radio" name="save" id="confirm" value="1" checked /><label
+          for="confirm"
+          >保存</label
+        >
+        <input type="radio" name="save" id="cancel" value="0" /><label
+          for="cancel"
+          >不保存</label
+        >
+      </div>
+      <button name="submit">登录</button>
+    </form>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // val():获取表单元素的值，表单控件的value属性
+      // val(value);修改值
+      // val(callback):传入回调函数对其进行修改
+      const form = $("form");
+
+      // 使用原生方法读取到控件的value值
+      console.log(document.forms["login"].email.value);
+
+      // 使用jquery获取
+      console.log($('input[type="email"]').val());
+
+      $('input[type="email"]').val("11111");
+      console.log($('input[type="email"]').val());
+
+      console.log($("input:radio:checked").val());
+
+      // val(callback)
+      $("input[type='email']").val(() => "朱老师@qq.com");
+    </script>
+  </body>
+</html>

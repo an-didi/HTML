@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>全局组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <button-inc></button-inc>
+    </div>
+    <hr />
+    <div class="app1">
+      <button-inc></button-inc>
+    </div>
+    <template id="count">
+      <div>
+        <button @click="count++">点赞：{{count}}</button>
+      </div>
+    </template>
+    <script>
+      // 全局组件：全局可见，声明在Vue实例外部
+      // 使用Vue.component()声明
+      // 全局组件可以在多个Vue实例中共享，尽可能不要去声明一个全局组件，为了减少全局污染
+      // 建议：通常一个项目只有一个Vue实例，所以尽可能不要用全局组件，而应该使用局部组件代替
+      Vue.component("button-inc", {
+        // 组件中的模板代码：允许存在数据占位符的html字符串
+        // 模板内容必须写到一对父元素中
+        // template: `<div>
+        //   <button @click="count++">点赞：{{count}}</button>
+        //   </div>`,
+
+        // 必须使用id绑定
+        template: "#count",
+
+        // 组件中必须使用函数data()声明变量
+        data() {
+          return {
+            count: 0,
+          };
+        },
+      });
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {};
+        },
+      });
+      const vm1 = new Vue({
+        el: ".app1",
+        data() {
+          return {};
+        },
+      });
+    </script>
+  </body>
+</html>

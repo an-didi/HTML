@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片懒加载</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        width: 100%;
+        display: grid;
+        gap: 10px;
+        padding: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* position: relative; */
+      }
+      .container img {
+        width: 100%;
+        /* border-radius: 50%; */
+      }
+      .container img:hover {
+        position: relative;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        width: 110%;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-1.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-2.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-3.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-4.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-5.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-6.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-7.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-8.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-9.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-10.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-11.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-12.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-13.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-14.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-15.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-16.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-17.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-18.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-19.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-20.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-21.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-22.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-23.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-24.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-25.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-26.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-27.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-28.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-29.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-30.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-31.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-32.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-33.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-34.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-35.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-36.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-37.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-38.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-39.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-40.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-41.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-42.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-43.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-44.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-45.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-46.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-47.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-48.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-49.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-50.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-51.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-52.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-53.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-54.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-55.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-56.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-57.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-58.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-59.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-60.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-61.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-62.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-63.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-64.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-65.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-66.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-67.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-68.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-69.jpg" />
+      <img src="../img/ljz/temp.jpg" alt="" data-src="../img/ljz/img-70.jpg" />
+    </div>
+    <script>
+      // 获取当前所有图片
+      const imgs = document.querySelectorAll(".container img");
+      //   console.log(imgs);
+
+      // 拿到当前可视区高度
+      const clientHeight = document.documentElement.clientHeight;
+      // 监听当前窗口的滚动事件
+      window.addEventListener("scroll", lazyLoad);
+      // 在一进入页面就执行这个操作
+      window.addEventListener("load", lazyLoad);
+
+      // 懒加载函数
+      function lazyLoad() {
+        //拿到滚动高度
+        let scrollTop = document.documentElement.scrollTop;
+
+        // 遍历图片并判断是否进入可视区
+        imgs.forEach((img) => {
+          // 只要当前图片距离文档顶部的偏移量小于可视区高度与滚动高度之和，则将这个图片显示出来
+          // Ev.offsetTop:表示元素到文档顶部的偏移量
+          // clientHeight是可视区高度，这是一个相对固定的值.scrollTop是滚动高度，它是一个动态的值
+          if (img.offsetTop < clientHeight + scrollTop) {
+            // 为了显示效果明显，可以设置定时器，让它半秒执行一次
+            setTimeout(() => (img.src = img.dataset.src),500);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

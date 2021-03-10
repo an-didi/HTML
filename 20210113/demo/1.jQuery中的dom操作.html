@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom()操作</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // 1.添加元素
+
+      // 原生方式
+      //   const h2 = document.createElement("h2");
+      //   h2.textContent = "原生js往页面中添加dom元素之元素添加";
+      //   document.body.appendChild(h2);
+
+      //   document.body.insertAdjacentHTML("afterbegin","<h2>原生js往页面添加dom元素之html字符串添加</h2>");
+
+      // jQuery方式
+      //   $("<h2>jQuery添加dom元素</h2>").appendTo(document.body);
+      //   $("<h2>").text("jQuery添加dom元素之子元素添加").appendTo(document.body);
+      // 子元素.appendTo(父元素)
+      //   $("body").append("<h2>jQuery添加dom元素之父元素添加</h2>");
+      // 父元素.append(子元素)
+      $("body").append("<ol></ol>");
+      $("ol").append(() => {
+        let str = "";
+        for (let i = 0; i < 5; i++) {
+          str += `<li><a href="">通过append添加的列表:${i + 1}</a></li>`;
+        }
+        return str;
+      });
+
+      // 2.删除元素empty():把所有段落的子元素包括文本节点全部删除
+
+      // $("ol").empty();
+      // remove([expr]):从dom中把所有段落删除,包括本身
+      // $("ol").remove();
+      // 从DOM中删除所有匹配的元素，不传参数还会把本身删掉
+      // 这个方法不会把匹配的元素从jQuery对象中删除，因而可以在将来再使用这些匹配的元素。与remove()不同的是，所有绑定的事件、附加的数据等都会保留下来。
+      //   $("ol").detach();
+    </script>
+  </body>
+</html>

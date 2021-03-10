@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件传递</title>
+  </head>
+  <body>
+    <ul>
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+    </ul>
+    <script>
+      // 事件传递：
+      // 1.捕获：从最外层元素，逐级向内捕获，直到事件的绑定者/触发者（从模糊到清晰的过程）
+      // 2.目标：到达事件目标
+      // 3.冒泡：从目标由内向外逐级向上直到最外层元素（从清晰到模糊的过程）
+      const lies = document.querySelectorAll("li");
+      lies.forEach(
+        (li) =>
+          (li.onclick = (ev) => {
+            // 事件对象： 保存着当前事件的所有信息
+            // console.log(ev);
+
+            // 事件类型
+            // console.log(ev.type);
+            // 事件的绑定者
+            console.log(ev.currentTarget);
+            // 事件触发者
+            // console.log(ev.target);
+            // 事件传递的路径
+            console.log(ev.path);
+            // 当前事件的传递路径[li, ul, body, html, document, Window]
+
+            // 阻止事件冒泡
+            ev.stopPropagation();
+          })
+      );
+
+      // on+event:不支持捕获,只支持冒泡
+      //   li.onclick = function(){};
+
+      // 捕获,addEventListener()的第三个参数是true表示事件在捕获阶段，false表示冒泡（默认值）
+      // window
+      window.addEventListener(
+        "click",
+        (ev) => console.log(ev.currentTarget),
+        true
+      );
+      // 文档对象document
+      document.addEventListener(
+        "click",
+        (ev) => console.log(ev.currentTarget),
+        true
+      );
+      // html元素
+      document.documentElement.addEventListener(
+        "click",
+        (ev) => console.log(ev.currentTarget),
+        true
+      );
+      // body元素
+      document.body.addEventListener(
+        "click",
+        (ev) => console.log(ev.currentTarget),
+        true
+      );
+      // ul
+      document
+        .querySelector("ul")
+        .addEventListener("click", (ev) => console.log(ev.currentTarget), true);
+
+      // 冒泡
+
+      // ul
+      document
+        .querySelector("ul")
+        .addEventListener("click", (ev) => console.log(ev.currentTarget));
+      // body元素
+      document.body.addEventListener("click", (ev) =>
+        console.log(ev.currentTarget)
+      );
+      // html元素
+      document.documentElement.addEventListener("click", (ev) =>
+        console.log(ev.currentTarget)
+      );
+      // 文档对象document
+      document.addEventListener("click", (ev) => console.log(ev.currentTarget));
+      // window
+      window.addEventListener("click", (ev) => console.log(ev.currentTarget));
+    </script>
+  </body>
+</html>

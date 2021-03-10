@@ -1,0 +1,116 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #444;
+  text-decoration: none;
+}
+
+header {
+  font-size: 1.5rem;
+  background-color: black;
+  height: 6rem;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.main-top {
+  height: 51rem;
+  width: 120rem;
+
+  display: grid;
+  grid-template-columns: 21.6rem 1fr;
+  grid-template-rows: 6rem 1fr 12rem;
+  background-color: #ccc;
+  margin: auto;
+  border-radius: 1rem;
+}
+/* 左侧菜单区 */
+.main-top > nav.menu {
+  grid-area: span 3 / span 1;
+  padding: 1rem;
+  background-color: lightgreen;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+/* 顶部导航菜单区 */
+
+.main-top > .nav {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background-color: lightcyan;
+  display: grid;
+  grid-template-columns: repeat(8, 8.3rem) 1fr;
+  place-items: center;
+  border-top-right-radius: 1rem;
+}
+
+.main-top > .nav > li:last-of-type {
+  place-self: center start;
+  padding-left: 3rem;
+}
+
+/* 轮播图已经自动归位 */
+
+/* 推荐课程区 */
+
+.main-top .course {
+  background-color: wheat;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.main-top .course > * {
+  background-color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+/* 课程列表 */
+
+.main-courses {
+  width: 120rem;
+  height: 64.6rem;
+  padding: 1.5rem;
+  background-color: skyblue;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-rows: 5rem 1fr;
+  border-radius: 0.5rem;
+}
+.main-courses h3 {
+  color: #444;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.main-courses .course-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.main-courses .course-list > * {
+  background-color: lightcoral;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.main-courses .course-list > li:first-of-type {
+  grid-area: span 2;
+}

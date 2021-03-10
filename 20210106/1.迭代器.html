@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>迭代器</title>
+  </head>
+  <body>
+    <script>
+      // 迭代器就相当于是一个遍历的过程
+      // 手写一个迭代器
+
+      // 前端面试（手写迭代器，对象代理，promass，跨越请求等等）
+      function myInterator(data) {
+        // 迭代器中必须要有一个next（），用来返回数组或是对象中的下一个元素
+        // 使用数组模拟迭代器
+        let i = 0;
+        return {
+          next() {
+            //   done:表示遍历是否完成
+            //   value：表示当前遍历的数据
+            // 当i大于等于当前数据长度时，表示已经遍历完成
+            let done = i >= data.length;
+            let value = !done ? data[i++] : undefined;
+            return { done, value };
+          },
+        };
+      }
+
+      let iterator = myInterator([1, 2, 3]);
+      //   console.log(iterator.next());
+      //   console.log(iterator.next());
+      //   console.log(iterator.next());
+      //   console.log(iterator.next());
+
+      const lesson = { name: "js", score: 60 };
+
+      Object.defineProperty(lesson, Symbol.iterator, {
+        value() {
+          let index = 0;
+          const keys = Object.keys(this);
+          return {
+            next: () => {
+              return {
+                done: index > keys.length,
+                value: this[keys[index++]],
+              };
+            },
+          };
+        },
+      });
+
+      for (let item of lesson) {
+        console.log(item);
+      }
+    </script>
+  </body>
+</html>

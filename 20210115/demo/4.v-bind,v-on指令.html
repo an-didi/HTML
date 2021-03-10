@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-bind,v-on指令</title>
+    <style>
+      .active {
+        color: violet;
+      }
+      .bigger {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="app" onclick="alert(this.tagName)"> -->
+      <div class="app">
+      <!-- <p style="color: pink">style: {{site}}</p> -->
+      <!-- 可以使用v-bind,v-bind是高频指令可简写成" : " -->
+      <!-- <p v-bind:style="style">style: {{site}}</p> -->
+      <!-- v-bind不仅可以绑定行内样式，对于类样式也是可以绑定的 -->
+      <p :style="style">style: {{site}}</p>
+
+      <!-- 绑定类class属性 -->
+      <p :class="class1">class1: {{site}}</p>
+      <p :class="{active : isActive, bigger : isBigger}">class2: {{site}}</p>
+      <p :class="[`active`, `bigger`]">class3: {{site}}</p>
+
+      <!-- 绑定事件 -->
+      <!-- <p><a href="https://php.cn" v-on:click="show">显示网站名称</a></p> -->
+      <!-- 添加事件修饰符prevent，阻止默认行为 -->
+      <!-- <p><a href="https://php.cn" v-on:click.prevent="show">显示网站名称</a></p> -->
+      <!-- 同样的，v-on也是高频指令，可以简写成"@" -->
+      <p>
+        <a href="https://php.cn" @click.prevent="show"
+          >显示网站名称,阻止默认行为</a
+        >
+      </p>
+      <p>
+        <a href="https://php.cn" @click.prevent="show"
+          >显示网站名称,冒泡行为演示</a
+        >
+      </p>
+      <!-- 事件修饰符stop：阻止冒泡行为 -->
+      <p>
+        <a href="https://php.cn" @click.prevent.stop="show"
+          >显示网站名称,阻止冒泡行为</a
+        >
+      </p>
+      <!-- 事件的回调函数仅允许执行一次 -->
+      <p>
+        <a href="https://php.cn" @click.once.stop.prevent="show"
+          >显示网站名称,事件的回调函数仅允许执行一次</a
+        >
+      </p>
+
+      <!-- 事件方法的传参 -->
+      <!-- 事件对象的参数名必须是 $event -->
+      <button @click.stop="handle($event,1,2)">click</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        el: ".app",
+        // 数据
+        data: {
+          site: "php中文网",
+          style: "color: pink",
+          class1: "active bigger",
+          isActive: true,
+          isBigger: false,
+        },
+        // 方法（函数）
+        methods: {
+          show() {
+            // 在当前的Vue实例中，this就是vue实例对象
+            alert(this.site);
+          },
+          handle(ev, a, b) {
+            console.log(ev.type, ev.target);
+            console.log("a + b = %d", a + b);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

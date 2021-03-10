@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>导入jQuery</title>
+  </head>
+  <body>
+    <!-- 什么是jQuery？ -->
+    <!-- jQuery是一个快速，小型且功能丰富的JavaScript库。通过易于使用的API
+    （可在多种浏览器中使用），它使HTML文档的遍历和操作，事件处理，动画和Ajax等
+    事情变得更加简单。兼具多功能性和可扩展性，jQuery改变了数百万人编写JavaScript
+    的方式。 -->
+
+    <!-- 导入方式 -->
+    <!-- 1.导入js本地源码 -->
+    <!-- <script src="jquery-3.5.1.js"></script> -->
+    <!-- 2. 采用远程源码库cdn -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      let $;
+      console.log($);
+      console.log(jQuery);
+      // 使用原生js完成背景颜色添加
+      document.body.style.backgroundColor = "yellow";
+      // 使用jquery来完成背景颜色添加
+      //   $("body").css("background", "skyblue");
+      jQuery("body").css("background", "skyblue");
+
+      // $():工厂函数，在jQuery中是全局函数，同时也是jQuery的别名
+
+      // 如果当前代码中$被占用，可以使用jQuery代替
+      // $()也是一个构造函数，用来创建jquery对象
+      // jQuery对象:$()函数的返回值
+    </script>
+  </body>
+</html>

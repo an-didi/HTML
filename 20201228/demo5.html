@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象字面量的成员简化</title>
+  </head>
+  <body>
+    <script>
+      let people = {
+        name: "an",
+        getName() {
+          return "My name is:" + this.name;
+        },
+      };
+      let name = "an";
+
+      people = {
+        //   在当前对象中,有一个属性名和共同作用域下的变量名相同时,可以直接引用
+        name,
+        getName() {
+          return "My name is:" + this.name;
+        },
+        // 箭头函数可以替代简单的代码
+        // 例如:
+        // getName: () => "My name is:" + this.name,
+      };
+      console.log(people.name);
+    </script>
+  </body>
+</html>

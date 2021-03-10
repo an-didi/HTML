@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>过滤器</title>
+  </head>
+  <body>
+    <ul id="first">
+      <li>item1</li>
+      <li>item2</li>
+      <li>
+        <ul>
+          <li>1</li>
+          <li class="red">2</li>
+          <li>3</li>
+        </ul>
+      </li>
+      <li>item4</li>
+      <li>item5</li>
+    </ul>
+    <ul id="second">
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+      <li>item5</li>
+    </ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      //jquery 方式获得第一个列表中的所有li
+      //   console.log($("ul#first").children());
+      console.log($("ul").filter("#first").children());
+      //使用原生js获取第一个列表的所有li
+      console.log(document.querySelector("#first").children);
+
+      // 原生js拿到li中的第一个
+      console.log(
+        document.querySelector("#first").firstElementChild.textContent
+      );
+      // 获取到某一个
+      //   console.log(document.querySelector("#first").children.item(0));
+      //   console.log(document.querySelector("#first").children[2]);
+      // jq拿到第一个
+      console.log($("ul").filter("#first").children().first().text());
+      // 获取到某一个
+      //   console.log($("ul").filter("#first").children().get(0).textContent);
+      //   console.log($("ul").filter("#first").children().eq(2).text());
+
+      // find()方法：对照children()方法来看，children()方法只能获取子元素集合，find()方法可以获取任意层级的元素
+
+      // children()方法无法获取子元素以下层级的元素
+      console.log($("ul").filter("#first").children("#red"));
+      // 使用find()
+      console.log(
+        $("ul").filter("#first").find(".red").css("background", "red")
+      );
+      $("#first .red").css("background", "green");
+
+      // 原生方式
+      document.querySelector(".red").style.background = "lightblue";
+
+      // 原生js和jQuery是可以混合使用的
+      $("#first .red").get(0).style.background = "pink";
+    </script>
+  </body>
+</html>

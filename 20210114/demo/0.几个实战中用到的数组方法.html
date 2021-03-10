@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组方法</title>
+  </head>
+  <body>
+    <script>
+      // Array.every(),Arrary.some()
+      // Array.every(callback),对数组中每个成员进行回调处理，只有全部为true，最终返回值才为true，否则为false
+      // Array.some(callback),同every一样，不同的是，它只要任一项返回结果为true，最终结果就为true
+      // every()类似逻辑与运算，some()类似逻辑或运算
+      console.log([6, 7, 8].every((item) => item > 3));
+      //说明当前数组中全部大于3
+      console.log([6, 7, 8].every((item) => item > 6));
+      //结果返回false
+      console.log([6, 7, 8].some((item) => item > 6));
+      // some方法，只需要一项返回结果为true，则最终结果为true
+    </script>
+  </body>
+</html>

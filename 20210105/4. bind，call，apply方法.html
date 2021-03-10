@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bind,call,apply方法</title>
+  </head>
+  <body>
+    <button>Click</button>
+    <script>
+      // bind方法，call方法，apply方法都是定义在原型上的方法，每个函数一开始定义都会有
+
+      function hi(name) {
+        // this.name = name;
+        console.log(this.name);
+      }
+      const obj = { name: "user" };
+
+      // 经典调用
+      console.log(hi("流萤"));
+      // 使用bind()绑定方法，将hi()函数绑定到obj对象字面量中去
+      // bind()并不会立即执行,只返回一个函数声明
+      let f = hi.bind(obj);
+      console.log(f());
+      // call(),apply()是立即执行的
+      f = hi.call(obj, "lalala");
+      console.log(f);
+      // apply()，使用时，参数必须是一个数组
+      f = hi.apply(obj, ["lalala"]);
+      console.log(f);
+      // bind()的应用案例：动态改变this
+      document.querySelector("button").addEventListener(
+        "click",
+        function () {
+          console.log(this.name);
+          console.log(this);
+          // document.body.appendChild(
+          //   (document.createElement("p").innerHTML = this.name)
+          // );
+        }.bind({ name: "清姬" })
+      );
+    </script>
+  </body>
+</html>

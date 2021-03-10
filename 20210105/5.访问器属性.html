@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>访问器属性</title>
+  </head>
+  <body>
+    <script>
+      const product = {
+        data: [
+          { name: "暖手宝", price: 20, num: 1 },
+          { name: "椅子", price: 40, num: 4 },
+          { name: "桌子", price: 400, num: 2 },
+        ],
+        getAmounts() {
+          return this.data.reduce((t, c) => (t += c.price * c.num), 0);
+        },
+        // 访问器属性：将方法伪造成一个属性
+        // get方法，将一个方法伪造成一个属性
+        // set方法，修改这个方法
+        get total() {
+          return this.data.reduce((t, c) => (t += c.price * c.num), 0);
+        },
+        set setPrice(price) {
+          this.data[1].price = price;
+        },
+        // 访问器属性的优先级是高于普通属性的
+      };
+      console.log("总金额：", product.getAmounts());
+      // 使用访问属性的形式去访问一个方法
+      console.log("总金额：", product.total);
+      // 使用修改属性的形式去修改一个方法
+      product.setPrice = 999;
+      console.log(product.data[1].price);
+    </script>
+  </body>
+</html>

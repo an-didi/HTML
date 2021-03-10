@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>流程控制-循环</title>
+  </head>
+  <body>
+    <script>
+      // 循环
+      // 循环中常用的数据结构是数组
+      const arr = [1, 2, 3, 4];
+      console.log(arr);
+      console.table(arr);
+      console.log(arr.length);
+
+      // while循环(入口判断型)
+
+      //   初始化循环变量
+      let i = 0;
+      //   设置循环条件
+      while (i < arr.length) {
+        console.log(arr[i]);
+        //   更新循环条件
+        i++;
+      }
+      console.log("------------------------------");
+
+      // do while :(出口判断型)很少去使用
+
+      i = 0;
+
+      do {
+        console.log(arr[i]);
+        i++;
+      } while (i > arr.length);
+
+      //   出口判断型的循环,不管条件是否为真它都会执行一次
+
+      // for循环
+
+      //   for(初始化循环变量; 设置循环条件;更新循环条件){...}
+
+      // 使用for循环语句简化上边的while循环语句
+      //   使用let声明的变量作用范围仅限于当前的程序上下文,在其他地方不能引用到
+      console.log("-----------------------------------");
+      for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+
+      console.log("----------------------");
+      //   循环与分支是经常混用的
+      for (let i = 0; i < arr.length; i++) {
+        //   只输出前三个
+        if (i < 3) {
+          console.log(arr[i]);
+        }
+      }
+      //   js中判断等号左右两端是否相等,用的是 '==='
+
+      // 对象的遍历也是可以的
+
+      console.log("-------------------------");
+      const user = {
+        name: "zhuzhuxia",
+        age: 18,
+        height: 170,
+      };
+
+      // 使用 'for - in'结构来进行对象遍历
+      //   这个的遍历相当于python中的字典,不过比字典要简单
+      for (let key in user) {
+        //   只输出值
+        // console.log(user[key]);
+        // 输出键值对
+        console.log(`${key}:${user[key]}`);
+      }
+      //   使用 'for - of'迭代器结构来进行遍历（更加通用）
+      console.log("----------------------");
+
+      for (let value of arr) {
+        //   只输出值
+        console.log(value);
+        // 输出键值对
+        // console.log(`${key}:${user[key]}`);
+      }
+    </script>
+  </body>
+</html>

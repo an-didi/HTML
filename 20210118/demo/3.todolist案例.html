@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <input type="text" name="" @keyup.enter="show($event)" />
+      <ul v-if="list.length">
+        <li v-for="(item, index) in list" :key="index" v-text="item"></li>
+      </ul>
+    </div>
+    <script>
+      // vue实现
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {
+            list: [],
+          };
+        },
+        methods: {
+          show(ev) {
+            // console.log(ev.target.value);
+            if (ev.target.value.trim().length === 0) {
+              alert("输入内容不能为空！");
+            } else {
+              this.list.unshift(ev.target.value);
+              ev.target.value = null;
+            }
+          },
+        },
+      });
+
+      // 原生实现
+
+      // // 获取事件
+      // const input = document.querySelector('input[type="text"]');
+      // const ul = document.querySelector("ul");
+
+      // // 为input添加事件
+      // input.onkeyup = (ev) => {
+      //   // 查看键盘输入
+      //   // console.log(ev.key);
+      //   if (ev.key === "Enter") {
+      //     // 去掉输入字符串两端的空格，然后判断字符串长度是否为0
+      //     if (input.value.trim().length === 0) {
+      //       alert("内容不能为空！");
+      //     } else {
+      //       let str = `<li>${input.value}</li>`;
+      //       ul.insertAdjacentHTML("afterbegin", str);
+      //       input.value = null;
+      //     }
+      //   }
+      // };
+    </script>
+  </body>
+</html>

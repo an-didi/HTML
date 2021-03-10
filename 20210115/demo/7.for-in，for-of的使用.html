@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>key的作用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <ol>
+        <!-- for-in与for-of的区别 -->
+
+        <!-- 对于数组来说for-in ,for-of两种方法没有区别,但是使用for-of更加直观 -->
+        <li>数组数据</li>
+        <li v-for="(item, index) of courses" :key="index">
+          {{index}}--{{item}}
+        </li>
+      </ol>
+      <ul>
+        <li>单个对象数据</li>
+        <li v-for="(item,name,index) in product" :key="index">
+          {{index}}--{{name}}--{{item}}
+        </li>
+      </ul>
+      <ul>
+        <li>多个对象数据</li>
+        <li v-for="(item,index) in products" :key="item.id">
+          {{item.id}}--{{item.name}}--{{item.price}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {
+            courses: ["html5", "css3", "es6"],
+            products: [
+              { id: 1, name: "小米 11", price: 4299 },
+              { id: 2, name: "小米 10", price: 3699 },
+            ],
+            product: { id: 1, name: "小米 11", price: 4299 },
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>字符串常用方法</title>
+  </head>
+  <body>
+    <script>
+      // 1. concat()，字符串拼接，在大量的生成html代码时用处很大，而且可以类型转换
+      let str = " html ".concat("css ", " js ", " ! ", 666);
+      console.log(str);
+
+      // 2. slice(起始位置，结束位置):取子串
+      // 支持负数操作
+      str = "hello world!";
+      let str1 = str.slice(0, 5);
+      console.log(str1);
+      // 省略第二个参数就是从当前起始位置一直到字符串结束
+
+      // 从倒数第一个字符开始往前数，也就是-1开始
+      str1 = str.slice(-6);
+      console.log(str1);
+
+      // 3. substr(起始位置，获取的长度)：取子串
+      let str2 = str.substr(0, 7);
+      console.log(str2);
+      // 同样支持负数操作,取操作是从左至右
+      str2 = str.substr(-6, 3);
+      console.log(str2);
+
+      // 4. trim()：删除两端空格
+      let psd = "   root123456   ";
+      console.log(psd.length);
+      // 去空格
+      console.log(psd.trim().length);
+
+      // 5. 将字符串打包成数组
+      res = str.split("");
+      console.log(res);
+      // 用途：比如说从邮箱中解析出用户名和邮箱地址
+
+      res = "admin@admin.com".split("@");
+      console.log(res);
+
+      // 总结
+      // 1.事件添加: 事件属性,脚本,事件监听器
+      // 2. 事件传递: 捕获和冒泡
+      // 3. 事件代理
+      // 4. 表单中的事件: focus,blur,change,input,submit...
+      // 5. 字符串函数
+    </script>
+  </body>
+</html>

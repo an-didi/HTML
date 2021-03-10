@@ -1,0 +1,21 @@
+/* 主导航区 */
+.main .nav {
+  /* background-color: white; */
+  display: flex;
+  flex-flow: row wrap;
+  position: absolute;
+  top: 14rem;
+  justify-content: space-between;
+}
+
+.main .nav img {
+  height: 4rem;
+  width: 4rem;
+}
+.main .nav li {
+  /* 每一行显示五个 */
+  flex: 1 1 20%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}

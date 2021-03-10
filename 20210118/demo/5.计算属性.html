@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>计算属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <p>
+        数量：
+        <input
+          type="number"
+          v-model="num"
+          style="width: 5em"
+          min="0"
+          @change="calc"
+        />
+      </p>
+      <p>单价：{{price}} 元</p>
+      <p>金额：{{res}} 元</p> -->
+      <p>
+        数量：<input type="number" v-model="num" style="width: 5em" min="0" />
+      </p>
+      <p>单价：{{price}} 元</p>
+      <!-- 计算属性，本质上就是访问器属性 -->
+      <p>金额：{{amount}} 元</p>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {
+            num: 0,
+            price: 50,
+            res: 0,
+          };
+        },
+
+        // 计算属性，使用computed声明,本质上就是访问器属性，最终会和data合并，所以不要和data中已有属性重名
+        computed: {
+          //   amount() {
+          //     return this.num * this.price;
+          //   },
+
+          // 访问器属性有getter和setter
+          // 计算属性默认是getter
+          amount: {
+            get() {
+              return this.num * this.price;
+            },
+            set(value) {
+              console.log(value);
+              // if (this.num * this.price > 1000) this.price = 40;
+            },
+          },
+        },
+
+        // methods: {
+        //   calc() {
+        //     if (this.res > 1000) this.price = 40;
+        //     this.res = this.num * this.price;
+        //   },
+        // },
+      });
+        vm.amount = 1100;
+    </script>
+  </body>
+</html>

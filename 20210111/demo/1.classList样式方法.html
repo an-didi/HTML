@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>classList</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .bg {
+        background-color: #ff0;
+      }
+      .green {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="red">classList更换类样式</p>
+    <script>
+      const p = document.querySelector("p");
+      //   p.className = "red";
+      //   p.className = "red bg";
+      //   classList:用来动态的设置元素的类样式
+      //   p.classList.add("red");
+      //   p.classList.add("bg");
+      //   p.classList.add("green");
+      //   p.classList.remove("bg");
+      //   p.classList.remove("green");
+      //   p.classList.replace("red", "green");
+      // toggle()动态切换,如果有该样式就执行移除操作,否则就是添加
+      p.classList.toggle("red");
+    </script>
+  </body>
+</html>

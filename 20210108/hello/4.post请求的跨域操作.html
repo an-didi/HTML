@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax同源策略</title>
+  </head>
+  <body>
+    <button>ajax-post-cors</button>
+    <p class="tips"></p>
+    <script>
+      // cors: 跨域资源共享
+      const tips = document.querySelector(".tips");
+      const btn = document.querySelector("button");
+      btn.onclick = (ev) => {
+        // ev.preventDefault();
+        //1. 创建 xhr 对象:
+        const xhr = new XMLHttpRequest();
+        //2. 配置 xhr 参数:
+        xhr.open("post", "http://world.io/cors2.php");
+        //3. 处理 xhr 响应:
+        xhr.onload = () => (tips.innerHTML = xhr.response);
+        //4. 发送 xhr 请求:get请求使用默认参数null，post请求要使用表单数据构造器FormData
+
+        let data = new FormData();
+        data.append("name", "小花");
+        data.append("password", "xh123456");
+        xhr.send(data);
+      };
+    </script>
+  </body>
+</html>

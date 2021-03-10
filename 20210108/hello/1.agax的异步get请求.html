@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ajax-get异步请求</title>
+  </head>
+  <body>
+    <button>ajax-get</button>
+    <p></p>
+    <script>
+      const btn = document.querySelector("button");
+      btn.onclick = () => {
+        //1. 创建 xhr 对象:
+        const xhr = new XMLHttpRequest();
+        //2. 配置 xhr 参数:
+        // open(请求类型，url)
+        xhr.open("get", "test1.php?id=1");
+        // 设置响应返回的数据类型为JSON
+        xhr.responseType = "json";
+        //3. 处理 xhr 响应:
+        // 成功
+        xhr.onload = () => {
+          console.log(xhr.response);
+          alert("ajax-get请求成功");
+          // 返回成功，将响应结果渲染到页面中：进行dom操作
+          let user = `${xhr.response.name}:(${xhr.response.email})`;
+          document.querySelector("p").innerHTML = user;
+        };
+        // 失败
+        xhr.onerror = () => {
+          console.log("Error");
+          document.querySelector("p").innerHTML = `请求失败`;
+        };
+        //4. 发送 xhr 请求:
+        xhr.send(null);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* 转换为flex弹性布局元素 */
+  display: flex;
+  padding: 1em;
+  height: 15em;
+  border: 1px solid #000;
+  margin: 1em;
+}
+.container > .item {
+  /* height: 2em; */
+  width: 5em;
+  background-color: lightcyan;
+  border: 1px solid #000;
+}
+/* 例如设置第二个项目与其他项目的对齐方式不一样 */
+
+.container > .item:nth-of-type(2) {
+  align-self: stretch;
+  align-self: flex-start;
+  align-self: flex-end;
+  align-self: center;
+
+  /* 支持定位 */
+  /* position: absolute;
+  left: 2em;
+  top: 3em; */
+}

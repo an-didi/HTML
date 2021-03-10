@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模块命名空间的作用</title>
+  </head>
+  <body>
+    <script type="module">
+      // 命名空间：是一个容器，内部可以包含任何类型的数据
+      // 命名空间是一个对象，可以挂载到当前的全局中
+      //   import { userName, hello, User } from "./module1.js";
+      // 使用命名空间来导入
+      import * as nameSpace from "./module1.js";
+      let userName;
+      let hello = () => {};
+      class User {}
+      console.log(nameSpace);
+      console.log(nameSpace.userName);
+      console.log(nameSpace.hello(nameSpace.userName));
+      console.log(new nameSpace.User("小兰", 18).show());
+    </script>
+  </body>
+</html>

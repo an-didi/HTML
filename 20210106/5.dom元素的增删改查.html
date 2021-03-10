@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom元素的增删改查操作</title>
+  </head>
+  <body>
+    <ul id="list">
+      <li class="item">item1</li>
+      <li class="item">item2</li>
+      <li class="item">item3</li>
+      <li class="item">item4</li>
+      <li class="item">item5</li>
+    </ul>
+    <script>
+      const ul = document.querySelector("#list");
+      // 1. 创建一个元素
+      const li = document.createElement("li");
+      // parent.appendChild(newEl)方法，在父元素上调用
+      ul.appendChild(li);
+      // 直接添加文本内容
+      li.innerText = "item6";
+      // 可以添加其他的html代码
+      // li.innerHTML = '<i style="color:red">item6</i>';
+      // 如果原来的父级元素下有东西的话，使用innerHTML就会覆盖掉原来的内容
+      //   ul.innerHTML = '<li class="item" style= "color:blue">item7</li>';
+      // innerHTML和innerText的区别是：是否解析html文档
+      // 也可以直接使用一个html文档的字符串来进行添加
+      let htmlStr = "<li>item6</li>";
+      // 将html字符串直接解析为dom元素
+      //   ul.insertAdjacentHTML(位置，html字符串)；
+      ul.insertAdjacentHTML("beforeEnd", htmlStr);
+
+      // 如果需要大量添加元素，应该使用文档片段完成
+
+      // 创建一个文档片段
+      //   const frag = document.createDocumentFragment();
+      const frag = new DocumentFragment();
+      // 使用for 循环进行添加
+      for (let i = 0; i < 5; i++) {
+        const li = document.createElement("li");
+        li.textContent = "Hello" + (i + 1);
+        // 将生成的节点先临时挂载到文档片段中去
+        frag.appendChild(li);
+      }
+      // 将文档片段挂载到页面中
+      ul.appendChild(frag);
+      // 也可以使用写好的html文档字符串进行多个添加,然后使用insertAdjacentHTML()
+      htmlStr = `
+      <li style="color:skyblue">demo1</li>
+      <li style="color:skyblue">demo2</li>
+      <li style="color:skyblue">demo3</li>
+      <li style="color:skyblue">demo4</li>
+      <li style="color:skyblue">demo5</li>
+      <li style="color:skyblue">demo6</li>
+      `;
+      // 关键字after/before,Begin/End
+      ul.insertAdjacentHTML("afterBegin", htmlStr);
+
+      // 使用元素添加
+      ul.insertAdjacentElement("afterBegin", li);
+
+      // 2.更新操作
+      let h3 = document.createElement("h3");
+      h3.innerHTML = "猜猜我替换掉了谁？";
+      // 将第三个元素替换掉
+
+      // 同层级替换
+      document.querySelector("li:nth-of-type(3)").replaceWith(h3);
+      // 在父级元素替换掉子元素
+      ul.replaceChild(h3, document.querySelector("li:first-of-type"));
+
+      // 3. 移除
+      ul.removeChild(document.querySelector("#list h3"));
+
+      // 4. 遍历查询
+
+      // 获取所有子元素
+      // 在父节点下使用，获取当前所有子元素
+      let lies = ul.children;
+      console.log(lies);
+      // 获取子元素数量
+      let liesNums = ul.children.length;
+      console.log(liesNums);
+      // 这个也是获取子元素数量
+      liesNums = ul.childElementCount;
+      console.log(liesNums);
+
+      // 语法糖系列
+
+      // 拿到第一个子元素
+      console.log(ul.firstElementChild);
+      //最后一个子元素
+      console.log(ul.lastElementChild);
+      // 父节点
+      console.log(ul.lastElementChild.parentElement);
+      // 前一个兄弟
+      // 需要获取当前元素的位置
+      const ninth = document.querySelector("#list li:nth-of-type(9)");
+      // ninth.style.color = "red";
+      const eight = ninth.previousElementSibling;
+      console.log(eight.innerHTML);
+
+      // 后一个兄弟
+      const ten = ninth.nextElementSibling;
+      console.log(ten.innerHTML);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+header {
+  /* padding: 0.5rem; */
+  background-color: black;
+  height: 6rem;
+  display: grid;
+  grid-template-columns: 14rem 8fr 3fr;
+  place-items: space-between;
+  margin-bottom: 3rem;
+}
+
+header img {
+  width: 14rem;
+  /* height: 6rem; */
+}
+
+header .nav-top {
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 6.8rem repeat(8, 1fr);
+  place-items: center;
+}
+
+header .nav-top a {
+  height: 6rem;
+  color: #b3b3b3;
+  line-height: 6rem;
+}
+
+header .nav-top a:hover {
+  color: #fafafa;
+  transition: 0.5s;
+  border-bottom: 3px solid lightgreen;
+}
+
+header .button {
+  background-color: black;
+  color: #b3b3b3;
+  padding-right: 3rem;
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  place-self: center end;
+}
+header .button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

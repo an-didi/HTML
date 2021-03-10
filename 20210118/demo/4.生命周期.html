@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生命周期</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <p v-text="words"></p>
+    </div>
+    <script>
+      // vue实例从创建到销毁的过程
+      //vue生命周期是函数，它为每个周期提供了一个编程接口（钩子），开放出来供用户自定义
+
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {
+            words: "Vue的生命周期",
+          };
+        },
+        // 实例创建之前，data不可用，el不可用
+        beforeCreate() {
+          console.log("实例创建前：", this.$el, this.words);
+        },
+
+        // 实例创建之后,data可用，el不可用
+        created() {
+          console.log("实例创建后：", this.$el, this.words);
+        },
+
+        // 挂载完成，类似于“load”方法
+        mounted() {
+          console.log("挂载完成：", this.$el, this.words);
+        },
+
+        // 更新完成
+        updated() {
+          console.log("更新完成：", this.$el, this.words);
+        },
+
+        // 数据销毁
+        destroyed() {
+          console.log("数据销毁：", this.$el, this.words);
+        },
+      });
+      vm.words = "数据更新";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+}
+.footer > div {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer div a:first-of-type div {
+  font-size: 1.5rem;
+}

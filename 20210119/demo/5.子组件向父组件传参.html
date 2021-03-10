@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件之间的传参：子组件向父组件传参</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 子组件中的数据变化更新父组件的数据,通过消息传递（事件）实现 -->
+      <!-- 子组件向父组件传参是通过声明同名事件来实现的 -->
+      <btn-inc
+        :user-name="username"
+        :parent-count="count"
+        @click-count="handle"
+      ></btn-inc>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data() {
+          return {
+            username: "父组件的变量",
+            count: 0,
+          };
+        },
+        // 局部组件
+        components: {
+          btnInc: {
+            // 使用固定属性名称props来接收父组件自定义的属性名
+            props: ["userName", "parentCount"],
+
+            // 组件之间的数据传递是单向的，不允许在子组件中更新父组件中的数据
+            // 必须使用$emit()事件方法
+            // $emit(父组件中要使用的方法名称,子组件要传给父组件的值)
+            template: `<div>
+                  <button @click="$emit('click-count',num)">点赞：+ {{parentCount}}</button>
+                  <span>{{userName}}</span>
+                  </div>`,
+            data() {
+              return {
+                num: 1,
+              };
+            },
+          },
+        },
+
+        // 父组件更新数据的方法
+        methods: {
+          handle(value) {
+            console.log(this.count);
+            this.count += value;
+          },
+        },
+      });
+      //   总结：
+      //   1. 父组件向子组件传参：通过自定义属性
+      //   2. 子组件向父组件传参：通过自定义方法
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模拟12列栅格布局</title>
+    <link rel="stylesheet" href="css/grid.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 栅格布局系统分为两步:
+        第一步先创建一个行;
+        第二步在行中进行列的划分  -->
+      <!-- 一等份 -->
+      <div class="row">
+        <div class="item col-12">12列</div>
+      </div>
+      <!-- 二等份 -->
+      <div class="row">
+        <div class="item col-6">六列</div>
+        <div class="item col-6">六列</div>
+      </div>
+      <!-- 三等份 -->
+      <div class="row">
+        <div class="item col-4">4列</div>
+        <div class="item col-4">4列</div>
+        <div class="item col-4">4列</div>
+      </div>
+      <!-- 四等份 -->
+      <div class="row">
+        <div class="item col-3">3列</div>
+        <div class="item col-3">3列</div>
+        <div class="item col-3">3列</div>
+        <div class="item col-3">3列</div>
+      </div>
+      <!-- 六等份 -->
+      <div class="row">
+        <div class="item col-2">2列</div>
+        <div class="item col-2">2列</div>
+        <div class="item col-2">2列</div>
+        <div class="item col-2">2列</div>
+        <div class="item col-2">2列</div>
+        <div class="item col-2">2列</div>
+      </div>
+      <!-- 12等份 -->
+      <div class="row">
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+        <div class="item col-1">1列</div>
+      </div>
+      <!-- 混合使用 -->
+      <div class="row">
+        <div class="item col-3">3列</div>
+        <div class="item col-6">6列</div>
+        <div class="item col-3">3列</div>
+      </div>
+    </div>
+  </body>
+</html>

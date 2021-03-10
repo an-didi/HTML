@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作用域与闭包</title>
+  </head>
+  <body>
+    <script>
+      // js的三种作用域：1.全局作用域，2.函数作用域，3.块作用域
+      // 1. 全局作用域：声明在函数之外的，都叫做全局作用域
+      let str = "Hello World";
+      //   2.函数作用域：声明在函数之内的
+      function getstr() {
+        //   在函数中声明的变量叫做私有变量
+        let string = "!";
+        return str + string;
+      }
+      console.log(getstr());
+
+      //   3.块作用域
+      {
+        let name = "xixi";
+        const age = 18;
+        // var 不支持块作用域
+        // var gender = '男';
+      }
+
+      //   4. 闭包
+      // 自由变量：既不是函数参数，也不是私有变量，存在函数调用上下文中的变量
+      // 闭包：能够访问自由变量的函数，所以理论上讲，任何函数都是闭包
+      function f1() {
+        let a = 1;
+        // 此时的a相对于f1是私有变量，但是相对于返回地匿名函数就是一个自由变量
+        return function () {
+          return a++;
+        };
+      }
+      let f2 = f1();
+      console.log(f2());
+      console.log(f2());
+      //   闭包是非常浪费内存的
+    </script>
+  </body>
+</html>

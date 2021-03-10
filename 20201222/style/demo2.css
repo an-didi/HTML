@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* :not()否定语法，排除括号内的 */
+body *:not(.body) {
+  background-color: lightgreen;
+}
+header,
+footer {
+  height: 8vh;
+}
+.body {
+  /* 中间主体部分采用flex弹性盒布局实现 */
+  display: flex;
+  margin: 0.5em 0;
+  height: calc(84vh - 1em);
+}
+
+.body aside {
+  min-width: 14.5em;
+}
+.body main {
+  min-width: calc(100% - 30em);
+  margin: 0 0.5em;
+}
+/* ----------------------------------------------- */
+
+/* 使用grid完成布局 */
+
+/* body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 15em 1fr 15em;
+  grid-template-rows: 8vh 1fr 8vh;
+  gap: 0.5em;
+}
+
+header,
+footer {
+  grid-column: span 3;
+}
+
+body > * {
+  background-color: lightgreen;
+} */
+
+/* grid虽然强大，但不代表到处都要用到它，它更适合整体/宏观布局，而felx适合细节处理 */

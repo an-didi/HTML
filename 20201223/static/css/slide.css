@@ -1,0 +1,62 @@
+/* 幻灯片，静态 */
+.main .solide {
+  background-color: white;
+  min-height: 14rem;
+}
+
+.main .slide .box {
+  height: 11rem;
+  background-color: #e43130;
+  border-bottom-left-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+  z-index: 1;
+}
+
+.main .slide a {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+.main .slide img {
+  /* width: 35rem; */
+  height: 14rem;
+  border-radius: 1rem;
+}
+
+/* 跳转栏 */
+.jump {
+  height: 3rem;
+  display: flex;
+  background-color: #e43130;
+  padding: 0.2rem;
+  z-index: 3;
+  position: fixed;
+  right: 0;
+  top: 5rem;
+  border-top-left-radius: 2.5rem;
+  border-bottom-left-radius: 2.5rem;
+  justify-content: space-around;
+  /* opacity: 0.8; */
+}
+
+.jump a:first-of-type {
+  line-height: 2.5rem;
+}
+
+.jump .jd {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2.5rem;
+  background-color: white;
+  /* border: 1px solid #fff; */
+  border-radius: 50%;
+  color: #e43130;
+  margin-right: 0.5rem;
+}
+
+.jump a:last-of-type {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}

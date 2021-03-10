@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JOSN基础知识</title>
+  </head>
+  <body>
+    <script>
+      // 1. JOSN.stringify(data(js数据),replacer(对数据的处理方式), space(限定输出格式)):将js数据转为JSON
+      console.log(JSON.stringify(555), typeof JSON.stringify(555));
+      // JSON中字符串要加引号
+      console.log(JSON.stringify("aaa"), typeof JSON.stringify("aaa"));
+      console.log(JSON.stringify(true), typeof JSON.stringify(true));
+      console.log(JSON.stringify(null), typeof JSON.stringify(null));
+      // JSON中对象的属性必须加双引号，字符串也一样
+      console.log(
+        JSON.stringify({ a: 1, b: 2 }),
+        typeof JSON.stringify({ a: 1, b: 2 })
+      );
+      console.log(JSON.stringify([1, 2, 3]), typeof JSON.stringify([1, 2, 3]));
+      // JSON其实不是数据类型，只是一个具有特殊格式的字符串而已
+
+      // 会对JSON格式字符串进行特殊操作，主要靠后面两个参数
+      // 第二个参数支持数组和函数
+
+      // 数组
+      console.log(JSON.stringify({ a: 1, b: 2, c: 3 }, ["a", "b"]));
+      //   console.log(JSON.stringify({ a: 1, b: 2, c: 3 }));
+      // 函数
+      console.log(
+        JSON.stringify({ a: 1, b: 2, c: 3 }, (k, v) => {
+          if (v < 2) return undefined;
+          return v;
+        })
+      );
+
+      // 第三个参数，用来格式化输出JSON字符串
+      // 第三个参数默认是空格输出，可以输入数字来控制空格数量，也可以输入自定义字符串
+      console.log(JSON.stringify({ a: 1, b: 2, c: 3 }, null, "111"));
+
+      // 2. JSON.parse(str, reviver),将JSON转为js对象
+
+      let obj = JSON.parse(`{"a":1,"b":2}`);
+      //   console.log(obj);
+      // 第二个参数控制哪些参数返回哪些不返回
+      obj = JSON.parse(`{"a":1,"b":2}`, (k, v) => {
+        // JSON对象解析是由内向外的
+        if (k === "") return v;
+        return v * 2;
+      });
+      console.log(obj);
+    </script>
+  </body>
+</html>

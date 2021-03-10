@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getter/setter方法2</title>
+    <style>
+      #login {
+        width: 20rem;
+        border: 1px solid #888;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        padding: 1em 2em;
+        margin: 2em auto;
+        /* background: linear-gradient(to right, lightcyan, #fff); */
+        display: grid;
+        grid-template-columns: 4em 1fr;
+        gap: 1em 0;
+        box-shadow: 0 0 3px #888;
+      }
+
+      #login .title {
+        grid-area: auto / span 2;
+        place-self: center;
+      }
+      #login button {
+        grid-area: auto / 2;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="handle.php" method="POST" id="login">
+      <label class="title">用户登录</label>
+      <label for="email">邮箱:</label>
+      <input type="email" id="email" placeholder="admin@email.com" />
+      <label for="password">密码:</label>
+      <input type="password" id="password" placeholder="不少于六位" />
+      <label for="confirm">记住我:</label>
+      <div>
+        <input type="radio" name="save" id="confirm" value="1" checked /><label
+          for="confirm"
+          >保存</label
+        >
+        <input type="radio" name="save" id="cancel" value="0" /><label
+          for="cancel"
+          >不保存</label
+        >
+      </div>
+      <button name="submit">登录</button>
+    </form>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // css():设置元素的行内样式
+      // css(name):getter
+      // css(name,value):setter
+      // 同样第二个参数支持callback回调函数
+      const form = $("form");
+
+      // 使用原生的方式获取当前元素的宽度
+      // 使用style只能获取到内联样式，样式表中的样式是拿不到的
+      // 必须使用计算样式才能获取
+      console.log(document.querySelector("form").style.width);
+      // 使用计算样式获取当前元素样式表中的样式
+      console.log(
+        window
+          .getComputedStyle(document.querySelector("form"), null)
+          .getPropertyValue("width")
+      );
+
+      // 使用jquery的css()方式来拿到当前元素的宽度
+      console.log(form.css("width"));
+      // 可以看到的是很简洁，很方便
+
+      // 使用css()来设置css属性
+      form.css("border-top", "6px solid green");
+      // css(obj)
+      form.css({
+        "border-bottom": "6px solid green",
+        "background-color": "yellow",
+      });
+
+      // 第二个参数支持回调函数
+      // Math数学函数,Math.radom()生成随机数,Math.floor()向下取整
+      form.css("background-color", () => {
+        const color = ["pink", "lightblue", "lime", "yellow"];
+        // 四个元素，对应的索引是0，1，2，3
+        let i = Math.floor(Math.random() * color.length);
+        return color[i];
+      });
+    </script>
+  </body>
+</html>

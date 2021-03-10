@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue路由原理与实现</title>
+    <!-- 加载vue框架 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <!-- 加载路由模块 -->
+    <script src="../vue-router-dev/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <nav class="app">
+      <!-- 1. vue路由是基于hash实现的，是用a标签的锚点来实现的 -->
+
+      <!-- vue的自定义标签<router-link></router-link> -->
+      <router-link to="/list1">娱乐新闻</router-link>
+      <router-link to="/list2">体育新闻</router-link>
+
+      <!-- 原生的是通过a标签的href属性来跳转，而在vue中则是通过to属性来跳转 -->
+      <!-- <a href="#list1">国内新闻</a> -->
+
+      <!-- 路由到的资源显示区域 -->
+      <!-- vue的自定义标签<router-view></router-view> -->
+      <router-view></router-view>
+    </nav>
+    <script>
+      const list1 = {
+        // 组件模板字面量
+        template: `
+                    <ul>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    </ul>`,
+      };
+      const list2 = {
+        template: `<ul>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    </ul>`,
+      };
+      // 1.创建路由对象
+      const router = new VueRouter({
+        // 路由配置项
+        routes: [
+          // 每一个路由都是一个对象，每个对象对应着一个路由地址
+          {
+            // path：路由路径
+            path: "/list1",
+
+            // 路由组件
+            component: list1,
+            // {
+            //   // 组件模板字面量
+            //   template: `<ul>
+            //               <li><a href="">北京文化或受郑爽波及 员工称郑爽想卖衣服给粉丝被张恒制止</a></li>
+            //               <li><a href="">热点-《上阳赋》为穿帮镜头道歉：现场花絮 已替换素材</a></li>
+            //               <li><a href="">杨丽萍聚会时期跳舞，却遭网友们怒批，网友：饭桌也能当舞台？</a></li>
+            //             </ul>`,
+            // },
+          },
+          {
+            path: "/list2",
+            component: list2,
+            // {
+            //   template: `<ul>
+            //               <li><a href="">NBA-库里26+11勇士胜马刺 三巨头96分篮网负骑士</a></li>
+            //               <li><a href="">中超16强动态：冬训陆续开启 多队完成中性化更名</a></li>
+            //               <li><a href="">卡帅大概率继续执教 正协调蒋光太航班广州塔归期成迷</a></li>
+            //             </ul>`,
+            // },
+          },
+        ],
+      });
+
+      // 2. 注册路由
+      new Vue({
+        el: ".app",
+        router: router,
+      }).$mount(".app");
+    </script>
+  </body>
+</html>

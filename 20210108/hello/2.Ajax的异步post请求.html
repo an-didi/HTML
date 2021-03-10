@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ajax的异步post请求</title>
+    <style>
+      #login {
+        width: 20em;
+        border: 1px solid #888;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        padding: 1em 2em;
+        margin: 2em auto;
+        background: linear-gradient(to right, lightcyan, #fff);
+        display: grid;
+        grid-template-columns: 3em 1fr;
+        gap: 1em 0;
+      }
+
+      #login .title {
+        grid-area: auto / span 2;
+        place-self: center;
+      }
+      #login button {
+        grid-area: auto / 2;
+      }
+      #login #tips {
+        grid-area: auto / 2;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- post请求主要是表单进行操作 -->
+    <form action="" method="POST" id="login">
+      <label class="title">用户登录</label>
+      <label for="email">邮箱:</label>
+      <input type="email" name="email" placeholder="admin@email.com" />
+      <label for="password">密码:</label>
+      <input type="password" name="password" placeholder="不少于六位" />
+      <button name="submit">登录</button>
+      <span id="tips"></span>
+    </form>
+    <script>
+      const form = document.querySelector("#login");
+      const btn = document.querySelector("#login button");
+      const tip = document.querySelector("#tips");
+      //   console.log(form, btn, tip);
+      // FormData对象,获取到表单的值，然后进行4.发送请求操作
+
+      //   console.log(new FormData(form));
+      //   let data = new FormData();
+      //   data.append("email", form.email.value);
+      //   data.append("password", form.password.value);
+      //   console.log(data.get("email"), data.get("password"));
+      btn.onclick = (ev) => {
+        // 禁用掉默认的提交行为，否则下边的不会执行
+        ev.preventDefault();
+        //1. 创建 xhr 对象:
+        const xhr = new XMLHttpRequest();
+        //2. 配置 xhr 参数:
+        // open(请求类型，url)
+        xhr.open("post", "test2.php");
+        // 设置响应返回的数据类型为JSON
+        // xhr.responseType = "json";
+        //3. 处理 xhr 响应:
+        // 成功
+        xhr.onload = () => {
+          //当前响应文本
+          //   console.log(xhr.response);
+          // 返回成功，将响应结果渲染到页面中：进行dom操作
+          //   let user = `${xhr.response.name}:(${xhr.response.email})`;
+          tip.innerHTML = xhr.response;
+        };
+        // 失败
+        xhr.onerror = () => {
+          console.log("Error");
+          document.querySelector("p").innerHTML = `请求失败`;
+        };
+        //4. 发送 xhr 请求:get请求使用默认参数null，post请求要使用表单数据构造器FormData
+        xhr.send(new FormData(form));
+      };
+    </script>
+  </body>
+</html>

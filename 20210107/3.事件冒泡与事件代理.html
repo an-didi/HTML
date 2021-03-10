@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件冒泡与事件代理</title>
+  </head>
+  <body onclick="alert(this.tagName)">
+    <ul>
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+    </ul>
+    <div onclick="alert(this.tagName)">
+      <ul onclick="alert(this.tagName)">
+        <li onclick="alert(this.tagName)">text</li>
+      </ul>
+    </div>
+    <script>
+      // 事件代理：也叫 “事件委托”
+      const lies = document.querySelectorAll("li");
+      // 遍历每个li，并逐个为他们添加点击事件
+      //   lies.forEach((li) => (li.onclick = (ev) => console.log(ev.currentTarget)));
+      // 可以直接将点击事件委托给父级元素去添加
+      document.querySelector("ul").addEventListener("click", (ev) => {
+        // 事件绑定者
+        console.log(ev.currentTarget);
+        // 事件的触发者,通常是“事件绑定者”的后代元素
+        console.log(ev.target);
+      });
+    </script>
+  </body>
+</html>

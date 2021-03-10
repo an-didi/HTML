@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>项目在容器中自定义位置</title>
+    <style>
+      /* 控制项目在容器中位置的属性是：grid-area; */
+      /* 我们可以将整个网格布局看成是一个二维的布局空间，每一条边都有一个对应的编号，行和列的初始坐标是从左上角（1，1）开始，然后往下依次递增 */
+      /* 拿网格中的item1举例，它所在的空间就是（1，1）--> （2，2），grid-area属性就有四个值，分别代表的是网格单元的：起始行 / 起始列 / 结束行 / 结束列 */
+      /* 可以设置一个网格单元的跨行跨列的选项，比如说，设置item1要跨越一行，三列 */
+      .main .item:first-of-type {
+        background-color: lightyellow;
+        /* grid-area: 1 / 1 / span 1 / span 3; */
+        /* grid-area: 1 / 1 / 2 / 4; */
+        /* text-align: center; */
+        /* 如果不改变项目的起始位置，可以不写起始行编号和起始列编号，只需要写跨的行数和列数 */
+        grid-area: span 1 / span 3;
+        /* 效果是一样的 */
+      }
+      /* 总结：
+      grid-area: 参数不同，意义不同
+      1. 值中只有span
+      1.1 单值：跨的行数
+      1.2 双值：跨的列数
+
+      2. 值中有span和行列编号
+      2.1 双值： 没有span，默认跨越一行一列
+      2.2 三值： 省略了列结束编号，或者跨的列数，此时前面的值可使用auto；
+      2.3 四值： 最完美的语法 */
+      .main {
+        display: grid;
+        border: 1px solid #000;
+        padding: 0.5em;
+
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 5em);
+        gap: 0.5em;
+        grid-auto-rows: 5em;
+      }
+      .main .item {
+        background-color: aliceblue;
+        border: 1px solid #000;
+        padding: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <span class="item">item1</span>
+      <span class="item">item2</span>
+      <span class="item">item3</span>
+      <span class="item">item4</span>
+      <span class="item">item5</span>
+      <span class="item">item6</span>
+      <!-- <span class="item">item7</span>
+      <span class="item">item8</span>
+      <span class="item">item9</span> -->
+    </div>
+  </body>
+</html>

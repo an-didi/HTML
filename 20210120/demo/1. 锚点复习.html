@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>锚点的作用</title>
+  </head>
+  <body>
+    <nav>
+      <!-- 此时的#list1，#list2就是锚点 -->
+      <a href="#list1">娱乐新闻</a>
+      <a href="#list2">体育新闻</a>
+    </nav>
+
+    <!-- 使用id来充当url链接实现跳转 -->
+    <ul id="list1">
+      <li>
+        <a href="">北京文化或受郑爽波及 员工称郑爽想卖衣服给粉丝被张恒制止</a>
+      </li>
+      <li><a href="">热点-《上阳赋》为穿帮镜头道歉：现场花絮 已替换素材</a></li>
+      <li>
+        <a href=""
+          >杨丽萍聚会时期跳舞，却遭网友们怒批，网友：饭桌也能当舞台？</a
+        >
+      </li>
+    </ul>
+    <ul id="list2" style="transform: translate(0, 50em)">
+      <li><a href="">NBA-库里26+11勇士胜马刺 三巨头96分篮网负骑士</a></li>
+      <li><a href="">中超16强动态：冬训陆续开启 多队完成中性化更名</a></li>
+      <li><a href="">卡帅大概率继续执教 正协调蒋光太航班广州塔归期成迷</a></li>
+    </ul>
+
+    <!-- 添加一个回到顶部的链接 -->
+    <a href="#" style="position: absolute; right: 1em; bottom: -30em"
+      >回到顶部</a
+    >
+
+    <!-- 1. 锚点可以改变url地址，实现在当前页面内部的不同区域之间进行跳转 -->
+    <!-- 2. 因为是在当前页面中跳转，所以页面不会刷新 -->
+    <!-- 3. 所以使用锚点可以完成SPA的两大目标：既要改变url，又不刷新页面 -->
+  </body>
+</html>

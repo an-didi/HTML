@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>用历史记录对象实现前端路由模式</title>
+  </head>
+  <body>
+    <nav class="app">
+      <a href="/list1">娱乐新闻</a>
+      <a href="/list2">体育新闻</a>
+    </nav>
+    <div class="router-view"></div>
+    <script>
+      const list1 = `
+                    <ul>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    <li><a href="">娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻</a></li>
+                    </ul>`;
+      const list2 = `<ul>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    <li><a href="">体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻体育新闻</a></li>
+                    </ul>`;
+      const routerView = document.querySelector(".router-view");
+
+      // 获取到所有的a.href
+      const links = document.querySelectorAll(".app a[href]");
+      //   console.log(links);
+      links.forEach(
+        (link) =>
+          (link.onclick = (ev) => {
+            // 禁用掉a标签的默认行为
+            ev.preventDefault();
+
+            // history对象，history.pushState(data状态对象,title标题, url)
+            history.pushState(null, "", link.href);
+            // 手工更新了url,但是popstate事件监听不到这个变化，需要这里调用一个函数
+            show();
+          })
+      );
+      window.addEventListener("DOMContentLoaded", show);
+      // 当整个页面及所有依赖资源如样式表和图片都已完成加载时，将触发load事件。
+      // 它与DOMContentLoaded不同，后者只要页面DOM加载完成就触发，无需等待依赖资源的加载。
+      function show() {
+        console.log(location.pathname);
+        switch (location.pathname) {
+          case "/list1":
+            routerView.innerHTML = list1;
+            break;
+          case "/list2":
+            routerView.innerHTML = list2;
+            break;
+          default:
+            routerView.innerHTML = list1;
+        }
+      }
+    </script>
+  </body>
+</html>

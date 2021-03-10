@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getter/setter方法1</title>
+    <style>
+      #login {
+        width: 20em;
+        border: 1px solid #888;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        padding: 1em 2em;
+        margin: 2em auto;
+        background: linear-gradient(to right, lightcyan, #fff);
+        display: grid;
+        grid-template-columns: 4em 1fr;
+        gap: 1em 0;
+      }
+
+      #login .title {
+        grid-area: auto / span 2;
+        place-self: center;
+      }
+      #login button {
+        grid-area: auto / 2;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="handle.php" method="POST" id="login">
+      <label class="title">用户登录</label>
+      <label for="email">邮箱:</label>
+      <input type="email" id="email" placeholder="admin@email.com" />
+      <label for="password">密码:</label>
+      <input type="password" id="password" placeholder="不少于六位" />
+      <label for="confirm">记住我:</label>
+      <div>
+        <input type="radio" name="save" id="confirm" value="1" checked /><label
+          for="confirm"
+          >保存</label
+        >
+        <input type="radio" name="save" id="cancel" value="0" /><label
+          for="cancel"
+          >不保存</label
+        >
+      </div>
+      <button name="submit">登录</button>
+    </form>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // attr():获取/设置元素属性
+      // attr(name):getter()方法
+      // attr(name, value): setter()方法
+      // 拿到表单
+      // 原生js方法
+      // const form = document.forms;
+
+      // console.log(form);
+      // jQuery方法
+      const form = $("form");
+      // $("form").submit((ev) => ev.preventDefault());
+      form.submit((ev) => ev.preventDefault());
+      // document.querySelector("form").onsubmit = (ev) => ev.preventDefault();
+      // 查询form的action属性
+      console.log(form.attr("action"));
+      form.attr("action", "admin/check.php");
+      console.log(form.attr("action"));
+
+      // 第二个参数支持使用回调函数
+      form.attr("action", () => {
+        // 进行字符串统一格式
+        let method = form.attr("method").toLowerCase();
+        return method === "get" ? "query.php?id=2" : "register.php";
+      });
+      //   console.log(form.attr("action"));
+    </script>
+  </body>
+</html>

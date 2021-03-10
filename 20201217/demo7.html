@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>视口单位：vh / vw</title>
+    <style>
+      /* 视口：可视窗口，浏览器窗口用于显示文档的可视区域 */
+      /* 视口不包含地址栏，菜单栏，工具条，状态栏 */
+      /* vh：视口的“初始包含块”的高度的百分之一（1/100）
+        vw：视口的“初始包含块”的宽度的百分之一（1/100） */
+      /* html {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      } */
+      .box {
+        background-color: skyblue;
+        width: 50vw;
+        height: 50vh;
+        margin: auto;
+      }
+      /* 这个主要用于移动端的布局 */
+
+      /* 视口单位：vmin，vmax */
+      .box {
+        background-color: skyblue;
+        width: 50vmax;
+        height: 50vmax;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>

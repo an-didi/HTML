@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* 转换为flex弹性布局元素 */
+  display: flex;
+  padding: 1em;
+  height: 15em;
+  border: 1px solid #000;
+  margin: 1em;
+}
+
+.container > .item {
+  /* height: 2em; */
+  width: 5em;
+  background-color: lightcyan;
+  border: 1px solid #000;
+}
+/* 1. 单行容器 */
+.container {
+  /* 控制主轴方向，默认值是row水平方向 */
+  /* flex-direction: row; */
+  /* 控制项目换行方式，默认值是nowrap不换行 */
+  /* flex-wrap: nowrap; */
+  /* 缩写方式flex-flow */
+  flex-flow: row nowrap;
+}
+/* 2. 多行容器：一行显示不下，允许换行显示 */
+.container {
+  flex-flow: row wrap;
+}

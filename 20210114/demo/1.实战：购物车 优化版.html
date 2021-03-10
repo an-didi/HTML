@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>购物车</title>
+    <style>
+      table {
+        /* 设置相邻单元格共享同一边框 */
+        border-collapse: collapse;
+        width: 90%;
+        text-align: center;
+        margin: auto;
+      }
+
+      table caption {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      table th,
+      table td {
+        border-bottom: 1px solid #ccc;
+        padding: 5px;
+        font-weight: normal;
+      }
+
+      table thead tr:first-of-type {
+        background-color: #e6e6e6;
+        height: 3em;
+      }
+
+      table input[type="checkbox"] {
+        width: 1.5em;
+        height: 1.5em;
+      }
+
+      table tbody tr {
+        border-bottom: 1px solid #ccc;
+      }
+      table tbody tr:hover {
+        background-color: #f6f6f6;
+        cursor: pointer;
+      }
+
+      tbody img {
+        width: 3em;
+      }
+      tbody input[type="number"] {
+        width: 3em;
+      }
+
+      div {
+        display: grid;
+        place-content: end;
+      }
+      button {
+        width: 100px;
+        height: 30px;
+        outline: none;
+        border: none;
+        background-color: #e43130;
+        color: white;
+        letter-spacing: 5px;
+      }
+      button:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        购物车
+      </caption>
+      <thead>
+        <tr>
+          <th>
+            <!-- 全选复选框 -->
+            <input
+              type="checkbox"
+              name="checkAll"
+              id="check-all"
+              checked
+            /><label for="check-all">全选</label>
+          </th>
+          <th>图片</th>
+          <th>名称</th>
+          <th>单位</th>
+          <th>单价/元</th>
+          <th>数量</th>
+          <th>金额/元</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="checkbox" name="item" value="SN-1020" checked />
+          </td>
+          <td>
+            <a href=""><img src="../img/p1.jpg" alt="" /></a>
+          </td>
+          <td>iPhone 11</td>
+          <td>部</td>
+          <td class="price">4799</td>
+          <td><input type="number" min="1" value="1" /></td>
+          <td class="amount"></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item" value="SN-1020" checked /></td>
+          <td>
+            <a href=""><img src="../img/p2.jpg" alt="" /></a>
+          </td>
+          <td>小米 11</td>
+          <td>部</td>
+          <td class="price">4299</td>
+          <td><input type="number" min="1" value="1" /></td>
+          <td class="amount"></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item" value="SN-1020" checked /></td>
+          <td>
+            <a href=""><img src="../img/p3.jpg" alt="" /></a>
+          </td>
+          <td>MacBook Pro</td>
+          <td>台</td>
+          <td class="price">18999</td>
+          <td><input type="number" min="1" value="1" /></td>
+          <td class="amount"></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item" value="SN-1020" checked /></td>
+          <td>
+            <a href=""><img src="../img/p4.jpg" alt="" /></a>
+          </td>
+          <td>小米75英寸电视</td>
+          <td>台</td>
+          <td class="price">5999</td>
+          <td><input type="number" min="1" value="1" /></td>
+          <td class="amount"></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item" value="SN-1020" checked /></td>
+          <td>
+            <a href=""><img src="../img/p5.jpg" alt="" /></a>
+          </td>
+          <td>Canon 90D单反</td>
+          <td>部</td>
+          <td class="price">4799</td>
+          <td><input type="number" min="1" value="1" /></td>
+          <td class="amount"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr style="font-weight: bolder; font-size: 1.2em">
+          <td colspan="5">总计:</td>
+          <td id="sum"></td>
+          <td id="total-amount"></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div style="width: 90%; margin: 10px auto">
+      <button>结算</button>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // Array.every(),Arrary.some()
+      // Array.every(callback),对数组中每个成员进行回调处理，只有全部为true，最终返回值才为true，否则为false
+      // Array.some(callback),同every一样，不同的是，它只要任一项返回结果为true，最终结果就为true
+      // every()类似逻辑与运算，some()类似逻辑或运算
+
+      // 1.获取全选复选框，所有单品的复选框
+      const checkAll = document.querySelector("#check-all");
+      // console.log(checkAll);
+      const checkItems = document.querySelectorAll('input[name="item"]');
+      // console.log(checkItems);
+
+      // 2.为全选复选框按钮添加事件：change,当前值改变会触发事件
+      // checkAll.onchange = (ev) => {
+      //   // console.log(ev.target.checked);
+      //   checkItems.forEach((item) => (item.checked = ev.target.checked));
+      // };
+
+      // 为每个单独的复选框添加事件：change
+      // checkItems.forEach(
+      //   (item) =>
+      //     (item.onchange = () =>
+      //       (checkAll.checked = [...checkItems].every((item) => item.checked)))
+      // );
+
+      // 使用jQuery完成上边的内容
+      // $("#check-all").on("change", (ev) => {
+      //   // 对全选复选框添加change事件
+      //   // 当全选复选框的值改变时，对所有的单品复选框进行同步更新它的选中情况
+      //   $('input[name="item"]').each(function () {
+      //     // change事件发生时，对每个单品的选中情况进行同步
+      //     this.checked = ev.target.checked;
+      //   });
+      // });
+      // $('input[name="item"]').each(function () {
+      //   // 对每个单品的复选框添加change事件
+      //   // 对这个单品复选框集合的checked情况进行every()筛选，
+      //   // 当所有的单品复选框都选中时，匹配全选复选框
+      //   this.onchange = function () {
+      //     // console.log($("#check-all")[0].checked);
+      //     // console.log([...$('input[name="item"]')]);
+      //     $("#check-all")[0].checked = [...$('input[name="item"]')].every(
+      //       (item) => item.checked
+      //     );
+      //   };
+      // });
+
+      // 自动计算函数
+      function autoCalculate() {
+        // 对后边数量以及单价，总计进行自动计算
+        // 需要获取到所有的数量，以及所有的单价
+        // 因为拿到的数据都是string，所以需要想办法转换成数值
+        // const prices = document.querySelectorAll(".price");
+        // 因为数据进行运算的时候是会发生类型转换的，所以可以直接进行转换它
+        // 也可以使用parseInt()方法，将字符串转为数值
+
+        // 获取到当前的单价数组，为后面的计算金额
+        const priceArr = [...document.querySelectorAll(".price")].map(
+          (item) => item.textContent * 1
+        );
+        // console.log(priceArr);
+
+        // 获取到被选中事件的索引值
+        // const checkedArr = [];
+        // [...checkItems].forEach((ev, index) => {
+        //   if (ev.checked === true) {
+        //     checkedArr.push(index);
+        //   }
+        // });
+        // console.log(checkedArr);
+
+        // const numbers = document.querySelectorAll('input[type="number"]');
+        // console.log(numbers[0].value);
+
+        // 对商品的复选框状态进行判断，从而获取商品的总数和总金额
+
+        // 对当前的数量数组进行获取
+        const numArr = [
+          ...document.querySelectorAll('input[type="number"]'),
+        ].map((item) => item.value * 1);
+        // console.log(numArr);
+
+        // 使用filter()方法，以当前价格的复选框状态作为判断条件，获取到所有的checked为true的单价
+        const checkedPrice = priceArr.filter(
+          (item, index) => [...checkItems][index].checked
+        );
+        // console.log(totalPrice);
+        // 获取到所有checked为true的数量
+        const checkedNum = numArr.filter(
+          (item, index) => [...checkItems][index].checked
+        );
+        // console.log(totalNum);
+
+        // 商品总数的获取，可以使用reduce()方法进行累加操作
+        // console.log(numArr.reduce((pre, cur) => pre + cur));
+        // 当reduce()中的参数值为空时，reduce()方法会报错，所以需要进行判断
+        let sum = 0;
+        if (checkedNum.length !== 0) {
+          sum = checkedNum.reduce((pre, cur) => pre + cur);
+        }
+
+        // 计算商品的金额：单价 * 数量，还是使用reduce()方法进行计算
+        // 商品的金额是不随复选框的变动而变动的，它只和数量的变动相关
+        const amountArr = [priceArr, numArr].reduce((total, curr) =>
+          total.map((item, index) => item * curr[index])
+        );
+
+        // 计算已选中商品的金额数组
+        const checkedAmount = amountArr.filter(
+          (item, index) => [...checkItems][index].checked
+        );
+        // console.log(checkedAmount);
+        // console.log(amount);
+
+        // 计算已选中商品的总金额
+        let totalAmount = 0;
+        if (checkedAmount.length !== 0) {
+          totalAmount = checkedAmount.reduce((pre, cur) => pre + cur);
+        }
+        // console.log(totalAmount);
+
+        // 将计算结果渲染到购物车中
+        // 总数量
+        document.querySelector("#sum").textContent = sum;
+        // 总金额
+        document.querySelector("#total-amount").textContent = totalAmount;
+        // 每个商品的金额
+        // 根据当前商品的索引和amountArr商品价格数组的索引对应，然后填充到内容中
+        document
+          .querySelectorAll(".amount")
+          .forEach((item, index) => (item.textContent = amountArr[index]));
+      }
+
+      // 获取到所有的数量控件
+      const numInput = document.querySelectorAll('input[type="number"]');
+      // console.log(numInput);
+      // 用户更新数量时触发自动计算，添加change事件
+      numInput.forEach((ev) => (ev.onchange = autoCalculate));
+      // 刚加载时，也应该触发自动计算事件
+      window.onload = autoCalculate;
+      // 当取消单个选中时，触发计算事件
+      checkItems.forEach((item) =>
+        item.addEventListener("change", function () {
+          checkAll.checked = [...checkItems].every((item) => item.checked);
+          autoCalculate();
+        })
+      );
+      // 当全选复选框值发生变动时，自动计算被触发
+      checkAll.addEventListener("change", function (ev) {
+        checkItems.forEach((item) => (item.checked = ev.target.checked));
+        autoCalculate();
+      });
+      // 取消选中某一个商品的时候，从总数量中减掉对应商品的数量，从总价中减去对应商品的价格
+      // 思路：
+      // 1. 为每个商品的复选框添加change事件，当每个复选框的change为false时，自动计算总金额，总数量
+      // 2.  在进行自动计算时，获取数量金额之前对商品的复选框状态进行判断，如果为true，则参与计算，如果为false则不参与计算
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>侦听器属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <p>
+        数量：<input
+          type="number"
+          v-model="num"
+          style="width: 5em"
+          min="0"
+          :max="max"
+        />
+      </p>
+      <p>单价：{{price}} 元</p>
+      <p>金额：{{res}} 元</p>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {
+            num: 0,
+            price: 50,
+            res: 0,
+            max: 100,
+          };
+        },
+
+        // 侦听器属性，使用watch声明
+        watch: {
+          // 侦听的是某一个属性的值的变化，它的属性名与data中要监听的属性同名
+
+          num(newValue, oldValue) {
+            // console.log(newValue, oldValue);
+            this.res = newValue * this.price;
+
+            if (newValue >= 20) {
+              this.max = newValue;
+              alert("库存不足，请补货！");
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
+
+<!-- 总结 -->
+<!-- key: 主要是为了弥补列表渲染时，自动触发diff算法 -->
+<!-- 条件渲染：v-if-else-if，v-show -->
+<!-- 键盘修饰符Enter -->
+<!-- 计算属性：相当于原生js中的访问器属性，getter/setter
+     侦听器属性：监听数据对象的变化 -->
+<!-- 用计算器属性完成的功能,侦听器几乎都可以完成,侦听器属性的实时性更加良好 -->

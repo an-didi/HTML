@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* 转换为flex弹性布局元素 */
+  display: flex;
+  padding: 1em;
+  height: 15em;
+  border: 1px solid #000;
+  margin: 1em;
+}
+.container > .item {
+  /* height: 2em; */
+  width: 5em;
+  background-color: lightcyan;
+  border: 1px solid #000;
+}
+
+/* 项目属性flex */
+.container .item {
+  /* flex: flex-grow flex-shrink flex-basis;
+  flex: 放大因子  收缩因子  项目在主轴上的基准宽度 */
+  /* 默认值：flex：0 1 auto;或者是flex：initial; */
+  /* 不放大，可以收缩，宽度取容器的width属性 */
+  /* flex: 0 1 auto; */
+  flex: initial;
+  /* 允许放大和收缩 */
+  /* flex: 1 1 auto; */
+  flex: auto;
+  /* 禁止放大和收缩 */
+  /* flex: 0 0 auto; */
+  flex: none;
+  /* 如果只写一个数字，表示放大因子 */
+  /* flex: 1;等价于 flex: 1 1 auto; */
+  flex: 1;
+  /* flex通常不会用来设置所有项目的默认选项，通常用来设置某一个项目的特征 */
+}
+
+/* ---------------------------------------------- */
+
+/* 案例，要求第二个和第三个项目的宽度是第一个和第四个项目的2倍 */
+.container > .item:first-of-type,
+.container > .item:last-of-type {
+  flex: 1;
+}
+
+.container > .item:nth-of-type(2),
+.container > .item:nth-of-type(3) {
+  flex: 2;
+}

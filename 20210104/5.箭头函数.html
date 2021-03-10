@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>箭头函数</title>
+  </head>
+  <body>
+    <script>
+      // 箭头函数
+      let sum = function (a, b) {
+        return a + b;
+      };
+      //   改写成箭头函数
+      sum = (a, b) => {
+        return a + b;
+      };
+      console.log(sum(1, 2));
+      //   箭头函数用来简化“匿名函数”的声明
+      // 1. 如果函数体只有一条语句，可以不写return；
+      sum = (a, b) => a + b;
+      console.log(sum(10, 20));
+      //   2. 如果函数只有一个参数，小括号也不用写
+      let tips = (a) => a;
+      console.log(tips("只有一个参数"));
+
+      //   3.如果没有参数，小括号不能省略
+      sum = () => console.log("OK");
+      console.log(sum());
+
+      //   4.箭头函数没有原型属性，不能当构造函数用
+      // 5.箭头函数中的This始终与上下文绑定
+    </script>
+  </body>
+</html>

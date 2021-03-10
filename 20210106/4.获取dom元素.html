@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom操作：获取dom元素</title>
+  </head>
+  <body>
+    <!-- 使用列表演示元素获取 -->
+    <ul id="list">
+      <li class="item">item1</li>
+      <li class="item">item2</li>
+      <li class="item">item3</li>
+      <li class="item">item4</li>
+      <li class="item">item5</li>
+    </ul>
+
+    <form action="">
+      <input type="text" name="" id="" />
+    </form>
+    <script>
+      // 使用css选择器来获取元素
+      // 1.获取满足条件的所有元素
+      const lies = document.querySelectorAll("#list li");
+      console.log(lies);
+      // 获取到的数据是Nodelist类型，是浏览器内置的集合类型，属于类数组
+      // 可以使用Array.from()方法，可以将Nodelist类型改为数组类型
+      //   let arr = Array.from(lies);
+      //   console.log(arr);
+      // 也可以使用...rest归并参数将Nodelist列想改为数组类型
+      //   let larr = [...lies];
+      //   console.log(larr);
+
+      //   Nodelist类型数据可以直接用forEach()遍历
+      //   lies.forEach(function (item, index, arr) {
+      //     console.log(item, index, arr);
+      //   });
+      // 通常情况下只写一个参数
+      //   lies.forEach((item) => console.log(item));
+      console.log("--------------------------------");
+      // 获取到第一个元素
+      let firstItem = document.querySelectorAll("#list li:first-of-type");
+      // 不管获取几个元素，它的返回值都是一个集合Nodelist
+      // 可以通过添加索引的方法拿到里边的值
+      //   console.log(firstItem[0]);
+      //   firstItem = firstItem[0];
+      //   console.log(firstItem);
+      // 2. 获取满足条件的第一个元素
+      let first = document.querySelector("#list li");
+      console.log(first);
+      // 传统方式
+      //根据id获取
+      //   document.getElementById();
+      // 根据标签名获取
+      //   document.getElementsByTagName();
+      // 获取表单元素
+      //   document.getElementsByName();
+      // 根据类名获取
+      //   document.getElementsByClassName();
+
+      // 有几个快捷方式，用来快速获取某一个或者某一类元素
+      // html
+      //   console.log(document.documentElement);
+      // head
+      //   console.log(document.head);
+      // body
+      //   console.log(document.body);
+      // title
+      //   console.log(document.title);
+      // forms(获取所有表单元素)
+      //   console.log(document.forms);
+      // imgs(拿到所有图片)
+      //   console.log(document.images);
+      //anchors(拿到所有的链接)
+      //   console.log(document.anchors);
+    </script>
+    <!-- <script>
+      const ul = document.querySelector("#list");
+      // 创建一个文档片段
+      //   const frag = document.createDocumentFragment();
+      const frag = new DocumentFragment();
+      // 使用for 循环进行添加
+      for (let i = 0; i < 5; i++) {
+        const li = document.createElement("li");
+        li.textContent = "Hello" + (i + 1);
+        // 将生成的节点先临时挂载到文档片段中去
+        frag.appendChild(li);
+      }
+      // 将文档片段挂载到页面中
+      ul.appendChild(frag);
+      // 也可以使用写好的html文档字符串进行多个添加,然后使用insertAdjacentHTML()
+      htmlStr = `
+      <li style="color:skyblue">demo1</li>
+      <li style="color:skyblue">demo2</li>
+      <li style="color:skyblue">demo3</li>
+      <li style="color:skyblue">demo4</li>
+      <li style="color:skyblue">demo5</li>
+      <li style="color:skyblue">demo6</li>
+      `;
+      // 关键字after/before,Begin/End
+      ul.insertAdjacentHTML("afterBegin", htmlStr);
+      // 2.更新操作
+      let h3 = document.createElement("h3");
+      h3.innerHTML = "猜猜我替换掉了谁？";
+      // 将第三个元素替换掉
+
+      // 同层级替换
+      document.querySelector("li:nth-of-type(3)").replaceWith(h3);
+      // 在父级元素替换掉子元素
+      ul.replaceChild(h3, document.querySelector("li:first-of-type"));
+
+      ul.removeChild(document.querySelector("#list h3"));
+      let lis = ul.children;
+      console.log(lis);
+      // 获取子元素数量
+      let liesNums = ul.children.length;
+      console.log(liesNums);
+      // 这个也是获取子元素数量
+      liesNums = ul.childElementCount;
+      console.log(liesNums);
+      // 语法糖系列
+
+      // 拿到第一个子元素
+      console.log(ul.firstElementChild);
+      //最后一个子元素
+      console.log(ul.lastElementChild);
+      // 父节点
+      console.log(ul.lastElementChild.parentElement);
+      // 前一个兄弟
+      // 需要获取当前元素的位置
+      const ninth = document.querySelector("#list li:nth-of-type(9)");
+      // ninth.style.color = "red";
+      const eight = ninth.previousElementSibling;
+      console.log(eight.innerHTML);
+
+      // 后一个兄弟
+      const ten = ninth.nextElementSibling;
+      console.log(ten.innerHTML);
+    </script> -->
+  </body>
+</html>

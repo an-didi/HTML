@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-text,v-once,v-html指令</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <p>用户名：{{userName}}</p> -->
+      <!-- v-text,在html中是不存在这样的属性的，它是专门由Vue实例管理的自定义属性，称之为“指令” -->
+      <!-- v-text ====> innerText，textContent,它会覆盖掉原来的文本内容 -->
+      <!-- <p v-text="userName"></p> -->
+      <!-- 只渲染一次，相当于关闭了响应式 -->
+      <!-- <p v-once="userName">只渲染一次</p> -->
+      <!-- v-html ====> innerHTML -->
+      <p v-html="userName"></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        // 转换效率最高
+        // el:document.querySelector('.app'),
+        el: ".app",
+        // vue的挂载点不能挂到body或者html上，因为他们具有唯一性
+        data: {
+          userName: "我的名字就是这么长，惊不惊喜意不意外！",
+        },
+      });
+      vm.userName = "<em style='color:red'>我的名字就是这么长，惊不惊喜意不意外！</em>";
+    </script>
+  </body>
+</html>

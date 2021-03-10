@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>key的作用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <label>新老师：<input type="text" v-model="name" /></label>
+      <button @click="add($event)">增加</button>
+      <ul>
+        <!-- 如果没有key值，单选按钮与它的值的对应关系就会发生变化 -->
+        <li v-for="item of list" :key="item.id">
+          <input type="radio" name="" />
+          {{item.id}}--{{item.name}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: ".app",
+        // 使用函数返回值的方式来创建数据
+        // 函数会产生一个作用域，防止数据在多个实例之间共享
+        data() {
+          return {
+            name: "",
+            list: [
+              { id: 3, name: "朱老师" },
+              { id: 2, name: "刘老师" },
+              { id: 1, name: "王老师" },
+            ],
+          };
+        },
+        methods: {
+          add(ev) {
+            //list[]中的name值
+            // console.log(this.name);
+            // list[]中的id值
+            // console.log(this.list.length + 1);
+            // 通过unshift()方法添加到数组的头部
+            this.list.unshift({ id: this.list.length + 1, name: this.name });
+            this.name = null;
+            // const input = document.querySelector(".app > label > input");
+            // input.value = null;
+            // ev.target.previousElementSibling.firstElementChild.value = null;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

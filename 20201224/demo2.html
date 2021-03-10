@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>网格容器/网格项目/网格轨道/轨道间距</title>
+    <style>
+      /* 1.网格容器 :由若干个矩形网格单元构成*/
+      /* 2.网格项目:网格容器的子元素,必须放在网格单元内部 */
+      /* 3. 网格单元:网格布局的组成部分,有"单元格"与"网格区域"两种表现形式 */
+      /* 4. 网格轨道:由多个网格单元组成,根据排列方向有 "行轨"和 "列轨"之分 */
+      /* 5. 轨道间距: 容器中轨道之间的间距,有 "行轨间距"和 "列轨间距" */
+
+      .main {
+        /* flex中子元素默认为行内块元素,grid中子元素默认为块元素 */
+        display: grid;
+        border: 1px solid #000;
+        padding: 0.5em;
+        /* 创建网格布局之后的事情 */
+
+        /* 1. 创建轨道的列宽 */
+        /* 设置一个三列两行的布局空间 */
+        /* grid-template-columns: auto;默认值:auto */
+        grid-template-columns: 10em 10em 10em;
+
+        /* 2. 设置轨道的行高 */
+        /* grid-template-rows: auto;默认值:auto */
+        grid-template-rows: 3em 3em;
+
+        /* 3. 设置轨道的间距 */
+        /* gap:水平  垂直; */
+        gap: 0.5em;
+      }
+      /* 网格项目:网格容器中的子元素,与flex是一样的 */
+      .main .item {
+        /* 默认生成一列N行容器(N就是项目的数量) */
+        background-color: aliceblue;
+        border: 1px solid #000;
+        padding: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <span class="item">item1</span>
+      <span class="item">item2</span>
+      <span class="item">item3</span>
+      <span class="item">item4</span>
+      <span class="item">item5</span>
+      <span class="item">item6</span>
+    </div>
+  </body>
+</html>

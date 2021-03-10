@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>解构赋值</title>
+  </head>
+  <body>
+    <script>
+      // 解构赋值：快速从集合数据（数组/对象）结构出独立变量
+      // 1.数组
+      // 进行解构时，两等号两边的类型相同
+      // 可以同时获得数组中的多个值，固定位置的值，一个值等
+      let arr = [1, 2, 3, 4];
+      // 将数组中的3得到，赋给a
+
+      let [, , a] = arr;
+      console.log(a);
+
+      // 使用解构赋值进行两个变量的交换
+
+      let x = 5;
+      let y = 10;
+      [x, y] = [y, x];
+      console.log("x = %d  y = %d", x, y);
+
+      // 2. 对象解构
+
+      // 对象进行解构时，两边的属性名要一一对应，对象中的属性是无序的，只要属性名对了就行。
+      let user = {
+        id: 1,
+        name: "小花",
+        age: 18,
+      };
+      // 等号左边是不允许出现大括号的，这样程序会将其识别为代码块
+      // 所以需要转为表达式，只需要加上一个小括号就行
+
+      //   let { id, name } = user;
+      //   {id, name} = user;
+      //   ({id, name} = user);
+
+      //   console.log(id, name);
+
+      // 对象的解构中支持起别名
+      // 可以解决的问题：
+      // 1. 解决与全局变量名相同的冲突问题
+      // 2. 解决对象中出现多个单词的属性名称
+
+      //   例如：我们在全局变量中声明一个name属性
+      // 这时候再使用name进行调用，要不就是会起冲突，要不就会覆盖原来的值
+      let name = "小草";
+      //   let { id, name } = user;
+      //这样会直接报错
+      let { id, name: myname } = user;
+      console.log("name = %s  myname = %s", name, myname);
+
+      // 3.参数解构
+      // 数组传参
+
+      let sum = ([a, b]) => a + b;
+      console.log(sum([10, 25]));
+
+      // 对象传参
+
+      let getUser = ({ name, age }) => [name, age];
+      console.log(getUser({ name: "小树苗", age: 3 }));
+
+      // 对象字面量的简化
+
+      // 当对象字面量中的属性已经在当前作用域有定义时，可以直接引用，不必赋值
+      //例如：
+      const userName = "紫苏";
+      const userAge = 2;
+      //   function hi(name) {
+      //     this.userName = name;
+      //   }
+      //   hi(userName);
+      let User = {
+        userName,
+        userAge,
+        // 使用箭头函数
+        // 当前箭头函数中的this指向了全局window，并不是当前对象
+        getInfo: () => `${this.userName}, ${this.userAge}`,
+        test: () => console.log(this),
+      };
+      console.log("箭头函数：", User.getInfo());
+      console.log(User.test());
+
+      // 箭头函数中的this的作用域总是指向定义它时的作用域（静态作用域/词法作用域），而并不是调用它的作用域
+      // 对象字面量不能创建作用域，this指向了user的作用域/作用域链：window
+      // 全局中是没有userName，userAge的，所以输出undefined
+      // window对象是指一个包含DOM文档的窗口
+      // window作为全局变量，代表了脚本正在运行的窗口，暴露给 Javascript 代码
+    </script>
+  </body>
+</html>

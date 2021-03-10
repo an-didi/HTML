@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型</title>
+  </head>
+  <body>
+    <script>
+      // 原始类型，引用类型
+      //   1.原始类型
+      //   1.1 数值：整数和小数
+      let age = 38;
+      //   查看数据类型使用typeof
+      console.log(age, typeof age);
+      //   1.2 字符串
+      let mail = "tp@mail.com";
+      console.log(mail, typeof mail);
+      //   字符串是可以拼接的，使用 '+' 可以将两个字符串拼接起来，并且它和python中的
+      //   不一样，python中的拼接，必须是数据类型相同的，而js中则没有限制
+      mail = "邮箱:" + mail;
+      console.log(mail);
+      mail = mail + age;
+      console.log(mail, typeof mail);
+      //   1.3 布尔类型 ：true 和 false两种值
+      let isOpen = true;
+      console.log(isOpen, typeof isOpen);
+
+      //   1.4 undefined类型：未初始化变量的默认值
+
+      let username;
+      console.log(username, typeof username);
+
+      //   1.5 null：空对象
+      let object = null;
+      console.log(object, typeof object);
+      console.log(object);
+
+      //   1.6 符号：创建对象属性的唯一标识
+      let s = Symbol();
+      console.log(s, typeof s);
+
+      //  原始类型都是值传递
+
+      //   例如
+      let a = 100;
+      //   在这里是将a的值传递到b中
+      let b = a;
+      console.log(b);
+      a = 200;
+      console.log(b);
+      //   a的更新不会影响到b的值
+
+      //   2. 引用类型：对象，数组，函数
+      //   他们都是引用传递
+      //   2.1 对象有六种创建方式，这里只讲了一种：对象字面量
+      // 创建一个对象字面量
+      let people = {
+        //   创建一个对象的字面量的方式，和其他面向对象语言区创建一个类特相似
+        //   对象中的属性：无序的键值对
+        id: 1,
+        name: "an",
+        old: 12,
+        "my email": "js@email.com",
+
+        // 对象中的方法：函数
+        getName() {
+          // this指当前对象,也就是类成员引用自身属性的时候的调用方式(当前上下文)
+          return "My name is:" + this.name;
+        },
+      };
+
+      //   访问的时候也特别的像实例化对象的访问方法
+      console.log(people.id);
+      //   当属性名是由 ''圈起来的时候,它的引用方式如下
+      console.log(people["my email"]);
+      console.log(people.getName());
+
+      // 2.2 数组
+      let course = [1, "js", 88];
+      console.log(course, typeof course);
+      // 判断数据是否是某一数据结构使用instanceof
+      console.log(course instanceof Array);
+      console.log(course instanceof Object);
+      // 判断某一数据结构是否是数组
+      console.log(Array.isArray(course));
+
+      // 数组中的元素是按照索引访问的,从0开始
+      console.log(course[1]);
+
+      // 2.3 函数
+
+      function img(a, b) {
+        return "img";
+      }
+
+      console.log(img());
+      console.log(img(), typeof img);
+      console.log(img instanceof Object);
+      // 对象是属性的无序集合,对象可以添加属性
+      // 可以直接通过"函数名.属性名 = 值" 的操作来给函数添加属性
+      img.menu = "menu";
+      console.log(img.menu);
+      // 函数在定义之初就自身具备了一些属性,这些是函数自带的属性
+      // 利用dir()函数可以查看每个函数的所有属性
+      console.dir(img);
+      // 其中length属性是指函数的参数个数,arguments属性是指函数参数的具体值
+
+      // 引用传递的示例:
+      const list = [1, 2, 3];
+      // 当const定义的是一个引用类型的数据时,例如说数组
+      // 它只要是不整体进行更新,就不会报错,也会完成更新操作
+      list[1] = 22;
+      // 可以看到的是可以更新的
+      console.log(list);
+      // 整体更新时会报错,例如:
+      // list = [4, 5, 6];
+      const li = list;
+      list[1] = "haha";
+      // 可以看到的是,当list中的值变了之后,li中的值也会随之变化
+      console.log(li);
+      // 引用传递就是传递内存地址,可以理解为指针
+    </script>
+  </body>
+</html>
+
+<!-- 1. 原始类型:(值传递)数值,字符串,布尔,undefined,null,Symbol
+2. 引用类型:(引用传递)对象,数组,函数 -->

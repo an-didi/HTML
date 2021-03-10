@@ -1,0 +1,68 @@
+/* 秒杀区 */
+.main .ms {
+  background-color: white;
+  position: absolute;
+  top: 43rem;
+  padding: 1rem;
+  margin: 1rem;
+  right: 0;
+  left: 0;
+  border-radius: 1rem;
+}
+
+.main .ms .ms-top {
+  font-size: 1.3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.main .ms .ms-top .left {
+  display: flex;
+}
+.main .ms .ms-top .left .notice {
+  font-size: 1.1rem;
+  height: 2rem;
+  border: 1px solid #e43130;
+  border-radius: 2rem;
+  margin-left: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .ms .ms-top .left .notice .tips {
+  background-color: #e43130;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.3rem 0.5rem;
+}
+.main .ms .ms-top .left .notice .time {
+  padding: 0.3rem 0.5rem;
+}
+.main .ms .ms-top .right {
+  color: #e43130;
+}
+
+/* 主体区 */
+.main .ms .ms-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main .ms .ms-body img {
+  height: 5.5rem;
+  width: 5.5rem;
+}
+
+/* 秒杀价 */
+.main .ms .ms-body .item div:first-of-type {
+  color: #e43130;
+  font-weight: bold;
+}
+
+/* 原价 */
+.main .ms .ms-body .item div:last-of-type {
+  text-decoration: line-through;
+  color: #666666;
+  text-decoration-color: #666;
+}

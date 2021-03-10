@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7785014",
+      "name": "php",
+      "font_class": "php",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "12025963",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e7a7",
+      "unicode_decimal": 59303
+    }
+  ]
+}

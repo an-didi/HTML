@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件与组件树</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 挂载点是一个隐式声明根组件， -->
+    <div class="app">
+      <!-- 自定义html标签 -->
+      <child-component></child-component>
+      <!-- <child-component></child-component> -->
+      <!-- 组件实现了代码复用 -->
+    </div>
+    <script>
+      // 组件，从形式上看，组件就是一个自定义的html标签
+      // 组件本质上来看是一个可复用的Vue实例，是构造函数Vue的一个子类
+
+      // 1.创建组件
+      const childComponent = Vue.extend({
+        template: `<h1>Helo World</h1>`,
+      });
+
+      // 2.注册
+      //   Vue.component(组件名称，对象字面量表示的组件配置项)
+      // 使用Vue.component注册的组件称为全局组件
+      // 组件名：用户自定义的html标签
+      //   Vue.component("child-component", childComponent);
+      Vue.component("child-component", {
+        template: `<h1>Helo World</h1>`,
+        data() {
+          return {}
+        },
+      }
+      );
+
+      // 3.挂载
+      // 将组件名放到挂载点的子结点中
+
+      const vm = new Vue({
+        el: ".app",
+        data() {
+          return {};
+        },
+      });
+    </script>
+  </body>
+</html>

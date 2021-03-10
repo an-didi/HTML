@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设置网格单元尺寸的新单位:fr</title>
+    <style>
+      .main {
+        display: grid;
+        border: 1px solid #000;
+        padding: 0.5em;
+        grid-template-columns: 10em 10em 10em;
+        /* 设置三列自适应宽度 */
+        grid-template-columns: auto auto auto;
+
+        /* 设置轨道宽度时可以使用一个新的单位: fr(fraction), 类似flex中的伸缩因子 */
+        /* 1.fr 与 auto之间的区别 */
+        /* 新需求:中间一列的宽度是两边宽度的2倍 */
+        /* 此时auto没用,引出fr */
+        grid-template-columns: 1fr 2fr 1fr;
+
+        /* 2. fr与 % 之间的区别 */
+        /* 新需求:中间一列是两边的三倍 */
+        /* grid-template-columns: 1fr 3fr 1fr; */
+        /* 使用% 会超出, % 无法计算列间距 */
+        /* grid-template-columns: 20% 60% 20%; */
+        /* % 与 fr 可以混搭使用,不过比例不受控制,在父级存在宽度或者高度的时候,% 就是一个固定值,计算时就会减去固定值,然后再分配给fr */
+
+        /* auto, fr , % ,都是相对单位,都可以触发自动计算机制,尽可能不要同时使用 */
+
+        /* fr与固定值，例如em，px等单位混合使用，计算时要减去固定值，然后将剩下的空间在fr之间进行分配 */
+
+        /* 如果和auto混用的不是固定单位，而是fr，，这时auto就会被压缩到内容区 */
+
+        grid-template-rows: 3em 3em;
+        gap: 0.5em;
+      }
+      .main .item {
+        background-color: aliceblue;
+        border: 1px solid #000;
+        padding: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <span class="item">item1</span>
+      <span class="item">item2</span>
+      <span class="item">item3</span>
+      <span class="item">item4</span>
+      <span class="item">item5</span>
+      <span class="item">item6</span>
+    </div>
+  </body>
+</html>

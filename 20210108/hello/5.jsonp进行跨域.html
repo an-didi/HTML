@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jsonp-cors</title>
+  </head>
+  <body>
+    <!-- 允许跨域的角色 -->
+    <!-- <script src="......"></script>
+      <img src="....." alt="">
+      <link rel="stylesheet" href="....."> -->
+    <button>json-cors</button>
+    <p></p>
+    <script>
+      // jsonp: JSON with padding (将json填充进来)
+      // jsonp: 读 json padding, 别读:json屁
+      // jsonp 看上去与 json 很像,它是将json作为参数传到一个函数中完成的
+      // jsonp: 只是将json数据包含在一个函数调用中
+      // jsonp: （回调函数名）callback({"id":1,"name":"admin"})；函数的参数是json格式
+      // jsonp: 包括二部分: 回调函数 + json数组
+      // 回调函数: 请求接收到响应时回调的函数,可动态设置
+      // 回调参数: 做为参数传递函数的json数据
+      // jsonp 巧妙的利用了script标签发起的请求不受跨域限制的特征
+      // 将跨域请求的url做为script的src属性值,实现不需要服务器授权的跨域请求
+      // jsonp只能完成 get 请求
+
+      // ----------------------------------------------------------------
+
+      //1. jsonp的原理模拟
+
+      function getUser(data) {
+        let user = `${data.name}(${data.email})`;
+        document.querySelector("p").innerHTML = user;
+      }
+
+      //  getUser({ name: "小花", email: "xh@xh,com" });
+      // 将这个json类型的数据从服务器端获取，是否可行？{ name: "小花", email: "xh@xh,com" }
+      // 从前端将这个前端需要调用的函数名称告诉服务器上的php,让php动态生成一个函数调用语句并返回
+      // 从服务器返回函数调用语句: `getUser({ name: "小花", email: "xh@xh,com" });`
+
+      const btn = document.querySelector("button");
+      btn.onclick = () => {
+        //1. 生成一个允许跨域请求的html元素
+        let script = document.createElement("script");
+        // 2. 将跨域请求的url添加到src属性上
+        script.src = "http://world.io/cors3.php?jsonp=getUser";
+        // 3. 将script挂载到页面中
+        document.body.insertBefore(script, document.body.firstElementChild);
+      };
+      // jsonp进行跨域主要是通过在服务器端生成一条js函数调用
+    </script>
+  </body>
+</html>

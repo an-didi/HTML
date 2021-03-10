@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js引入方式</title>
+  </head>
+  <body>
+    <!-- 1. 直接写到html事件属性中 -->
+    <!-- 事件属性：对事件定义它的回调方法，它的值是js代码 -->
+    <!-- 事件属性： “on” + 事件名称， 例如点击事件：onclick -->
+    <button
+      onclick="console.log(this.innerHTML);this.style.background = 'yellow'"
+    >
+      按钮1
+    </button>
+    <button onclick="shows(this)">按钮2</button>
+    <script>
+      function shows(ele) {
+        console.log(ele.innerHTML);
+        ele.style.background = "red";
+      }
+    </script>
+
+    <!-- 通常会要求将html，css，js三者分离 -->
+
+    <!-- 2. 外部脚本：将js保存为一个单独的js文件，再通过script标签引入到当前的html文档中 -->
+    <!-- 首选 -->
+    <button class="botton3">按钮3</button>
+    <script src="js/demo2.js"></script>
+
+    <!-- 3. js代码量少,且仅在当前html页面使用,直接写在script标签中 -->
+    <button class="botton4">按钮4</button>
+    <script>
+      const btns = document.querySelector(".botton4");
+      btns.addEventListener("click", show_s);
+
+      function show_s() {
+        console.log(btns.innerHTML);
+        btns.style.background = "green";
+      }
+    </script>
+  </body>
+</html>
+
+<!-- js三种引入方式总结:
+1. 属性级:事件属性
+2. 标签级:script标签
+3. script标签的src属性引入 -->

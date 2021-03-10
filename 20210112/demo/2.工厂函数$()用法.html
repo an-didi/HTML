@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$()工厂函数</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      $(function () {
+        $("<li>这是使用jQuery添加的li</li>").appendTo(
+          document.querySelector("#first")
+        );
+      });
+      // $("<li>这是使用jQuery添加的li</li>").appendTo(
+      //   document.querySelector("#first")
+      // );
+      // 可以看到的是输出结果为null，并没有获取到内容
+      // 代码并没有解析到dom结构中去
+      console.log(document.querySelector("#first"));
+    </script>
+  </head>
+  <body>
+    <ul id="first">
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+    </ul>
+    <ul id="second">
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+    </ul>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script> -->
+    <script>
+      // 1.获取元素：$(选择器selector, 上下文context)
+      //原生语法
+      document
+        .querySelectorAll("li")
+        .forEach((ele) => (ele.style.color = "red"));
+
+      // jquery实现
+      //   $("li").css("color", "green");
+      //   $("li", "#first").css("color", "green");
+
+      // 对于css选择器来说，并没有必要传递第二个参数，直接在第一个参数中直接就可以写完上下文关系
+      //$("li", "#first") === $("#first li")
+      $("#first li").css("color", "green");
+
+      // 2. $(js对象):jQuery包装器，js对象是原生的js对象，作用就是将原生的js对象转为jquery对象
+      // 因为想使用jQuery对象上的非常丰富的方法或属性
+      document.body.style.backgroundColor = "yellow";
+      // 使用jQuery中的css方法来设置内联样式style
+      $(document.body).css("background", "skyblue");
+
+      // 原生js转为jQuery对象
+      console.log($(document.querySelectorAll("li")));
+      // jQuery转为原生js对象集合
+      // 使用...spread扩展,...rest归并
+      console.log([...$(document.querySelectorAll("li"))]);
+      // 使用forEach遍历
+      [...$(document.querySelectorAll("li"))].forEach(
+        (ele) => (ele.style.color = "yellow")
+      );
+      // get(n)方法，将jQuery集合中的某一个对象还原成原生的js对象
+      // 因为本身是类数组的结构，所以可以使用数组索引的方法区获取jQuery中的某一个对象
+      // 具体方法是[n]
+      // $(document.querySelectorAll("li")).get(2).style.backgroundColor = "red";
+      $(document.querySelectorAll("li"))[2].style.backgroundColor = "red";
+
+      // 3. $(html文本)：生成dom元素
+
+      // 原生js语法
+      document.body.insertAdjacentHTML(
+        "afterEnd",
+        "<li>这是使用原生js添加的li</li>"
+      );
+
+      // jQuery语法
+      // $("<li>这是使用jQuery添加的li</li>").appendTo(
+      //   document.querySelector("#first")
+      // );
+
+      // 4. $(callback回调函数):传一个回调当参数，当页面加载完成后会自动调用它
+
+      // $()参数的四种类型
+      // 1.选择器
+      // 2. 原生js对象，（包装器功能）
+      // 3. html字符串，用来创建dom元素
+      // 4. 回调函数，在页面加载完成，dom树创建成功后自动调用
+    </script>
+  </body>
+</html>

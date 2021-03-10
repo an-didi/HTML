@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dataset对象:自定义属性</title>
+  </head>
+  <body>
+    <!-- id: 预定义属性 -->
+    <!-- email:自定义属性 -->
+    <p id="aaa" data-email="a@php.cn" data-my-age="90" data-index="1">我的资料</p>
+    <script>
+      const p = document.querySelector("p");
+      //   console.log(p.id);
+      //   console.log(p.email);
+      //   console.log(p.getAttribute("email"));
+      //   dataset:读写自定义属性,但是这个属性必须使用"data-"为前缀
+      //   data-前缀必须省
+      console.log(p.dataset.email);
+      console.log(p.dataset.myAge);
+      console.log(p.dataset.index);
+    </script>
+  </body>
+</html>

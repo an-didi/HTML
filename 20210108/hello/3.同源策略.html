@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax同源策略</title>
+  </head>
+  <body>
+    <button>ajax-get-cors</button>
+    <p></p>
+    <script>
+      // cors: 跨域资源共享
+
+      // 同源策略：为了请求的安全，浏览器禁止通过脚本发起一个跨域的请求
+      // 只允许脚本发起基于同源的请求
+      // 同源指：协议相同，域名（主机名）相同，端口号相同
+      //   http://www.abc.com  http
+      //   https://www.abc.com https
+      //   协议不同
+
+      //   https://www.a.com
+      //   https://www.b.com
+      //   主机不同
+
+      //   https://a.cn:8080
+      //   https://a.cn:9090
+      //   端口不同
+      const btn = document.querySelector("button");
+      btn.onclick = (ev) => {
+        // ev.preventDefault();
+        //1. 创建 xhr 对象:
+        const xhr = new XMLHttpRequest();
+        //2. 配置 xhr 参数:
+        xhr.open("get", "http://world.io/cors1.php");
+        //3. 处理 xhr 响应:
+        xhr.onload = () =>
+          // document.querySelector("p").innerHTML = xhr.response;
+          alert(xhr.response);
+        //4. 发送 xhr 请求:get请求使用默认参数null，post请求要使用表单数据构造器FormData
+        xhr.send(null);
+      };
+    </script>
+  </body>
+</html>

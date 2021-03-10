@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>挂载点，数据注入，响应式</title>
+  </head>
+  <body>
+    <!-- 创建一个Vue根节点 -->
+    <div class="app">
+      <!-- 一旦创建了一个vue根节点，那么这里的所有内容都可以使用vue实例进行管理 -->
+      <!-- {{插值表达式}}：就是一个数据占位符 -->
+      <p>用户名:{{userName}}</p>
+      <p>{{userName + ',是一个18岁少女'}}</p>
+      <p>10 + 30 = {{10 + 30}}</p>
+      <!-- 支持简单的逻辑运算 -->
+      <p>{{flag ? '你好!' : '你是谁?'}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      // 创建一个vue实例
+      const vm = new Vue({
+        // 当前Vue的配置项
+        // 挂载点
+        // el: document.querySelector('.app'),
+        // Vue中可以识别选择器的
+        el: ".app",
+
+        // 数据注入
+        data: {
+          userName: "小红",
+          flag: true,
+        },
+      });
+
+      // 对Vue中原始数据进行访问时，需要给数据加上$
+      //  console.log(vm.$data.userName);
+      // 在data中声明的所有变量都会自动成为Vue实例的属性
+      // 以上的过程，叫做数据注入
+      console.log(vm.userName);
+      // 响应式触发，当前实例的属性改变时，页面上相对应引用的地方也会发生改变
+      vm.userName = "小兰";
+    </script>
+  </body>
+</html>

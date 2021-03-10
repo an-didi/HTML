@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用命名区域重构“圣杯布局”</title>
+    <style>
+      /* 圣杯布局：grid实现，两边固定，中间自适应,主体优先渲染 */
+      body * {
+        border: 1px solid;
+      }
+      body {
+        display: grid;
+        /* 设置列宽 */
+        grid-template-columns: 15rem minmax(50vw, auto) 15rem;
+        grid-template-rows: 3rem minmax(80vh, auto) 3rem;
+        gap: 0.5rem;
+
+        /* 设置命名网格区域在轨道中的显示位置 */
+        grid-template-areas:
+          "header header header"
+          "left main right"
+          "footer footer footer";
+      }
+      /* header,
+      footer {
+        grid-area: span 1 / span 3;
+      }
+      main {
+        grid-area: 2 / 2;
+      } */
+      header {
+        grid-area: header;
+      }
+      footer {
+        grid-area: footer;
+      }
+      main {
+        grid-area: main;
+      }
+      aside.left {
+        grid-area: left;
+      }
+      aside.right {
+        grid-area: right;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 圣杯布局dom -->
+    <header>header</header>
+    <main>main</main>
+    <aside class="left">left</aside>
+    <aside class="right">right</aside>
+    <footer>footer</footer>
+  </body>
+</html>

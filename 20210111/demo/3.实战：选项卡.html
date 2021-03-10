@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选项卡</title>
+    <style>
+      /* 样式初始化 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* 去掉li和a样式 */
+      li {
+        list-style-type: none;
+        line-height: 1.5rem;
+      }
+      li:hover {
+        cursor: default;
+      }
+      a {
+        color: #717171;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+        color: orange;
+      }
+
+      /* 设置选项卡块的背景颜色以及其他设置 */
+      .tabs {
+        /* border: 1px solid #000; */
+        width: 400px;
+        margin: 30px auto;
+        background-color: #e6e6e6;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* 设置导航区 */
+      .tab {
+        height: 36px;
+        display: flex;
+      }
+      .tab li {
+        flex: auto;
+        text-align: center;
+        line-height: 36px;
+        background-color: #fff;
+      }
+
+      .tab li.active {
+        background-color: #e6e6e6;
+      }
+      .tab li:hover {
+        cursor: pointer;
+      }
+
+      /* 默认所有选项卡只有一个显示,其它隐藏 */
+      .item {
+        padding: 20px;
+        display: none;
+      }
+      .item.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 选项卡是由两部分组成，头部是导航部分，内容区是主要内容部分 -->
+    <!-- 选项卡的设计思路：
+        通过给每个导航区的li添加自定义属性，然后让相关联的内容区设置相同的自定义属性
+        在点击/悬浮在一个li上的时候，将其他的内容区内容隐藏起来 -->
+    <!-- 设置一个选项卡的内容区块 -->
+    <div class="tabs">
+      <!-- 这个区块中分为两部分，第一部分是导航，第二部分是内容 -->
+
+      <!-- 导航区 -->
+      <ul class="tab">
+        <!-- 给每个li定义自定义属然后对应到内容区 -->
+        <li class="active" data-index="1">娱乐</li>
+        <li data-index="2">新闻</li>
+        <li data-index="3">音乐</li>
+        <li data-index="4">影视</li>
+      </ul>
+      <!-- 内容区 -->
+      <ul data-index="1" class="item active">
+        <li><a href="">梁宏达应邀为央视春晚喜剧语言类小品当高参</a></li>
+        <li><a href="">因伤缺席多个舞台是否有压力?喻言称会努力补回来</a></li>
+        <li><a href="">刘雨昕称出道夜是难忘的回忆 想要有更多的舞台</a></li>
+        <li><a href="">吴宗宪默认辛龙已离开其旗下经纪公司</a></li>
+        <li><a href="">...</a></li>
+      </ul>
+      <ul data-index="2" class="item">
+        <li><a href="">如何开好局起好步 习近平这样要求全党</a></li>
+        <li><a href="">现场！山东省委书记喊话被困金矿工人 无人回应</a></li>
+        <li><a href="">组装原子弹的工程师90岁还要学网购 原来是因为爱情</a></li>
+        <li><a href="">抱走佩洛西讲台的男子被捕后 交2.5万美元保释</a></li>
+        <li><a href="">...</a></li>
+      </ul>
+      <ul data-index="3" class="item">
+        <li><a href="">后弦原创单曲《铠甲之下》上线 诠释燃魂之心</a></li>
+        <li><a href="">王嘉尔宣布将开启个人活动 GOT7解散后成员各自飞</a></li>
+        <li><a href="">张学友为石家庄加油：中国抗疫成绩是世界认可的</a></li>
+        <li><a href="">韩女团IZONE有望延长活动期限 合同将于4月结束</a></li>
+        <li><a href="">...</a></li>
+      </ul>
+      <ul data-index="4" class="item">
+        <li><a href="">阿弗莱克有望执导迪士尼《失落城市的守护者》</a></li>
+        <li><a href="">沈腾马丽齐帮忙！常远为何要拍《温暖的抱抱》？</a></li>
+        <li><a href="">“性手枪”史蒂夫·琼斯回忆录《手枪》将开拍</a></li>
+        <li><a href="">哥谭独立电影奖颁发 《无依之地》获最佳影片</a></li>
+        <li><a href="">...</a></li>
+      </ul>
+    </div>
+    <script>
+      // 首先要考虑到的是要读取的事件，我们点击事件/鼠标悬浮事件的触发者是li，但是
+      // 它是一个子元素，它会冒泡到ul上面去，所以我们可以采用事件代理
+
+      // 使用事件代理来对导航区的li操作
+      const tab = document.querySelector(".tab");
+
+      // 获取到内容区的所有列表
+      const items = document.querySelectorAll(".item");
+
+      //   tab.onmouseover = (ev) => {
+      //     [...tab.children].forEach((item) => {
+      //       item.classList.remove("active");
+      //       ev.target.classList.add("active");
+      //     });
+      //     items.forEach((item) => {
+      //       item.classList.remove("active");
+      //     });
+      //     [...items]
+      //       .filter((item) => item.dataset.index === ev.target.dataset.index)[0]
+      //       .classList.add("active");
+      //   };
+
+      tab.addEventListener("mouseover", mouseOver);
+
+      function mouseOver(ev) {
+        //   需要两步：
+        //   1. 将之前所有处于的激活状态的选项卡清空，并将当前点击对象激活
+
+        //   我们需要的只是ul下的所有li
+        [...tab.children].forEach((item) => {
+          item.classList.remove("active");
+          ev.target.classList.add("active");
+        });
+
+        //   2.根据自定义属性data-index找到对应的列表，然后显示出来
+        items.forEach((item) => {
+          item.classList.remove("active");
+          [...items]
+            .filter((item) => item.dataset.index === ev.target.dataset.index)[0]
+            .classList.add("active");
+        });
+        //   console.log([...items][0].dataset.index === 1);
+        //   进行筛选，找到当前点击事件data-inex和内容区data-index相同的内容
+        //   因为filter返回值是一个数组，所以需要用索引将它取出
+        // [...items]
+        //   .filter((item) => item.dataset.index === ev.target.dataset.index)[0]
+        //   .classList.add("active");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* 转换为flex弹性布局元素 */
+  display: flex;
+  padding: 1em;
+  height: 15em;
+  border: 1px solid #000;
+  margin: 1em;
+}
+
+.container > .item {
+  /* height: 2em; */
+  width: 5em;
+  background-color: lightcyan;
+  border: 1px solid #000;
+}
+/* 多行容器的对齐 */
+.container {
+  /* 设置多行 */
+  flex-flow: row wrap;
+  /* 多行对齐：align-content,默认值stretch */
+  align-content: stretch;
+  align-content: flex-start;
+  align-content: flex-end;
+  align-content: center;
+  /* 多行两端对齐 */
+  align-content: space-between;
+  /* 分散对齐 */
+  align-content: space-around;
+
+  align-content: space-evenly;
+}
+
+/* 容器属性：
+1. flex-flow: 主轴方向与换行
+2. justify-content: 项目在主轴上的对齐方式
+3. align-item：项目在交叉轴上的对齐方式
+4. align-content：项目在多行容器中的交叉轴上的对齐方式 */

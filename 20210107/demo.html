@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>留言板</title>
+    <style>
+      #list {
+        display: grid;
+        grid-template-columns: 1fr 4rem;
+      }
+      #list button {
+        place-self: end;
+      }
+    </style>
+  </head>
+  <body>
+    <label>请留言:&nbsp;<input type="text" name="message" /></label>
+    <ol id="list"></ol>
+    <script>
+      // 获取元素
+      const msg = document.querySelector("input");
+      const list = document.querySelector("#list");
+
+      msg.onblur = (ev) => {
+        console.log(ev.currentTarget);
+      };
+
+      msg.onkeydown = (ev) => {
+        //   ev.key: 键盘事件中,key表示按下的键名
+        // console.log(ev.key);
+        if (ev.key === "Enter") {
+          // 非空判断
+          if (ev.currentTarget.value.length === 0) {
+            alert("内容不能为空");
+          } else {
+            // 创建包括留言内容的html字符串
+            let str = `<li>${ev.currentTarget.value}</li><button onclick="del(this)">删除</button>`;
+            // 最新留言应该始终做为第一条插入
+            list.insertAdjacentHTML("afterbegin", str);
+            // 请空上一条留言
+            ev.currentTarget.value = null;
+          }
+        }
+      };
+
+      // 删除留言
+      const ol = document.querySelector("body ol");
+      ol.onclick = (ev) => ev.stopPropagation();
+      // btn.addEventListener("click", Del);
+      // const Del =
+
+      function del(ele) {
+        if (confirm("是否删除?")) {
+          return (ele.parentNode.outerText = null);
+        } else {
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>

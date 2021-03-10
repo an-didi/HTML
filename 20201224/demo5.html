@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>网格单元的排列方式与隐式轨道</title>
+    <style>
+      /* 1. 排列方式：grid-auto-flow;
+      2. 控制隐式轨道的行高：grid-auto-rows;
+      3. 控制隐式轨道的列宽：grid-auto-columns; */
+      .main {
+        display: grid;
+        border: 1px solid #000;
+        padding: 0.5em;
+        /* 设置了一个两行三列的网格布局容器，当超出容器规格时，多余的项目会自动放入到自动生成的网格空间中。 */
+
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 5em 5em;
+        /* 这时，原来声明的网格单元叫做：显式轨道 */
+        /* 新项目显示的轨道称为：隐式轨道 */
+        /* 自动生成的隐式轨道的高度是自动的 */
+        /* 控制自动生成的隐式轨道高度的属性是：grid-auto-rows */
+        /* grid-auto-rows: 5em; */
+        /* 此时，默认项目在容器中是按照先行后列的顺序排列，“行优先”原则(按照顺序，先一行排完) */
+        /* 控制项目在容器中的排列方式的属性是：grid-auto-flow */
+        grid-auto-flow: column;
+        /* 控制自动生成的隐式轨道宽度的属性是：grid-auto-columns */
+        grid-auto-columns: 1fr;
+        gap: 0.5em;
+      }
+      .main .item {
+        background-color: aliceblue;
+        border: 1px solid #000;
+        padding: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <span class="item">item1</span>
+      <span class="item">item2</span>
+      <span class="item">item3</span>
+      <span class="item">item4</span>
+      <span class="item">item5</span>
+      <span class="item">item6</span>
+      <span class="item">item7</span>
+      <span class="item">item8</span>
+      <span class="item">item9</span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实战:轮播图</title>
+    <style>
+      /* 初始化 */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+      /* 轮播图的容器 */
+      .container {
+        width: 62.5em;
+        height: 22em;
+        margin: 1em auto;
+        /* 转为定位元素/定位父级 */
+        position: relative;
+      }
+
+      /* 图片设置 */
+      .container .imgs img {
+        /* 默认设置为全部隐藏 */
+        display: none;
+        /* 宽度和高度完全适应容器大小 */
+        width: 100%;
+        height: 100%;
+        /* 将所有图片进行定位，所有图片共享一个容器 */
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      /* 设置默认显示的图片 */
+      .container .imgs img.active {
+        display: block;
+      }
+
+      /* 按钮设置 */
+      .container .btns {
+        /* 将按钮定位到容器的底部 */
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+      }
+
+      .container .btns a {
+        /* 转成行内块元素: 既能水平排列,还支持宽度设置 */
+        display: inline-block;
+        /* 用padding撑开内容 */
+        padding: 0.5em;
+        margin: 0 0.2em;
+        background-color: #fff;
+        border-radius: 50%;
+      }
+
+      /* 默认选中设置背景色 */
+      .container .btns a.active {
+        background-color: #888;
+      }
+      .container .btns a:hover {
+        cursor: pointer;
+      }
+
+      /* 翻页按钮设置 */
+
+      .container .skip a {
+        position: absolute;
+        width: 2.5rem;
+        height: 5rem;
+        line-height: 5rem;
+        text-align: center;
+        opacity: 0.3;
+        top: 9rem;
+        font-weight: lighter;
+
+        font-size: 2rem;
+        background-color: #ccc;
+      }
+      .container .skip .prev {
+        left: 0;
+      }
+      .container .skip .next {
+        right: 0;
+      }
+      .container .skip *:hover {
+        opacity: 0.6;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 1. 图片组 -->
+      <nav class="imgs">
+        <a href="#"
+          ><img
+            src="../img/slides/banner1.jpg"
+            alt=""
+            data-index="1"
+            class="active"
+        /></a>
+        <a href="#"
+          ><img src="../img/slides/banner2.jpg" alt="" data-index="2"
+        /></a>
+        <a href="#"
+          ><img src="../img/slides/banner3.jpg" alt="" data-index="3"
+        /></a>
+        <a href="#"
+          ><img src="../img/slides/banner4.jpg" alt="" data-index="4"
+        /></a>
+      </nav>
+      <!-- 2. 与图片组对应的按钮组(一个个独立的,数量与图片数量是相同的) -->
+      <nav class="btns">
+        <!-- 这些小按钮应该是js根据图片数量动态来创建 -->
+        <!-- <a href="#" data-index="1" class="active"></a>
+        <a href="#" data-index="2"></a>
+        <a href="#" data-index="3"></a>
+        <a href="#" data-index="4"></a> -->
+      </nav>
+      <!-- 3. 翻页按钮(只有二个,分别在左右) -->
+      <nav class="skip">
+        <!-- &lt;: 实体符号 -->
+        <a href="#" class="prev">&lt;</a>
+        <a href="#" class="next">&gt;</a>
+      </nav>
+    </div>
+    <script>
+      // 获取相关的元素对象
+      // 图片组
+      const imgs = document.querySelectorAll(".container > .imgs img");
+      // 按钮组
+      const btnGroup = document.querySelector(" .container > .btns");
+      // 翻页按钮
+      const skip = document.querySelector(" .container > .skip");
+
+      // 自动生成按钮组,数量与图片数量一致
+
+      function autoCreateBtns(ele, imgLength) {
+        // 使用文档片断
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < imgLength; i++) {
+          const a = document.createElement("a");
+          // #: 防止默认行为，更加规范用 ev.preventDefault();
+          a.href = "#";
+          // 自定义数据属性
+          a.dataset.index = i + 1;
+          //   为第一个按钮添加高亮,这是默认的
+          if (i === 0) a.classList.add("active");
+          frag.appendChild(a);
+        }
+        ele.appendChild(frag);
+      }
+      // 调用该函数自动生成与图片一一对应的小按钮
+      autoCreateBtns(btnGroup, imgs.length);
+
+      // 获取到刚生成的按钮组中所有按钮
+      const btns = document.querySelectorAll(" .container > .btns > *");
+
+      // 下面声明2个公共函数
+      // 1. 获取激活的元素
+      function getActiveEle(eles) {
+        let activities = Array.from(eles).filter((img) =>
+          img.classList.contains("active")
+        );
+        return activities.shift();
+      }
+
+      // 2. 设置激活的元素
+      function setActiveEle(btnIndex) {
+        // 同时遍历所有图片与按钮
+        [imgs, btns].forEach((arr) => {
+          // 取消当前激活元素的状态
+          getActiveEle(arr).classList.remove("active");
+          // 根据当前用户点击的按钮索引,重置应该激活的元素
+          arr.forEach((item) => {
+            if (item.dataset.index === btnIndex) {
+              item.classList.add("active");
+            }
+          });
+        });
+      }
+
+      // 为每一个独立的小按钮添加事件,不要使用事件代理
+      btns.forEach((btn) =>
+        btn.addEventListener(
+          "click",
+          (ev) => setActiveEle(ev.target.dataset.index),
+          false
+        )
+      );
+
+      // 作业1: 为每个翻页按钮添加事件完成图片翻页(兄弟节点的处理)
+      skip.addEventListener("click", skipImg, false);
+      // 单独写一个事件监听器,为后面的事件自动派发做准备
+      skip.children[0].addEventListener("click", skipImg, false);
+
+      // 将前后翻页,使用一个回调统一处理
+      function skipImg(ev) {
+        // 当前激活的图片,实际上这里用不到它,而应该用它的父级<a>来判断是否存在兄弟节点
+        let currentImg = getActiveEle(imgs);
+        // 当前图片组父元素,注意<img>父级是<a>,<a>的父级才是需要的父节点
+        let parentEle = currentImg.parentElement.parentElement;
+        // 当前元素的前一个兄弟节点:previousElementSibling;
+        let prevEle = currentImg.parentElement.previousElementSibling;
+        // 当前元素的下一个兄弟节点:nextElementSibling;
+        let nextEle = currentImg.parentElement.nextElementSibling;
+        // 第一张图片, firstElementChild第一个子元素
+        let firstImg = parentEle.firstElementChild.firstElementChild;
+        // 最后一张图片, firstElementChild, 最后一个子元素
+        let lastImg = parentEle.lastElementChild.firstElementChild;
+
+        let activeImg = currentImg;
+        // 向前翻页
+        if (ev.target.classList.contains("prev")) {
+          // 如果存在前一张图片,就使用它,否则就使用最后一张图片来更新它,形成循环显示的效果
+          let activeImg =
+            prevEle !== null ? prevEle.firstElementChild : lastImg;
+          // 使用激活元素来同步更新图片与按钮
+          setActiveEle(activeImg.dataset.index);
+        }
+        // 向后翻页
+        if (ev.target.classList.contains("next")) {
+          // 如果不存在下一张图片,就用第一张图片更新它
+          let activeImg =
+            nextEle !== null ? nextEle.firstElementChild : firstImg;
+          setActiveEle(activeImg.dataset.index);
+        }
+      }
+
+      // 作业2: 图片每隔2秒自动播放(定时器,事件自动派发)
+      let timer = null;
+      const slider = document.querySelector(".container");
+      slider.addEventListener("mouseout", startTimer, false);
+      slider.addEventListener("mouseover", clearTimer, false);
+      // 启动定时器
+      function startTimer() {
+        // 创建自定义事件对象
+        const clickEvent = new Event("click");
+        timer = setInterval(
+          () => skip.children[0].dispatchEvent(clickEvent),
+          2000
+        );
+      }
+
+      // 清除定时器
+      function clearTimer() {
+        clearInterval(timer);
+      }
+    </script>
+  </body>
+</html>

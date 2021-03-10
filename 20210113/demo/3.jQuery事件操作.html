@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件操作</title>
+    <style>
+      form {
+        display: grid;
+        width: 15em;
+        gap: 1em;
+        border: 1px solid;
+        padding: 1em;
+      }
+      label {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <form action="check.php" onsubmit="return false"> -->
+    <form action="check.php">
+      <label for="">LOGIN</label>
+      <input type="text" name="username" id="username" placeholder="username" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+      />
+      <button>Submit</button>
+    </form>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+      // 禁用表单的默认提交行为
+      //   document.querySelector("form").onsubmit = (ev) => ev.preventDefault();
+      // jq实现
+      $("form").submit((ev) => ev.preventDefault());
+
+      // 验证用户名，如果为空，提示不能为空
+      // 如果用户名已存在，提示用户重新注册
+
+      const user = $('input[name="username"]');
+      //   const user = document.querySelector('input[name="username"]');
+      //   console.log(user);
+      // 在用户失去焦点时进行用户名验证
+
+      user.blur(function () {
+        //提示信息
+        let tips = "";
+        // 用户信息表
+        const users = ["admin", "zhao", "qian", "sun", "li"];
+        // console.log(this);
+
+        // 非空验证
+        if ($(this).val().length === 0) {
+          tips = "用户名不能为空";
+          // 将当前焦点定位到username上
+          $(this).focus();
+        } else if (users.indexOf($(this).val()) === -1) {
+          tips = "用户名不存在，请注册" + "<button>注册</button>";
+        } else {
+          tips = '<i style="color:green">用户名正确</i>';
+        }
+        // 此时的内容会重复的显示，因此应该作一个判断，让它只显示一次
+        // 获取到当前input的下一个兄弟标签，如果为空，就添加进去，如果是SPAN就不添加
+        if ($(this).next()[0].tagName !== "SPAN") {
+          // 方式提示信息重复
+          $("<span></span>")
+            .html(tips)
+            .css("color", "red")
+            .insertAfter($(this));
+        }
+      });
+
+      //当用户修改文本框内容时，将提示信息清空
+      // 通过on来添加事件
+      user.on("input", function () {
+        // detach()方法会将标签带内容一起删掉
+        // $(this).next().detach("span");
+        $(this).next("span").remove();
+      });
+    </script>
+  </body>
+</html>

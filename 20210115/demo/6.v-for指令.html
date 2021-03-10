@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-for,key指令</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- key指令可以干涉diff算法，key一定是稳定且唯一的，vue通过key来判断这个节点是否需要重新渲染，以提升效率 -->
+
+      <!-- 遍历一个数组 -->
+      <ul>
+        <li v-for="(item,index) in items" :key="index">{{index}}--{{item}}</li>
+      </ul>
+
+      <!-- 遍历一个对象 -->
+      <ul>
+        <li v-for="(item,prop,index) in user" :key="index">
+          {{prop}}--{{index}}--{{item}}
+        </li>
+      </ul>
+      <!-- key只能是整数或是不重复的字符串 -->
+
+      <!-- 遍历一个对象数组 -->
+      <ul>
+        <li v-for="(user,index) in users" :key="user.id">
+          {{user.id}}--{{user.name}}--{{user.age}}
+        </li>
+      </ul>
+
+      <span v-for="n in 10">{{n}}</span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        el: ".app",
+        data: {
+          //数组
+          items: ["小红", "小绿", "小蓝"],
+          // 对象
+          user: {
+            name: "小兰",
+            age: 18,
+          },
+          // 对象数组，使用最频繁的，数据表的查询结果就是一个这样的二维JSON
+          users: [
+            { id: 1, name: "皮卡丘", age: 2 },
+            { id: 2, name: "喷火龙", age: 4 },
+            { id: 3, name: "皮皮虾", age: 6 },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

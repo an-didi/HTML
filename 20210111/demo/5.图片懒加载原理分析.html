@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>懒加载原理</title>
+  </head>
+  <body>
+    <!-- 懒加载原理：在图片进入到用户可视区时，让自定义的data-src的值代替src的值 -->
+    <img src="../img/hf/default.png" alt="" data-src="../img/ljz/img-5.jpg" />
+    <script>
+      // 视口高度:当前文档的可视高度
+      let viewHeight = document.documentElement.clientHeight;
+      // 视口宽度
+      // let viewWidth = document.documentElement.clientWidth;
+      console.log(viewHeight);
+
+      // 滚动高度
+      let scrollTop = document.documentElement.scrollTop;
+      // 监听window的滚动高度,这个滚动高度是一个动态的值
+      // window.onscroll = (ev) => console.log(document.documentElement.scrollTop);
+
+      const img = document.querySelector("img");
+      window.onscroll = (ev) => (img.src = img.dataset.src);
+    </script>
+  </body>
+</html>

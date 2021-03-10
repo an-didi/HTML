@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>立即执行函数：IIFE</title>
+  </head>
+  <body>
+    <script>
+      // 立即执行函数：IIFE
+      function sum(a, b) {
+        console.log(a + b);
+      }
+      sum(1, 2);
+      //   立即执行：声明完直接调用
+      //   IIFE模拟块作用域
+      (function sum(a, b) {
+        console.log(a + b);
+      })(1, 9);
+      //   在很久以前，js是不支持块作用域的
+      // 1.立即执行函数可以模拟块作用域
+      // 立即执行函数结构(function(){})();
+      //   2.立即执行函数模拟模块化编程
+      // 在以前的时候，js不支持模块化编程
+      let module = (function (name, email) {
+        return {
+          getName: () => "Name:" + name,
+          getEmail: () => "Email:" + email,
+        };
+      })("admin", "email");
+      console.log(module);
+      console.log(module.getEmail());
+      console.log(module.getName());
+    </script>
+  </body>
+</html>
